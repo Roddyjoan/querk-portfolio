@@ -9,19 +9,19 @@ public class Restaurant {
     private int timeEstimate;
     private List<Item> items;
 
+    public Restaurant(String name, String address, int restaurantId, int timeEstimate) {
+        this.name = name;
+        this.address = address;
+        this.restaurantId = restaurantId;
+        this.timeEstimate = timeEstimate;
+    }
+
     public List<Item> getItems() {
         return items;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
-    }
-
-    public Restaurant(String name, String address, int restaurantId, int timeEstimate) {
-        this.name = name;
-        this.address = address;
-        this.restaurantId = restaurantId;
-        this.timeEstimate = timeEstimate;
     }
 
     public String getName() {

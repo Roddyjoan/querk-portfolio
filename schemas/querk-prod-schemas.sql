@@ -14,44 +14,46 @@ create table restaurants (
 restaurant_id	int primary key auto_increment,
 `name`			varchar(50) not null,
 address			varchar(100) not null,
-estimated_wait_time	time null
+est				time null
 
 
 );
 
 create table items (
-item_id		int primary key auto_increment,
+item_id			int primary key auto_increment,
 restaurant_id	int not null,
 `name`			varchar(50),
 category		varchar(50),
 price			bigint not null,
-`description`		varchar(100) null,
+`description`	varchar(100) null,
 
 constraint fk_item_list_restaurant foreign key (restaurant_id) references restaurants(restaurant_id)
 );
 
 create table restaurants_customers (
 
-queue_id		int primary key auto_increment,
-restaurant_id	int not null,
-customer_id		int not null,
-queue_create_time	datetime not null,
+entry_id			int primary key auto_increment,
+restaurant_id		int not null,
+customer_id			int not null,
+create_time			datetime not null,
 ordered_ahead		boolean not null,
-expired				boolean not null
+expired				boolean not null,
 
+constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
+constraint fk_customers_restaurants foreign key (customer_id) references customers(customer_id)
 ); 
 
 
 create table app_user (
-    app_user_id int primary key auto_increment,
-    username varchar(50) not null unique,
-    password_hash varchar(2048) not null,
-    disabled bit not null default(0)
+    app_user_id 	int primary key auto_increment,
+    username 		varchar(50) not null unique,
+    password_hash 	varchar(2048) not null,
+    disabled 		bit not null default(0)
 );
 
 create table app_role (
-    app_role_id int primary key auto_increment,
-    `name` varchar(50) not null unique
+    app_role_id 	int primary key auto_increment,
+    `name` 			varchar(50) not null unique
 );
 
 create table app_user_role (

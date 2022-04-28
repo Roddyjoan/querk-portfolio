@@ -12,6 +12,8 @@ public interface CustomerRepository {
 
     Customer add(Customer customer);
 
+    boolean update(Customer customer);
+
     boolean deleteById(int customerId);
 
 }
