@@ -99,12 +99,3 @@ select * from restaurants_customers order by queue_create_time asc;
 
 
 
-
-
--- insert into item_list (restaurant_id,`name`,category,price,`description`)
--- values (1, "burrito", "entree", 10.00, "a burrito"),(2, "burrito", "dessert", 10.00, "also a burrito"),(1, "dessert burrito", "dessert", 10.00, "a burrito but dessert");
-
--- select * from item_list where category = "dessert" and restaurant_id =1 
-
-
-

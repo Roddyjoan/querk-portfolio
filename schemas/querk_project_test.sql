@@ -93,22 +93,20 @@ begin
         (1, 2, "2012-02-02 02:12:00.0000000", false, true),
         (1, 3, "2013-03-03 03:13:00.0000000", false, true),
         (2, 1, "2014-04-04 04:14:00.0000000", true, false),
-        (2, 2, "2015-05-05 05:15:00.0000000", true, false),
+        (2, 2, "2015-05-05 05:15:00.0000000", false, true),
         (2, 3, "2016-06-06 06:16:00.0000000", false, true),
         (3, 1, "2017-07-07 07:17:00.0000000", false, true),
         (3, 2, "2018-08-08 08:18:00.0000000", false, true),
         (3, 3, "2019-09-09 09:19:00.0000000", false, true);
         
-      --   item_id			int primary key auto_increment,
--- restaurant_id	int not null,
--- `name`			varchar(50),
--- category		varchar(50),
--- price			bigint not null,
--- `description`	varchar(100) null,
-        
 	insert into items ( restaurant_id, `name`, category, price, `description`) values
-		(1, "burrito", "entree", )
-    
+		(1, "Small burrito", "entree", 7.43, "Burrito"),
+        (1, "Super burrito", "entree", 10.68, "enhanced burrito w/Cheesy-Salsa"),
+        (1, "dessert burrito", "dessert", 10.00, "a burrito but dessert"),
+        (2, "Ramen Kae-Dama", "entree", 30.00, "Specialized Ramen Noodle Soup"),
+        (2, "Matcha Ice Cream", "dessert", 35.00, "Matcha(Green) IceCream"),
+        (3, "Wagyu", "entree", 7.43, "Expensive beef but Hey its good beef"),
+        (3, "Taiyaki", "dessert", 7.00, "A fried delicacy with Ice Cream");
         
 end //
 -- 4. Change the statement terminator back to the original.
