@@ -3,25 +3,26 @@ package models;
 import java.util.List;
 
 public class Restaurant {
+
+    private int restaurantId;
     private String name;
     private String address;
-    private int restaurantId;
     private int timeEstimate;
     private List<Item> items;
 
-    public Restaurant(String name, String address, int restaurantId, int timeEstimate) {
+    public Restaurant(int restaurantId, String name, String address, int timeEstimate) {
+        this.restaurantId = restaurantId;
         this.name = name;
         this.address = address;
-        this.restaurantId = restaurantId;
         this.timeEstimate = timeEstimate;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getName() {
@@ -40,14 +41,6 @@ public class Restaurant {
         this.address = address;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-
     public int getTimeEstimate() {
         return timeEstimate;
     }
@@ -55,4 +48,13 @@ public class Restaurant {
     public void setTimeEstimate(int timeEstimate) {
         this.timeEstimate = timeEstimate;
     }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
 }

@@ -15,7 +15,6 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
         this.template = template;
     }
 
-
     @Override
     public List<Restaurant> findAll() {
         return null;
