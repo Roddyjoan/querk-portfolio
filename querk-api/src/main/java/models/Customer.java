@@ -16,6 +16,7 @@ public class Customer {
     public Customer() {
     };
 
+
     public int getCustomerId() {
         return customerId;
     }
