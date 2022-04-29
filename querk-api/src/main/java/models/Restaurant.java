@@ -1,31 +1,32 @@
 package models;
 
+import java.sql.Time;
 import java.util.List;
 
 public class Restaurant {
-
-    private int restaurantId;
     private String name;
     private String address;
-    private int timeEstimate;
+    private int restaurantId;
+    private Time timeEstimate;
     private List<Item> items;
 
-    public Restaurant(int restaurantId, String name, String address, int timeEstimate) {
-        this.restaurantId = restaurantId;
+    public Restaurant(String name, String address, int restaurantId, Time timeEstimate) {
         this.name = name;
         this.address = address;
+        this.restaurantId = restaurantId;
         this.timeEstimate = timeEstimate;
     }
 
-    public Restaurant(){
+    public Restaurant() {
+
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public String getName() {
@@ -44,20 +45,19 @@ public class Restaurant {
         this.address = address;
     }
 
-    public int getTimeEstimate() {
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public Time getTimeEstimate() {
         return timeEstimate;
     }
 
-    public void setTimeEstimate(int timeEstimate) {
+    public void setTimeEstimate(Time timeEstimate) {
         this.timeEstimate = timeEstimate;
     }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
 }

@@ -10,6 +10,18 @@ public class Item {
     private BigDecimal price;
     private String description;
 
+    private int restaurantId;
+
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public Item() {
+    }
 
     public int getItemId() {
         return itemId;
