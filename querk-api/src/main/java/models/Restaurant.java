@@ -17,6 +17,9 @@ public class Restaurant {
         this.timeEstimate = timeEstimate;
     }
 
+    public Restaurant(){
+    }
+
     public int getRestaurantId() {
         return restaurantId;
     }

@@ -11,6 +11,6 @@ public class RestaurantMapper implements RowMapper<Restaurant> {
     @Override
     public Restaurant mapRow(ResultSet rs, int rowNum) throws SQLException {
         Restaurant restaurant = new Restaurant();
-
+        return restaurant;
     }
 }
