@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Item {
     private int itemId;
+    private int restaurantId;
     private String name;
     private String category;
     private BigDecimal price;
@@ -28,6 +29,14 @@ public class Item {
 
     public void setItemId(int itemId) {
         this.itemId = itemId;
+    }
+
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getName() {

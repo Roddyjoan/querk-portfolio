@@ -20,7 +20,6 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
         this.template = template;
     }
 
-
     @Override
     public List<Restaurant> findAll() {
         final String sql = "select * from restaurants;";
