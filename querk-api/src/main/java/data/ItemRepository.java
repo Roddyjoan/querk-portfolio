@@ -7,7 +7,7 @@ import java.util.List;
 public interface ItemRepository {
     List<Item> findAll();
 
-    List<Item> findByRestaurantId(int restaurantId);
+    List<Item> findByRestaurantId(Integer restaurantId);
 
     Item findById(int itemId);
 

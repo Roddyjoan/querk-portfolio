@@ -4,18 +4,18 @@ import java.math.BigDecimal;
 
 public class Item {
     private int itemId;
-    private int restaurantId;
+    private Integer restaurantId;
     private String name;
     private String category;
     private BigDecimal price;
     private String description;
 
 
-    public int getRestaurantId() {
+    public Integer getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(int restaurantId) {
+    public void setRestaurantId(Integer restaurantId) {
         this.restaurantId = restaurantId;
     }
 
