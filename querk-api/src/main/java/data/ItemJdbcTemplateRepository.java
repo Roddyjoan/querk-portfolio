@@ -1,6 +1,5 @@
 package data;
 
-
 import data.mappers.ItemMapper;
 import models.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
