@@ -39,6 +39,27 @@ public class CustomerService {
         return result;
     }
 
+    public Result<Customer> update(Customer customer){
+        Result<Customer> result = validate(customer);
+        if(!result.isSuccess()){
+            return result;
+        }
+
+        if (customer.getCustomerId() <= 0) {
+            result.addMessage("customerId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(customer)) {
+            String msg = String.format("customerId: %s, not found", customer.getCustomerId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
+
+    }
+    public Boolean deleteById(int customerId) { return repository.deleteById(customerId);}
+
 
     private Result<Customer> validate(Customer customer) {
         Result<Customer> result = new Result<>();
@@ -47,8 +68,23 @@ public class CustomerService {
             return result;
         }
 
-        return result;
+        if (customer.getName() == null){
+            result.addMessage("Customer must have a name",  ResultType.INVALID);
+            return result;
+        }
 
+        if (customer.getPhoneNum() == null){
+            result.addMessage("Customer must have a phone number", ResultType.INVALID);
+            return result;
+        }
+
+        //TODO: Can't have one userId for multiple customers
+        if( repository.findAll().stream().anyMatch(customer1 -> customer.getUserId() == customer1.getUserId()) ){
+            result.addMessage("Customer must have a unique userId", ResultType.INVALID);
+            return result;
+        }
+
+        return result;
     }
 
 }

@@ -2,12 +2,23 @@ drop database if exists queues_project;
 create database queues_project;
 use queues_project;
 
+
+create table app_user (
+    app_user_id 	int primary key auto_increment,
+    username 		varchar(50) not null unique,
+    password_hash 	varchar(2048) not null,
+    disabled 		bit not null default(0)
+);
+
+
 create table customers (
 customer_id		int primary key auto_increment,
 user_id			int not null,
 `name`			varchar(50) not null,
 phone_num		char(10) not null,
-email			varchar(80) null
+email			varchar(80) null,
+
+constraint fk_customer_app_user foreign key (customer_id) references app_user(app_user_id)
 );
 
 create table restaurants (
@@ -15,8 +26,6 @@ restaurant_id	int primary key auto_increment,
 `name`			varchar(50) not null,
 address			varchar(100) not null,
 est				time null
-
-
 );
 
 create table items (
@@ -42,14 +51,6 @@ expired				boolean not null,
 constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
 constraint fk_customers_restaurants foreign key (customer_id) references customers(customer_id)
 ); 
-
-
-create table app_user (
-    app_user_id 	int primary key auto_increment,
-    username 		varchar(50) not null unique,
-    password_hash 	varchar(2048) not null,
-    disabled 		bit not null default(0)
-);
 
 create table app_role (
     app_role_id 	int primary key auto_increment,
