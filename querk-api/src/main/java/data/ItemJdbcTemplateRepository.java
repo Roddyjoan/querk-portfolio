@@ -29,7 +29,7 @@ public class ItemJdbcTemplateRepository implements  ItemRepository{
     }
 
     @Override
-    public List<Item> findByRestaurantId(int restaurantId) {
+    public List<Item> findByRestaurantId(Integer restaurantId) {
         final String sql = "select i.item_id,i.restaurant_id, i.`name`, i.category,i.price,i.description from items i "
                 + "inner join restaurants r on i.restaurant_id=r.restaurant_id where i.restaurant_id = ? order by i.category ;";
 
