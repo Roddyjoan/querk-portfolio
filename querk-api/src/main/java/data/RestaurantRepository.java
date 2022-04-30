@@ -4,6 +4,7 @@ import models.Restaurant;
 
 import java.util.List;
 
+
 public interface RestaurantRepository {
     List<Restaurant> findAll();
 

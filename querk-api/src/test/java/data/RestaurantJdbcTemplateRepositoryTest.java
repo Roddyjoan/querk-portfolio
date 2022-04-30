@@ -44,7 +44,7 @@ class RestaurantJdbcTemplateRepositoryTest {
 
     @Test
     void shouldNotFindById(){
-        Restaurant nope = repository.findById(12390598234);
+        Restaurant nope = repository.findById(123);
         assertNull(nope);
     }
 
