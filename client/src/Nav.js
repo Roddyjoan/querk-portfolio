@@ -25,17 +25,23 @@ function Nav(){
             </div>
             
 
-            <div className="nav">                  
+            <nav>             
+                <div class="navicon">
+                    <div></div>
+                </div> 
+
                 {user?.user ? (
                     <>
-                        <Link to="/"><button class="navButton">Home</button></Link>&nbsp;&nbsp;    
+                        <Link to="/"><button class="navButton">Home</button></Link>
+                        <Link to="/"><button class="navButton">Restaurants</button></Link>                     
                     </>                              
                 ) : (   
                     <>
-                        <Link to="/"><button class="navButton">Home</button></Link>&nbsp;&nbsp;  
+                        <Link to="/"><button class="navButton">Home</button></Link>
+                        <Link to="/"><button class="navButton">Restaurants</button></Link>
                     </>                                                          
                 )}                                  
-            </div>
+            </nav>
         </>
     )
 }
