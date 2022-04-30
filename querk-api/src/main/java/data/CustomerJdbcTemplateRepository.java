@@ -21,7 +21,6 @@ public class CustomerJdbcTemplateRepository implements CustomerRepository{
         this.template = template;
     }
 
-
     @Override
     public List<Customer> findAll() {
         final String sql = "select `name`, phone_num, email ";
@@ -39,6 +38,7 @@ public class CustomerJdbcTemplateRepository implements CustomerRepository{
 
         return customer;
     }
+
 
     @Override
     public Customer add(Customer customer) {
