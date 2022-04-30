@@ -3,7 +3,6 @@ package data;
 import models.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -56,19 +55,27 @@ class CustomerJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldNotAdd() {
+    void shouldUpdate() {
         Customer customer = makeCustomer();
-        customer.setPhoneNum(null);
-        Customer actual = repository.add(customer);
+        customer.setCustomerId(2);
+        assertTrue(repository.update(customer));
+    }
 
+    @Test
+    void shouldNotUpdate() {
+        Customer customer = makeCustomer();
+        customer.setCustomerId(1300);
+        assertFalse(repository.update(customer));
     }
 
     @Test
     void deleteById() {
+        assertTrue(repository.deleteById(2));
     }
 
     @Test
     void shouldNotDeleteById() {
+        assertFalse(repository.deleteById(100000));
     }
 
     private Customer makeCustomer(){
