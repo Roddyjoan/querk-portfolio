@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,18 +57,48 @@ class ItemJdbcTemplateRepositoryTest {
 
     @Test
     void findByCategory() {
+        List<Item> entrees = new ArrayList<>();
+        entrees = repository.findByCategory("entree");
+        assertEquals(4,entrees.size());
+    }
+
+    @Test
+    void shouldNotFindByCategory() {
+        List<Item> entrees = new ArrayList<>();
+        entrees = repository.findByCategory("bean");
+        assertEquals(0,entrees.size());
     }
 
     @Test
     void add() {
+        Item item = makeItem();
+        Item actual = repository.add(item);
+        assertNotNull(actual);
+        assertEquals(NEXT_ID, actual.getItemId());
     }
 
     @Test
     void update() {
+        Item item = makeItem();
+        item.setItemId(3);
+        assertTrue(repository.update(item));
+    }
+
+    @Test
+    void shouldNotUpdate() {
+        Item item = makeItem();
+        item.setItemId(300);
+        assertFalse(repository.update(item));
     }
 
     @Test
     void deleteById() {
+        assertTrue(repository.deleteById(1));
+    }
+
+    @Test
+    void shouldNotDeleteById() {
+        assertTrue(repository.deleteById(1000));
     }
 
     private Item makeItem(){

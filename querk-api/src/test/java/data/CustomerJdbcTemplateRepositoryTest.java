@@ -55,11 +55,17 @@ class CustomerJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldNotAdd() {
+    void shouldUpdate() {
         Customer customer = makeCustomer();
-        customer.setPhoneNum(null);
-        Customer actual = repository.add(customer);
-        assertNull(actual);
+        customer.setCustomerId(2);
+        assertTrue(repository.update(customer));
+    }
+
+    @Test
+    void shouldNotUpdate() {
+        Customer customer = makeCustomer();
+        customer.setCustomerId(1300);
+        assertFalse(repository.update(customer));
     }
 
     @Test
