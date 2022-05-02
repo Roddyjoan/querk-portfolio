@@ -26,7 +26,7 @@ public class RestaurantQueuesController {
         return list;
     }
 
-    @GetMapping("/{restaurantId}")
+    @GetMapping("/restaurant/{restaurantId}")
     public List<RestaurantQueue> findAllNonExpired(@PathVariable Integer restaurantId) {
         List<RestaurantQueue> list = service.findAllNonExpiredByRestaurantId(restaurantId);
         return list;
