@@ -2,20 +2,13 @@ package learn.domain;
 
 import learn.data.CustomerRepository;
 import learn.models.Customer;
-import learn.models.Restaurant;
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -43,33 +36,59 @@ class CustomerServiceTest {
     @Test
     void shouldNotAddWithoutName(){
         Customer customer = makeCustomer();
+        customer.setName(null);
+        Result<Customer> result = service.add(customer);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
     void shouldNotAddWithoutPhoneNum(){
         Customer customer = makeCustomer();
+        customer.setPhoneNum(null);
+        Result<Customer> result = service.add(customer);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
     void shouldNotAddDupeUserId(){
         Customer customer = makeCustomer();
+        customer.setUserId(1);
+        Customer roddy = service.findById(1);
+        roddy.setUserId(1);
+        customer.setUserId(1);
+        Result<Customer> result = service.add(customer);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
     void shouldNotAddWithId(){
         Customer customer = makeCustomer();
+        customer.setCustomerId(1);
+        Result<Customer> result = service.add(customer);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
     void update() {
+        Customer customer = makeCustomer();
+        customer.setCustomerId(1);
+        Result<Customer> result = service.update(customer);
+        assertEquals(ResultType.SUCCESS, result.getType());
     }
 
     @Test
     void shouldNotUpdateWithoutId() {
+        Customer customer = makeCustomer();
+        Result<Customer> result = service.update(customer);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
     void shouldNotUpdateNonexistent() {
+        Customer customer = makeCustomer();
+        customer.setCustomerId(1000);
+        Result<Customer> result = service.update(customer);
+        assertEquals(ResultType.NOT_FOUND, result.getType());
     }
 
     private Customer makeCustomer(){
