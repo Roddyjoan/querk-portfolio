@@ -1,8 +1,10 @@
+import pic from './graphic.png';
+
 function Home(){
     return (
         <>  
             <div>
-                <img src="%PUBLIC_URL%/graphic.png" />
+                <img src={pic} />
                 <h3>Imagine you’re out at night with your friends and you just want to get some food.
                     But after you choose a restaurant, you have to wait for a table, wait to make your order, then wait for your food before you can eat.
                 </h3>
