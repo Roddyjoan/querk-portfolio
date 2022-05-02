@@ -1,7 +1,7 @@
 package learn.controllers;
 
 import learn.domain.AppUserService;
-import learn.security.JwtConverter;
+import learn.models.AppUser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+import learn.security.JwtConverter;
 
 import java.util.HashMap;
 import java.util.Map;
