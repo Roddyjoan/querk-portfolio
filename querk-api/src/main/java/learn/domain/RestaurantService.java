@@ -58,6 +58,10 @@ public class RestaurantService {
         return result;
     }
 
+    public boolean deleteById(Integer restaurantId){
+        return repository.deleteById(restaurantId);
+    }
+
     private Result<Restaurant> validate(Restaurant restaurant) {
 
         Result<Restaurant> result = new Result<>();
