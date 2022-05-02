@@ -72,6 +72,20 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
         return template.update(sql, restaurantQueue.getRestaurantId()) >0 ;
     }
 
+    // insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired)
+    @Override
+    public boolean update(RestaurantQueue restaurantQueue) {
+        final String sql = "update restaurants_customers set "
+                + "customer_id = ?, "
+                + "restaurant_id = ?, "
+                + "create_time = ?, "
+                + "ordered_ahead = ?, "
+                + "expired = ? "
+                + "where restaurant_id=?;";
+        return template.update(sql,restaurantQueue.getCustomerId(),restaurantQueue.getRestaurantId(),restaurantQueue.getCreateTime(),restaurantQueue.isOrderedAhead(), restaurantQueue.isExpired(), restaurantQueue.getEntryId()) > 0;
+    }
+
+
     @Override
     public boolean delete(Integer entryId) {
         final String sql = "delete from restaurants_customers where entry_id = ?;";

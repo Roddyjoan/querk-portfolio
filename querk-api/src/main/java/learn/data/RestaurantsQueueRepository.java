@@ -1,5 +1,6 @@
 package learn.data;
 
+import learn.models.Customer;
 import learn.models.Restaurant;
 import learn.models.RestaurantQueue;
 
@@ -15,6 +16,8 @@ public interface RestaurantsQueueRepository {
     List<RestaurantQueue> findAllNonExpiredByRestaurantId(Integer restaurantId);
 
     boolean makeExpired(RestaurantQueue restaurantQueue);
+
+    boolean update(RestaurantQueue restaurantQueue);
 
     boolean delete(Integer entryId);
 
