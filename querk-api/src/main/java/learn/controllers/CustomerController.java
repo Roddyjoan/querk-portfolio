@@ -42,7 +42,29 @@ public class CustomerController {
         return ErrorResponse.build(result);
     }
 
+    @PutMapping("/{customerId}")
+    public ResponseEntity<Object> update(@PathVariable Integer customerId, @RequestBody Customer customer){
+        if (customerId != customer.getCustomerId()){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Result<Customer> result = service.update(customer);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
 
+        return ErrorResponse.build(result);
+    }
 
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<Void> deleteById(@PathVariable Integer customerId){
+        if (service.deleteById(customerId)){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
 }
+
+
+
+
