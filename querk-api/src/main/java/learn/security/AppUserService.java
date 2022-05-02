@@ -1,4 +1,4 @@
-package security;
+package learn.security;
 
 import learn.data.AppUserRepository;
 import learn.models.AppUser;

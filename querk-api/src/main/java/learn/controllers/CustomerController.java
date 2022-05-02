@@ -55,7 +55,7 @@ public class CustomerController {
         return ErrorResponse.build(result);
     }
 
-    @DeleteMapping("/{customerId")
+    @DeleteMapping("/{customerId}")
     public ResponseEntity<Void> deleteById(@PathVariable Integer customerId){
         if (service.deleteById(customerId)){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

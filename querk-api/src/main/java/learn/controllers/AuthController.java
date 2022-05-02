@@ -1,17 +1,15 @@
 package learn.controllers;
 
-import learn.domain.CustomerService;
-import learn.domain.RestaurantService;
+import learn.domain.AppUserService;
+import learn.security.JwtConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
-import security.JwtConverter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,17 +21,12 @@ public class AuthController {
 
     AuthenticationManager authenticationManager;
     JwtConverter jwtConverter;
-    CustomerService customerService;
-    RestaurantService restaurantService;
+    AppUserService user;
 
-    public AuthController(AuthenticationManager authenticationManager,
-                          JwtConverter jwtConverter,
-                          CustomerService customerService,
-                          RestaurantService restaurantService) {
+    public AuthController(AuthenticationManager authenticationManager, JwtConverter jwtConverter, AppUserService user) {
         this.authenticationManager = authenticationManager;
         this.jwtConverter = jwtConverter;
-        this.customerService = customerService;
-        this.restaurantService = restaurantService;
+        this.user = user;
     }
 
     @PostMapping("/login")
