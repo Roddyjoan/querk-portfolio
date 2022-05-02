@@ -13,7 +13,7 @@ create table app_user (
 
 create table customers (
 customer_id		int primary key auto_increment,
-user_id			int not null,
+user_id			int null,
 `name`			varchar(50) not null,
 phone_num		char(10) not null,
 email			varchar(80) null,
@@ -92,7 +92,7 @@ insert into app_user_role
 
 
 
-insert into restaurants_customers (restaurant_id,customer_id,queue_create_time,ordered_ahead,expired) 
+insert into restaurants_customers (restaurant_id,customer_id,create_time,ordered_ahead,expired) 
 values (1,1,"0001-01-01 00:00:00.0000000", true, false),
 (1,1,"0001-01-02 00:00:00.0000000", true, false);
 
