@@ -2,6 +2,7 @@ package learn.data;
 
 import learn.data.mappers.AppUserMapper;
 import learn.models.AppUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +17,8 @@ import java.util.List;
 @Repository
 public class AppUserJdbcTemplateRepository implements AppUserRepository{
 
-    private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
