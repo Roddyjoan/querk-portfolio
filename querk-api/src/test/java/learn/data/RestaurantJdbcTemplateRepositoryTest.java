@@ -58,13 +58,27 @@ class RestaurantJdbcTemplateRepositoryTest {
 
 
     @Test
-    void update() {
+    void shouldUpdate() {
+        Restaurant restaurant = makeRestaurant();
+        restaurant.setRestaurantId(1);
+        assertTrue(repository.update(restaurant));
     }
 
     @Test
-    void deleteById() {
-        Restaurant restaurant = new Restaurant();
+    void shouldNotUpdate() {
+        Restaurant restaurant = makeRestaurant();
+        restaurant.setRestaurantId(100000);
+        assertFalse(repository.update(restaurant));
+    }
 
+    @Test
+    void shouldDeleteById() {
+       assertTrue(repository.deleteById(2));
+    }
+
+    @Test
+    void shouldNotDeleteById() {
+       assertFalse(repository.deleteById(10000));
     }
 
     private Restaurant makeRestaurant(){

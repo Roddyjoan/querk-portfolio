@@ -4,7 +4,7 @@ use queues_project_test;
 
 create table customers (
 customer_id		int primary key auto_increment,
-user_id			int not null,
+user_id			int null,
 `name`			varchar(50) not null,
 phone_num		char(10) not null,
 email			varchar(80) null
