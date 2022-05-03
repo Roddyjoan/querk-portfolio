@@ -26,7 +26,7 @@ restaurant_id	int primary key auto_increment,
 user_id			int null,
 `name`			varchar(50) not null,
 address			varchar(100) not null,
-est				time null,
+est				int null,
 
 constraint fk_restaurants_app_user foreign key (restaurant_id) references app_user(app_user_id)
 );
@@ -100,9 +100,9 @@ insert into customers (`name`, user_id, phone_num, email) values
 -- select * from app_user au inner join customers c on c.user_id = au.app_user_id;
 
 	insert into restaurants (`name`, user_id, address, est) values
-		("burrito restaurant", 4, "300 burrito lane", "00:20:00.0000000"),
-        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "01:00:00.0000000"),
-        ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "00:45:15.0000000");
+		("burrito restaurant", 4, "300 burrito lane", "20"),
+        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "60"),
+        ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
     
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
 		(1, 1, "2011-01-01 01:11:00.0000000", true, false),

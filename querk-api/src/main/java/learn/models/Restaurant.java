@@ -8,10 +8,10 @@ public class Restaurant {
     private Integer userId;
     private String name;
     private String address;
-    private Time timeEstimate;
+    private Integer timeEstimate;
     private List<Item> items;
 
-    public Restaurant(int restaurantId, String name, String address, Time timeEstimate) {
+    public Restaurant(int restaurantId, String name, String address, Integer timeEstimate) {
         this.restaurantId = restaurantId;
         this.name = name;
         this.address = address;
@@ -61,11 +61,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Time getTimeEstimate() {
+    public Integer getTimeEstimate() {
         return timeEstimate;
     }
 
-    public void setTimeEstimate(Time timeEstimate) {
+    public void setTimeEstimate(Integer timeEstimate) {
         this.timeEstimate = timeEstimate;
     }
 }
