@@ -74,9 +74,9 @@ function AddAgent() {
     return(
         <>
             <div>
-            <h2>Add a New Agent</h2>
+            <h2>Create a Restaurant Profile</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="firstName">First Name:</label>
+                <label htmlFor="firstName">Restaurant Name:</label>
                 <input onChange={handleFirst} id="firstName"></input><br />
 
                 <label htmlFor="middleName">Middle Initial:</label>
