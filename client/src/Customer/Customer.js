@@ -1,20 +1,18 @@
 import { Link } from 'react-router-dom';
 
-function Agent(props) {
-    const {firstName, lastName, middleName, dob, heightInInches} = props.agentObj;
+function Customer(props) {
+    const {name, phoneNum, Email} = props.customer;
 
     return (
-        <div className="agent-card">
-            <p><b>First Name:</b> {firstName}</p>
-            <p><b>Middle Name:</b> {middleName}.</p>
-            <p><b>Last Name:</b> {lastName}</p>
-            <p><b>DOB:</b> {dob}</p>
-            <p><b>Height (in):</b> {heightInInches}</p>
-            <Link to={'/delete/' + props.agentObj.agentId}><button>Delete Agent</button></Link>
-            <Link to={'/edit/' + props.agentObj.agentId}><button>Edit Agent</button></Link>
+        <div className="customer-card">
+            <p><b>Name:</b> {name}</p>
+            <p><b>Phone #:</b> {phoneNum}</p>
+            <p><b>Email:</b> {Email}</p>
+            <Link to={'/delete/' + props.customer.customerId}><button>Delete Customer</button></Link>
+            <Link to={'/edit/' + props.agentObj.agentId}><button>Edit Customer Information</button></Link>
         </div>
     )
 
 }
 
-export default Agent;
+export default Customer;

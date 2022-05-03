@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function AddAgent() {
+function AddCustomer() {
 
     const [name, setName] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
@@ -19,50 +19,41 @@ function AddAgent() {
         []
     );
 
-    function handleFirst(e) {
+    function handleName(e) {
         setFirst(e.target.value);
     }
 
-    function handleMiddle(e) {
-        setMiddle(e.target.value);
-    }
-
-    function handleLast(e) {
-        setLast(e.target.value);
-    }
-
-    function handleDOB(e) {
+    function handlePhone(e) {
         setBirthdate(e.target.value);
     }
 
-    function handleHeight(e) {
+    function handleEmail(e) {
         setHeight(e.target.value);
     }
 
     function handleSubmit(e){
         e.preventDefault();
 
-        const newAgent = {
-            firstName: first,
-            middleName: middle,
-            lastName: last,
-            dob: birthdate,
-            heightInInches: height
+        const newCustomer= {
+            name: name,
+            phone: phoneNum,
+            email: email
         };
 
-        fetch("http://localhost:8090/api/agent", {
+        fetch("http://localhost:8090/api/customer", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
-            body: JSON.stringify(newAgent)
+            body: JSON.stringify(newCustomer)
         }).then(response => {
             if (response.ok) {
-                alert("Successfully added agent.");
-                navigate("/agents");
+                alert("Successfully added customer.");
+                navigate("/home");
             } else {
-                alert("Could not add agent.");
+                alert("Could not add customer.");
+                console.log(response);
             } 
         }).catch(
             rejection => console.log("Failure! ", rejection)
@@ -74,27 +65,21 @@ function AddAgent() {
             <div>
             <h2>Customer Profile</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="firstName">First Name:</label>
-                <input onChange={handleFirst} id="firstName"></input><br />
+                <label htmlFor="name">Name:</label>
+                <input onChange={handleName} id="name"></input><br />
 
-                <label htmlFor="middleName">Middle Initial:</label>
-                <input onChange={handleMiddle} id="middleName"></input><br />
+                <label htmlFor="phone#">Phone#:</label>
+                <input onChange={handlePhone} id="phone#"></input><br />
 
-                <label htmlFor="lastName">Last Name:</label>
-                <input onChange={handleLast} id="lastName"></input><br />
-
-                <label htmlFor="dob">DOB:</label>
-                <input onChange={handleDOB} type="date" id="dob"></input><br />
-
-                <label htmlFor="heightInInches">Height (inches):</label>
-                <input onChange={handleHeight} id="heightInInches"></input><br /><br />
+                <label htmlFor="email">Email:</label>
+                <input onChange={handleEmail} id="email"></input><br /><br />
 
                 <button type="submit">Submit</button>
-                <Link to={'/agents'}><button>Cancel</button></Link>
+                <Link to={'/Home'}><button>Cancel</button></Link>
             </form>
             </div>
         </>
     )
 }
 
-export default AddAgent;
+export default AddCustomer;
