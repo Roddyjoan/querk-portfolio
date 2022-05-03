@@ -2,13 +2,13 @@ package learn.models;
 
 public class Customer {
     private int customerId;
-    private int userId;
+    private Integer userId;
     private String name;
     private String phoneNum;
     private String email;
 
 
-    public Customer(int customerId, int userId, String name, String phoneNum, String email) {
+    public Customer(int customerId, Integer userId, String name, String phoneNum, String email) {
         this.customerId = customerId;
         this.userId = userId;
         this.name = name;
@@ -28,11 +28,11 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
