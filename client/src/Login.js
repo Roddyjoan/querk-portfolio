@@ -11,7 +11,7 @@ function Login() {
 
     function submitHandler(event) {
         event.preventDefault()
-        fetch("http://localhost:8090/api/security/login", {
+        fetch("http://localhost:8080/api/authenticate/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
