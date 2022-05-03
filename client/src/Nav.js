@@ -20,16 +20,15 @@ function Nav(){
             {user?.user ? (
                     <button onClick={handleLogout} class="loginButton">Logout {user.user.sub}</button>        
                 ) : (
-                    <Link to="/login"><button class="loginButton">Login</button></Link>                   
-            )}
+                    <>
+                        <Link to="/login"><button class="loginButton">Login</button></Link>  
+                        <Link to="/login"><button class="signupButton">Sign up</button></Link>                            
+                    </>
+                    )}
             </div>
             
 
-            <nav>             
-                <div class="navicon">
-                    <div></div>
-                </div> 
-
+            <div className="nav">             
                 {user?.user ? (
                     <>
                         <Link to="/"><button class="navButton">Home</button></Link>
@@ -41,7 +40,7 @@ function Nav(){
                         <Link to="/"><button class="navButton">Restaurants</button></Link>
                     </>                                                          
                 )}                                  
-            </nav>
+            </div>
         </>
     )
 }

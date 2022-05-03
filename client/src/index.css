@@ -1,10 +1,6 @@
-header {
-    position: sticky;
-    top: 0;
-  }
-
 body {
-    margin: 0;
+    margin-top: 80px;
+    padding: 0;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -18,73 +14,23 @@ h1 {
 h2 {
   font-size: 30px;
   position: absolute;
-  top: 15px;
-  left: 200px;
-}  
+  left: 20px;
+  top: 9px;
+  color: #4D07DB;
+} 
 
 img {
-    object-fit: contain;
+  max-width: 100%;
+  height: auto;
 }
 
-nav {
-  width: 300px;
-  background: white;
-  color: rgba(0, 0, 0, 0.87);
-  -webkit-clip-path: circle(24px at 30px 24px);
-  clip-path: circle(24px at 32px 24px);
-  -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-  transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+.nav {
+	position: absolute;
+	display: flex;
+	height: 60px;
+	top: 13px;
+  left: 140px;
 }
-
-nav:hover {
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  -webkit-transition-duration: 0.75s;
-  transition-duration: 0.75s;
-  -webkit-clip-path: circle(390px at 225px 24px);
-  clip-path: circle(390px at 150px 24px);
-}
-
-a {
-  display: block;
-  line-height: 50px;
-  padding: 0 20px;
-  color: inherit;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.navicon {
-  padding: 30px 20px;
-  cursor: pointer;
-  -webkit-transform-origin: 32px 24px;
-  -ms-transform-origin: 32px 24px;
-  transform-origin: 32px 24px;
-}
-
-.navicon div {
-  position: relative;
-  width: 20px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.87);
-}
-
-.navicon div:before,
-.navicon div:after {
-  display: block;
-  content: "";
-  width: 20px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.87);
-  position: absolute;
-}
-
-.navicon div:before { top: -7px; }
-
-.navicon div:after { top: 7px; }
 
 button {
     margin-top: 10px;
@@ -127,8 +73,8 @@ button {
 
 .loginButton {
     position:absolute;
-    top:15px;
-    right:10px;
+    top:13px;
+    right:100px;
     background-color: #fafbfc00;
     border: none;
     box-shadow: none;
@@ -141,8 +87,31 @@ button {
   }
   
   .loginButton:hover {
-    background-color: #9b82e134;
+    text-decoration:none;
+    color: #9b82e1;
+    background-color: #f3f4f600;
+  }
+
+  .signupButton {
+    position:absolute;
+    top:12px;
+    right:10px;
+    background-color: #fafbfc00;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #000000;
+    font-size: 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 15px;
+  }
+  
+  .signupButton:hover {
+    background-color: #9b82e100;
     text-decoration: none;
+    color: #9b82e1;
     transition-duration: 0.1s;
   }
 
@@ -153,7 +122,7 @@ button {
     box-sizing: border-box;
     color: #000000;
     font-size: 17px;
-    margin-right: 15px;
+    margin-right: 0px;
     margin-top: 3px;
     margin-bottom: 3px;
   }
@@ -164,3 +133,16 @@ button {
     text-decoration: none;
     transition-duration: 0.1s;
   }
+
+  *::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  color: #4D07DB;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {        
+  box-shadow: inset 0 0 0 10px;
+}
