@@ -42,15 +42,16 @@ public class CustomerJdbcTemplateRepository implements CustomerRepository{
     @Override
     public Customer add(Customer customer) {
 
-        final String sql = " insert into customers (`name`, phone_num, email) " +
-                " values (?,?,?) ";
+        final String sql = " insert into customers (`name`, user_id, phone_num, email) " +
+                " values (?,?,?,?) ";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, customer.getName());
-            ps.setString(2, customer.getPhoneNum());
-            ps.setString(3, customer.getEmail());
+            ps.setInt(2, customer.getUserId());
+            ps.setString(3, customer.getPhoneNum());
+            ps.setString(4, customer.getEmail());
             return ps;
         }, keyHolder);
 

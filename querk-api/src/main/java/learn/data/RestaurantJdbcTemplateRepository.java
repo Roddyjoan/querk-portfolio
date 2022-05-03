@@ -37,13 +37,14 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
 
     @Override
     public Restaurant add(Restaurant restaurant) {
-        final String sql = "insert into restaurants (`name`, address, est) values (?,?,?);";
+        final String sql = "insert into restaurants (`name`, user_id, address, est) values (?,?,?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, restaurant.getName());
-            ps.setString(2, restaurant.getAddress());
-            ps.setTime(3,restaurant.getTimeEstimate());
+            ps.setInt(2, restaurant.getUserId());
+            ps.setString(3, restaurant.getAddress());
+            ps.setTime(4,restaurant.getTimeEstimate());
             return ps;
         }, keyHolder);
 
