@@ -13,7 +13,7 @@ function Agents() {
     useEffect(() => {
         const jwt = localStorage.getItem( "token" );
         if( jwt ){
-            fetch("http://localhost:8090/api/agent",{
+            fetch("http://localhost:8090/api/restaurant",{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }

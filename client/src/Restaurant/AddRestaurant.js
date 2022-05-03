@@ -52,7 +52,7 @@ function AddAgent() {
             heightInInches: height
         };
 
-        fetch("http://localhost:8090/api/agent", {
+        fetch("http://localhost:8090/api/restaurant", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
