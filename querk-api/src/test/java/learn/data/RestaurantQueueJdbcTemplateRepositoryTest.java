@@ -72,7 +72,16 @@ class RestaurantQueueJdbcTemplateRepositoryTest {
 
     @Test
     void shouldUpdate(){
+        RestaurantQueue entry = makeEntry();
+        entry.setEntryId(1);
+        assertTrue(repository.update(entry));
+    }
 
+    @Test
+    void shouldNotUpdate(){
+        RestaurantQueue entry = makeEntry();
+        entry.setEntryId(1000);
+        assertFalse(repository.update(entry));
     }
 
     @Test
