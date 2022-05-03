@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 class ItemServiceTest {
 
     @Autowired
@@ -35,6 +35,7 @@ class ItemServiceTest {
     @Test
     void shouldNotAddBlankName() {
         Item item = makeItem();
+        item.setName(" ");
         Result<Item> result = service.add(item);
         assertEquals(ResultType.INVALID, result.getType());
     }

@@ -12,9 +12,10 @@ email			varchar(80) null
 
 create table restaurants (
 restaurant_id	int primary key auto_increment,
+user_id			int null,
 `name`			varchar(50) not null,
 address			varchar(100) not null,
-est				time null
+est				int null
 );
 
 create table items (
@@ -78,15 +79,15 @@ begin
     delete from items;
     alter table items auto_increment = 1;
     
-    insert into customers (`name`, phone_num, email) values 
-		("roddy", "1231231234", "roddy@gamil.com" ),
-        ("kayleen", "9876543210", "kayleen@gmail.com" ),
-        ("erwyn", "9173886944", "erwyn@gmail.com");
+    insert into customers (`name`, user_id, phone_num, email) values 
+		("roddy", 1, "1231231234", "roddy@gamil.com" ),
+        ("kayleen", 2, "9876543210", "kayleen@gmail.com" ),
+        ("erwyn",  3, "9173886944", "erwyn@gmail.com");
         
-	insert into restaurants (`name`, address, est) values
-		("burrito restaurant", "300 burrito lane", "00:20:00.0000000"),
-        ("Ichiran", "132 W 31st St, New York, NY 10001", "01:00:00.0000000"),
-        ("Hyun", "10 E 33rd St, New York, NY 10016", "00:45:15.0000000");
+	insert into restaurants (`name`, user_id, address, est) values
+		("burrito restaurant", 4, "300 burrito lane", "20"),
+        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "60"),
+        ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
     
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
 		(1, 1, "2011-01-01 01:11:00.0000000", true, false),
@@ -112,17 +113,6 @@ end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
     
-        
-    -- How do we test the queues table?
-   --  
---     insert into restaurants_customers 
--- 		(customer_id, restaurant_id , create_time, ordered_ahead, expired)
---     select
---         customers.customer_id,                       
---         restaurants.restaurant_id
---     from customers
---     inner join restaurants;
---     
     
 
     

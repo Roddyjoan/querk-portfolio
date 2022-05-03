@@ -44,7 +44,7 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
             ps.setString(1, restaurant.getName());
             ps.setInt(2, restaurant.getUserId());
             ps.setString(3, restaurant.getAddress());
-            ps.setTime(4,restaurant.getTimeEstimate());
+            ps.setInt(4,restaurant.getTimeEstimate());
             return ps;
         }, keyHolder);
 

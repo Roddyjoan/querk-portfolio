@@ -14,7 +14,7 @@ public class RestaurantMapper implements RowMapper<Restaurant> {
         restaurant.setRestaurantId(rs.getInt("restaurant_id"));
         restaurant.setName(rs.getString("name"));
         restaurant.setAddress(rs.getString("address"));
-        restaurant.setTimeEstimate(rs.getTime("est"));
+        restaurant.setTimeEstimate(rs.getInt("est"));
         return restaurant;
     }
 }
