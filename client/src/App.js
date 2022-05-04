@@ -29,14 +29,24 @@ function App() {
             Authorization: "Bearer " + jwt
         }
     })
-    .then(response => response.json())
+    .then(response => {
+      if(response.status === 200){
+        return response.json();
+      } else {
+        console.log(response);
+      }
+    })
     .then(jsonData => setCustomers(jsonData))
     .catch(rejection => () => errorHandler(rejection));
 }
 
   function findCurrentCustomer() {
-    let currentCustomer = customers.filter( c => c.customerId === user.userId);
-    setCustomer(currentCustomer[0]);
+
+    if(customers){
+      let currentCustomer = customers.filter( c => c.customerId === user.userId);
+      setCustomer(currentCustomer);
+    }
+
   }
  
   useEffect( () => {

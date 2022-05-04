@@ -21,11 +21,11 @@ function Nav() {
         <>
             <div>
                 {user?.user ? (
-                    <button onClick={handleLogout} class="loginButton">Logout {user.user.sub}</button>
+                    <button onClick={handleLogout} className="loginButton">Logout {user.user.sub}</button>
                 ) : (
                     <>
-                        <Link to="/login"><button class="loginButton">Login</button></Link>
-                        <Link to="/signup"><button class="signupButton">Sign up</button></Link>
+                        <Link to="/login"><button className="loginButton">Login</button></Link>
+                        <Link to="/signup"><button className="signupButton">Sign up</button></Link>
                     </>
                 )}
             </div>
@@ -34,13 +34,13 @@ function Nav() {
             <div className="nav">
                 {user?.user ? (
                     <>
-                        <Link to="/"><button class="navButton">Home</button></Link>
-                        <Link to="/"><button class="navButton">Restaurants</button></Link>
+                        <Link to="/"><button className="navButton">Home</button></Link>
+                        <Link to="/"><button className="navButton">Restaurants</button></Link>
                     </>
                 ) : (
                     <>
-                        <Link to="/"><button class="navButton">Home</button></Link>
-                        <Link to="/"><button class="navButton">Restaurants</button></Link>
+                        <Link to="/"><button className="navButton">Home</button></Link>
+                        <Link to="/"><button className="navButton">Restaurants</button></Link>
                     </>
                 )}
             </div>

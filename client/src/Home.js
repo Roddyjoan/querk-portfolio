@@ -13,8 +13,8 @@ function Home(){
                 <br />
                 as a Restaurant Owner or Customer
                 <br /><br />
-                <Link to="/"><button class="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
-                <Link to="/"><button class="burrito-button">Customer</button></Link>
+                <Link to="/"><button className="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
+                <Link to="/"><button className="burrito-button">Customer</button></Link>
                 </div>
                 <img src={graphic} />
                 <div>
