@@ -43,6 +43,7 @@ function Nav() {
                         <Link to="/"><button class="navButton">Restaurants</button></Link>
                     </>
                 )}
+                
             </div>
         </>
     )

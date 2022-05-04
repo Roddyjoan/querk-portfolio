@@ -21,7 +21,7 @@ function App() {
    return (
     <AuthContext.Provider value={[user, setUser]}>
       <div className="App">
-        <h2>iQueue</h2>    
+        <div className="title">iQueue</div>    
       <Nav />
         <Routes>
             <Route path="/" element={<Home />} />
