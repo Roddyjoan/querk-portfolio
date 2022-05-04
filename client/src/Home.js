@@ -1,5 +1,5 @@
 import graphic from './graphic.png';
-import burrito from './burrito.jpg';
+import burrito from './burrito-filter.jpg';
 import { Link } from 'react-router-dom';
 
 function Home(){
@@ -30,7 +30,7 @@ function Home(){
                     <h3>
                         We designed iQueue, an app where you can pick a restaurant, put your party on the queue, and order your food all before you even arrive at the restaurant. When it’s almost your turn, you’ll be notified and the restaurant will begin preparing your food. That way, your food and table will be ready and waiting for you! 
                     </h3>
-                    <br /><br />
+                    <br /><br /><br />
                 </div>  
             </div>
            
