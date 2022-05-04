@@ -10,6 +10,7 @@ import jwtDecode from 'jwt-decode';
 import RequestPage from './Signup/RequestPage';
 import AddUserForm from './Signup/AddUserForm';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
+import Restaurants from './Restaurant/Restaurants';
 
 function App() {
 
@@ -77,6 +78,7 @@ function App() {
             <Route path="/signup" element={<RequestPage />} />
             <Route path="/restaurantform" element={<AddRestaurantForm />} />
             <Route path="/customerform" element={<AddUserForm />} />
+            <Route path="/restaurants" element={<Restaurants />} />
         </Routes>
       </div>
     </AuthContext.Provider>
