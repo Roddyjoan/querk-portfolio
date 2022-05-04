@@ -4,6 +4,7 @@ import AuthContext from "./AuthContext";
 import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
+import Customer from "./Customer/Customer"
 import NotFound from './NotFound';
 import jwtDecode from 'jwt-decode';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
+            <Route path="/customer" element={<Customer />} />
         </Routes>
       </div>
     </AuthContext.Provider>
