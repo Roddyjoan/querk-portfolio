@@ -37,6 +37,10 @@ root {
   transition-duration: 0.1s;
 }
 
+.login-page {
+  padding-bottom: 190px;
+}
+
 h1 {
     font-size: 32px;
     margin-top: 10px;
