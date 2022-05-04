@@ -25,7 +25,7 @@ function Nav() {
                 ) : (
                     <>
                         <Link to="/login"><button class="loginButton">Login</button></Link>
-                        <Link to="/login"><button class="signupButton">Sign up</button></Link>
+                        <Link to="/signup"><button class="signupButton">Sign up</button></Link>
                     </>
                 )}
             </div>
@@ -43,7 +43,6 @@ function Nav() {
                         <Link to="/"><button class="navButton">Restaurants</button></Link>
                     </>
                 )}
-                
             </div>
         </>
     )

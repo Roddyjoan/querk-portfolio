@@ -7,6 +7,7 @@ import Login from "./Login";
 import Customer from "./Customer/Customer"
 import NotFound from './NotFound';
 import jwtDecode from 'jwt-decode';
+import RequestPage from './Signup/RequestPage';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
             <Route path="/customer" element={<Customer />} />
+            <Route path="/signup" element={<RequestPage />} />
         </Routes>
       </div>
     </AuthContext.Provider>
