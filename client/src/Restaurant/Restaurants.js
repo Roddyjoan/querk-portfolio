@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Agent from "./Agent";
+import Restaurant from "./Restaurant";
 
-function Agents() {
-    const [agents, setAgents] = useState([]);
+function Restaurants() {
+    const [restaurants, setRestaurants] = useState([]);
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -25,7 +25,7 @@ function Agents() {
                 alert("Something went wrong while fetching.");
             }
         })
-        .then(jsonData => setAgents(jsonData))
+        .then(jsonData => setRestaurants(jsonData))
         .catch(rejection => {
             alert("Failure: " + rejection.status + ": " + rejection.statusText)
         });
@@ -34,23 +34,23 @@ function Agents() {
         }
     }, []);
 
-    function agentFactory() {
-        return agents.map(agentObj => (
-            <Agent 
-                key={agentObj.agentId} 
-                agentObj={agentObj} 
-                agents={agents}
-                setAgents={setAgents}
+    function restaurantFactory() {
+        return restaurants.map(restaurantObj => (
+            <Restaurant 
+                key={restaurantObj.restaurantId} 
+                restaurantObj={restaurantObj} 
+                restaurants={restaurants}
+                setRestaurants={setRestaurants}
             />
         ))
     }
 
     return (
         <>
-            <h2>All Agents</h2>
-            {agentFactory()}
+            <h2>Restaurants</h2>
+            {restaurantFactory()}
         </>
     )
 }
 
-export default Agents;
+export default Restaurants;

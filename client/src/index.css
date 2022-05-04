@@ -170,6 +170,19 @@ button {
     transition-duration: 0.1s;
   }
 
+  .profileButton {
+    position:absolute;
+    top:8px;
+    right:300px;
+  }
+
+  .profileButton:hover {
+    background-color: #f3f4f600;
+    color: #9b82e1;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+
   *::-webkit-scrollbar,
 *::-webkit-scrollbar-thumb {
   width: 27px;
