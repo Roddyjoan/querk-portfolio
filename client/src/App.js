@@ -92,10 +92,7 @@ function App() {
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/accountsettings" element={<AccountSettings />} />
             <Route path="/joinqueue" element={<JoinQueue />} />
-            <Route path="/menu" element={<Items />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/menu/:id" element={<Items />} />
         </Routes>
       </div>
     </AuthContext.Provider>
