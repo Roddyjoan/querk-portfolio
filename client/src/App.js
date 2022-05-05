@@ -61,7 +61,7 @@ function App() {
   }, []);
   
   useEffect( () =>{
-    findCurrentCustomer();
+    // findCurrentCustomer();
   }, [customers])
   
 
@@ -76,6 +76,8 @@ function App() {
             <Route path="*" element={<NotFound/>} />
             <Route path="/customer" element={<Customer customerObj={customer} />} />
             <Route path="/signup" element={<RequestPage />} />
+            <Route path="signup/customer" element={<AddUserForm />} />
+            <Route path="signup/owner" element={<AddRestaurantForm />} />
             <Route path="/restaurantform" element={<AddRestaurantForm />} />
             <Route path="/customerform" element={<AddUserForm />} />
             <Route path="/restaurants" element={<Restaurants />} />

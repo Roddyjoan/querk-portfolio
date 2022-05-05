@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function AddAgent() {
+function AddItem() {
 
-    const [first, setFirst] = useState("");
-    const [middle, setMiddle] = useState("");
-    const [last, setLast] = useState("");
-    const [birthdate, setBirthdate] = useState("");
-    const [height, setHeight] = useState(0);
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
+    const [restaurantId, setRestaurantId] = useState("");
+    
     
     const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ function AddAgent() {
     return(
         <>
             <div>
-            <h2>Add a New Agent</h2>
+            <h2>Add a new Item to your menu!</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name:</label>
                 <input onChange={handleFirst} id="firstName"></input><br />
@@ -99,4 +99,4 @@ function AddAgent() {
     )
 }
 
-export default AddAgent;
+export default AddItem;

@@ -13,7 +13,7 @@ function Restaurants() {
     useEffect(() => {
         const jwt = localStorage.getItem( "token" );
         if( jwt ){
-            fetch("http://localhost:8090/api/restaurant",{
+            fetch("http://localhost:8090/api/restaurants",{
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }

@@ -8,7 +8,7 @@ function RequestPage() {
             <br />
             as a Restaurant Owner or Customer
             <br /><br />
-            <Link to="/"><button class="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
+            <Link to="/signup/owner"><button class="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
             <Link to="/signup/customer"><button class="burrito-button">Customer</button></Link>
         </>
     )
