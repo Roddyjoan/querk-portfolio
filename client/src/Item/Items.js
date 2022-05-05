@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Item from "./Item";
 
 function Items(props) {
-    const {restaurantId} = props.restaurantObj;
     const [items, setItems] = useState([]);
+    const {id} = useParams();
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -12,7 +12,8 @@ function Items(props) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8090/api/menu/restaurant/" + props.restaurantObj.restaurantId)
+        console.log(id);
+        fetch("http://localhost:8090/api/menu/restaurant/" + id)
         .then(response => {
             if (response.status === 200) {
                 return response.json();
