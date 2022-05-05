@@ -12,7 +12,7 @@ function Items(props) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8090/api/menu/restaurant/" + restaurantId)
+        fetch("http://localhost:8090/api/menu/restaurant/" + props.restaurantObj.restaurantId)
         .then(response => {
             if (response.status === 200) {
                 return response.json();

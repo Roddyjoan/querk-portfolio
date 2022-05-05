@@ -8,7 +8,7 @@ function Restaurant(props) {
             <p><b>Name:</b> {name}</p>
             <p><b>Address:</b> {address}.</p>
             <p><b>Estimated Wait Time:</b> {est}</p>
-            <Link to={'/menu/' + restaurantId} props={restaurantId}><button>Menu</button></Link>
+            <Link to={'/menu'} props={restaurantId}><button>Menu</button></Link>
             <Link to={'/joinqueue' + restaurantId}><button>Join Queue</button></Link>
         </div>
     )
