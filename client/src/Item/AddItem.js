@@ -52,7 +52,7 @@ function AddItem() {
             heightInInches: height
         };
 
-        fetch("http://localhost:8090/api/agent", {
+        fetch("http://localhost:8090/api/menu", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

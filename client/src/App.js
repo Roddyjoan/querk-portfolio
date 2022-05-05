@@ -14,6 +14,8 @@ import Restaurants from './Restaurant/Restaurants';
 import AccountSettings from './AccountSettings';
 import JoinQueue from './Restaurant/JoinQueue';
 import Items from './Item/Items';
+import Terms from './Terms';
+import PrivacyPolicy from './PrivacyPolicy';
 
 function App() {
 
@@ -87,6 +89,8 @@ function App() {
             <Route path="/accountsettings" element={<AccountSettings />} />
             <Route path="/joinqueue" element={<JoinQueue />} />
             <Route path="/menu/:id" element={<Items />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
       </div>
     </AuthContext.Provider>
