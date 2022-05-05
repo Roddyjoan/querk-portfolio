@@ -33,16 +33,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // TODO add antMatchers here to configure access to specific API endpoints
                 // require authentication for any request...
+                .antMatchers( HttpMethod.GET, "/api/restaurants").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/login").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/customer").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/restaurant").authenticated()
+                .antMatchers( HttpMethod.POST, "/api/restaurants").authenticated()
                 .antMatchers( HttpMethod.PUT, "/api/customer/*").authenticated()
-                .antMatchers( HttpMethod.PUT, "/api/restaurant/*").authenticated()
+                .antMatchers( HttpMethod.PUT, "/api/restaurants/*").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/restaurants/*").permitAll()
+
                 .antMatchers( HttpMethod.GET,"/api/customer").authenticated()
                 .antMatchers( HttpMethod.GET,"/api/customers").authenticated()
                 .antMatchers( HttpMethod.GET,"/api/restaurants").authenticated()
                 .antMatchers( HttpMethod.DELETE, "/api/customer/*").authenticated()
-                .antMatchers( HttpMethod.DELETE, "/api/restaurant/*").authenticated()
+                .antMatchers( HttpMethod.DELETE, "/api/restaurants/*").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(), converter))
