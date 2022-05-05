@@ -18,7 +18,6 @@ import Items from './Item/Items';
 import About from './About';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
-import Customers from './Customer/Customers';
 
 function App() {
 

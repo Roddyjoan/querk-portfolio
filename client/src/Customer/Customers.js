@@ -12,7 +12,6 @@ function Customers() {
         console.log(rejectionMessage);
     }
 
-    // useEffect in order to get rid of the "retrieve customers" button to update the agents
     useEffect(() => {
         const token = localStorage.getItem( "token" );
         if(token){
@@ -26,7 +25,7 @@ function Customers() {
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8090/api/customer", {
+        fetch("http://localhost:8090/api/customers/", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt
