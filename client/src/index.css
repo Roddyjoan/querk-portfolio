@@ -183,6 +183,18 @@ button {
     transition-duration: 0.1s;
   }
 
+.restaurant-card {
+  width: 450px;
+  border: 1px solid rgba(27, 31, 35, 0.30);
+  background-color: #ffffff;
+  color: #24292E;
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  padding: 25px;
+}
+
   *::-webkit-scrollbar,
 *::-webkit-scrollbar-thumb {
   width: 27px;

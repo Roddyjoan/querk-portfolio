@@ -11,8 +11,6 @@ function EditCustomer(){
         const token = localStorage.getItem("token");
 
         if (token) {
-
-
             fetch("http://localhost:8090/api/customer/" + customerId, {
                 method: "GET",
                 headers: {

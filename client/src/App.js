@@ -11,6 +11,9 @@ import RequestPage from './Signup/RequestPage';
 import AddUserForm from './Signup/AddUserForm';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
 import Restaurants from './Restaurant/Restaurants';
+import AccountSettings from './AccountSettings';
+import JoinQueue from './Restaurant/JoinQueue';
+import Items from './Item/Items';
 
 function App() {
 
@@ -81,6 +84,9 @@ function App() {
             <Route path="/restaurantform" element={<AddRestaurantForm />} />
             <Route path="/customerform" element={<AddUserForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/accountsettings" element={<AccountSettings />} />
+            <Route path="/joinqueue" element={<JoinQueue />} />
+            <Route path="/menu" element={<Items />} />
         </Routes>
       </div>
     </AuthContext.Provider>
