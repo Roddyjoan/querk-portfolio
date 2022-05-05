@@ -18,8 +18,6 @@ import Items from './Item/Items';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
 import About from './About';
-import Terms from './Terms';
-import PrivacyPolicy from './PrivacyPolicy';
 
 function App() {
 
@@ -35,7 +33,7 @@ function App() {
 
     const jwt = localStorage.getItem("token");
 
-    fetch("http://localhost:8090/api/customers", {
+    fetch("http://localhost:8090/api/customer", {
         headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + jwt
@@ -94,6 +92,7 @@ function App() {
             <Route path="/accountsettings" element={<AccountSettings />} />
             <Route path="/joinqueue" element={<JoinQueue />} />
             <Route path="/menu/:id" element={<Items />} />
+            <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>

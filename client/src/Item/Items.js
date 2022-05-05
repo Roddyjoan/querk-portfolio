@@ -43,7 +43,7 @@ function Items(props) {
 
     return (
         <>
-            <h2>Items</h2>
+            <h2>Menu</h2>
             <br />
             {itemFactory()}
         </>

@@ -5,9 +5,9 @@ function Item(props) {
 
     return (
         <div className="item-card">
-            <p>{name}</p>
-            <p>{price}</p>
+            <div className='item-title'>{name}</div>
             <p>{description}</p>
+            <p>${price}</p>
             <Link to={'/' + itemId}><button>Add to Order</button></Link>
         </div>
     )
