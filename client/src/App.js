@@ -5,6 +5,7 @@ import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
 import Customer from "./Customer/Customer"
+import Customers from './Customer/Customers';
 import NotFound from './NotFound';
 import jwtDecode from 'jwt-decode';
 import RequestPage from './Signup/RequestPage';
@@ -17,6 +18,10 @@ import Items from './Item/Items';
 import About from './About';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
+<<<<<<< HEAD
+=======
+import Customers from './Customer/Customers';
+>>>>>>> ec36e9314f25dc0a3a22705bb71a1c34d0da9e42
 
 function App() {
 
@@ -81,6 +86,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
             <Route path="/customer" element={<Customer customerObj={customer} />} />
+            <Route path="/customers" element={<Customers />} />
             <Route path="/signup" element={<RequestPage />} />
             <Route path="signup/customer" element={<AddUserForm />} />
             <Route path="signup/owner" element={<AddRestaurantForm />} />
