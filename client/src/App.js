@@ -15,13 +15,12 @@ import Restaurants from './Restaurant/Restaurants';
 import AccountSettings from './AccountSettings';
 import JoinQueue from './Restaurant/JoinQueue';
 import Items from './Item/Items';
+import Terms from './Terms';
+import PrivacyPolicy from './PrivacyPolicy';
 import About from './About';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
-<<<<<<< HEAD
-=======
 import Customers from './Customer/Customers';
->>>>>>> ec36e9314f25dc0a3a22705bb71a1c34d0da9e42
 
 function App() {
 
