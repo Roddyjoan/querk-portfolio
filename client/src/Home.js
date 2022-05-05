@@ -1,5 +1,5 @@
 import graphic from './graphic.png';
-import burrito from './burrito-filter.jpg';
+import burrito from './burrito.jpg';
 import ramen from './ramen.jpg';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
