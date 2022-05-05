@@ -1,6 +1,8 @@
-function AccountSettings(){
+function AccountSettings() {
 
-    return (<p>This is where account settings will be</p>)
+    return (
+        <p> Card for an Account</p>
+    )
 }
 
 export default AccountSettings;

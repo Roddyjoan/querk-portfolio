@@ -18,59 +18,19 @@ import Items from './Item/Items';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
 import About from './About';
+import EditCustomer from './Customer/EditCustomer';
 
 function App() {
 
   const [user, setUser] = useState(null);
-  const [customer, setCustomer] = useState(null);
-  const [customers, setCustomers] = useState(null);
-
-  function errorHandler(rejectionMessage) {
-    console.log(rejectionMessage);
-}
-
-  function fetchCustomers() {
-
-    const jwt = localStorage.getItem("token");
-
-    fetch("http://localhost:8090/api/customer", {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + jwt
-        }
-    })
-    .then(response => {
-      if(response.status === 200){
-        return response.json();
-      } else {
-        console.log(response);
-      }
-    })
-    .then(jsonData => setCustomers(jsonData))
-    .catch(rejection => () => errorHandler(rejection));
-}
-
-  function findCurrentCustomer() {
-
-    if(customers){
-      let currentCustomer = customers.filter( c => c.customerId === user.userId);
-      setCustomer(currentCustomer);
-    }
-
-  }
  
   useEffect( () => {
     const jwt_token = localStorage.getItem("token");
     if( jwt_token ){
       setUser({ user: jwtDecode(jwt_token) });
-      fetchCustomers();
     }
   }, []);
   
-  useEffect( () =>{
-    // findCurrentCustomer();
-  }, [customers])
-
    return (
     <AuthContext.Provider value={[user, setUser]}>
       <div className="App">
@@ -80,7 +40,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
-            <Route path="/customer" element={<Customer customerObj={customer} />} />
+            {/* <Route path="/customer" element={<Customer customerObj={customer} />} /> */}
+            <Route path="/customers/:id" element={<EditCustomer />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/signup" element={<RequestPage />} />
             <Route path="/signup/customer" element={<AddUserForm />} />

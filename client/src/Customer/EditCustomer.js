@@ -5,13 +5,14 @@ function EditCustomer(){
 
     const [customer, setCustomer] = useState(null);
     const navigate = useNavigate();
-    const { customerId } = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
+        console.log(id);
         const token = localStorage.getItem("token");
 
         if (token) {
-            fetch("http://localhost:8090/api/customer/" + customerId, {
+            fetch("http://localhost:8090/api/customers/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
@@ -62,7 +63,7 @@ function EditCustomer(){
     function handleEdit(e) {
         e.preventDefault();
 
-        fetch("http://localhost:8090/api/customer/" + customer.customerId, {
+        fetch("http://localhost:8090/api/customers/" + customer.customerId, {
             method: "PUT",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
@@ -70,7 +71,7 @@ function EditCustomer(){
             },
             body: JSON.stringify(customer)
         }).then(
-            response => response.ok ? navigate("/customer") : alert("Something went wrong! " + response)
+            response => response.ok ? navigate("/customers") : alert("Something went wrong! " + response)
         ).catch(
             rejection => alert(rejection)
         );

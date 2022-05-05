@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ function Nav() {
             <div>
                 {user?.user ? (
                     <>
-                        <Link to="/accountsettings"><button className="profileButton">Account Settings</button></Link>
+                        <Link to={"/customers"}><button className="profileButton">Account Settings</button></Link>
                         <button onClick={handleLogout} className="loginButton">Logout {user.user.sub}</button>
                     </>
                     ) : (
