@@ -100,7 +100,7 @@ insert into customers (`name`, user_id, phone_num, email) values
 -- select * from app_user au inner join customers c on c.user_id = au.app_user_id;
 
 	insert into restaurants (`name`, user_id, address, est) values
-		("burrito restaurant", 4, "300 burrito lane", "20"),
+		("Burrito Restaurant", 4, "300 Burrito Lane", "20"),
         ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "60"),
         ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
     
@@ -117,8 +117,8 @@ insert into customers (`name`, user_id, phone_num, email) values
         
 	insert into items ( restaurant_id, `name`, category, price, `description`) values
 		(1, "Small burrito", "entree", 7.43, "Burrito"),
-        (1, "Super burrito", "entree", 10.68, "enhanced burrito w/Cheesy-Salsa"),
-        (1, "dessert burrito", "dessert", 10.00, "a burrito but dessert"),
+        (1, "Super burrito", "entree", 10.68, "Enhanced burrito w/Cheesy-Salsa"),
+        (1, "Dessert burrito", "dessert", 10.00, "A burrito but dessert"),
         (2, "Ramen Kae-Dama", "entree", 30.00, "Specialized Ramen Noodle Soup"),
         (2, "Matcha Ice Cream", "dessert", 35.00, "Matcha(Green) IceCream"),
         (3, "Wagyu", "entree", 7.43, "Expensive beef but Hey its good beef"),
