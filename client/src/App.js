@@ -13,7 +13,7 @@ import AddUserForm from './Signup/AddUserForm';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
 import Restaurants from './Restaurant/Restaurants';
 import AccountSettings from './AccountSettings';
-import JoinQueue from './Restaurant/JoinQueue';
+import Queue from './Restaurant/Queue';
 import Items from './Item/Items';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
@@ -70,7 +70,6 @@ function App() {
   useEffect( () =>{
     // findCurrentCustomer();
   }, [customers])
-  
 
    return (
     <AuthContext.Provider value={[user, setUser]}>
@@ -84,13 +83,13 @@ function App() {
             <Route path="/customer" element={<Customer customerObj={customer} />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/signup" element={<RequestPage />} />
-            <Route path="signup/customer" element={<AddUserForm />} />
-            <Route path="signup/owner" element={<AddRestaurantForm />} />
+            <Route path="/signup/customer" element={<AddUserForm />} />
+            <Route path="/signup/owner" element={<AddRestaurantForm />} />
             <Route path="/restaurantform" element={<AddRestaurantForm />} />
             <Route path="/customerform" element={<AddUserForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/accountsettings" element={<AccountSettings />} />
-            <Route path="/joinqueue" element={<JoinQueue />} />
+            <Route path="/restaurant/queue/:id" element={<Queue />} />
             <Route path="/menu/:id" element={<Items />} />
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
