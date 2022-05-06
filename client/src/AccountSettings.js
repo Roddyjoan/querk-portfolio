@@ -1,9 +1,12 @@
-import Customer from "./Customer/Customer"
 import Restaurant from "./Restaurant/Restaurant"
+import Customer from "./Customer/Customer"
+import Restaurants from "./Restaurant/Restaurant"
 import EditCustomers from "./Customer/EditCustomer"
 import EditRestaurant from "./Restaurant/EditRestaurant"
 import Customers from "./Customer/Customers"
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
+
 import { useContext } from "react"
 import AuthContext from "./AuthContext"
 
@@ -12,6 +15,7 @@ function AccountSettings() {
    const [user, setUser] = useContext(AuthContext);
    const [restaurants, setRestaurants] = useState([]);
    const [customer, setCustomer] = useState([]);
+   const { id } = useParams();
 
 
    
@@ -20,7 +24,7 @@ function AccountSettings() {
         fetch("http://localhost:8090/api/restaurants/", {
         })
             .then(response => {
-                if (response.status === 200) {
+                if (response.ok) {
                     return response.json();
                 } else {
                     alert("Something went wrong while fetching.");
@@ -35,10 +39,11 @@ function AccountSettings() {
    
     useEffect(() => {
 
-        fetch("http://localhost:8090/api/customers/" + user.userId, {
+        fetch("http://localhost:8090/api/customers/" + id, {
+
         })
             .then(response => {
-                if (response.status === 200) {
+                if (response.ok) {
                     return response.json();
                 } else {
                     alert("Something went wrong while fetching.");
