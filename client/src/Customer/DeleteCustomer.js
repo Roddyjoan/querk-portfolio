@@ -8,7 +8,7 @@ function DeleteCustomer(){
     const navigate = useNavigate();
 
     const [customer, setCustomer] = useState(null);
-    const {customerId} = useParams();
+    const {id} = useParams();
 
     useEffect(() => {
 
@@ -16,7 +16,7 @@ function DeleteCustomer(){
 
         if(jwt){
 
-        fetch("http://localhost:8090/api/customer/" + customerId, {
+        fetch("http://localhost:8090/api/customer/" + id, {
             headers: {
                 Authorization: "Bearer " + jwt,
             }
@@ -47,7 +47,7 @@ function DeleteCustomer(){
     function handleDelete(e){
         e.preventDefault();
 
-        fetch("http://localhost:8090/api/customer/" + agentId, {
+        fetch("http://localhost:8090/api/customer/" + id, {
             
             method: "DELETE",
             headers: {
@@ -56,7 +56,7 @@ function DeleteCustomer(){
         }).then(
             response => {
                 if(response.status === 204){
-                    alert("Success, deleted agent");
+                    alert("Success, deleted customer");
                     navigate("/Home");
                 } else {
                     console.log(response);
