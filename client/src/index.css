@@ -5,7 +5,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding:10px;
-    padding-bottom:60px; 
+    padding-bottom:60px;
 }
 
 root {
@@ -38,7 +38,7 @@ root {
 }
 
 .login-page {
-  padding-bottom: 190px;
+  height: 800px;
 }
 
 h1 {
