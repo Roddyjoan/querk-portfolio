@@ -1,15 +1,13 @@
 body {
     margin-top: 80px;
-    padding: 0;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding:10px;
     padding-bottom:60px;
 }
 
-root {
-  padding-bottom: 60px;
+#root {
+  padding: 0 0 60px 0 !important;
 }
 
 .container {
@@ -19,20 +17,22 @@ root {
 .burrito-text {
   position: absolute;
   top: 130px;
-  left: 120px;
+  left: 70px;
   font-size: 30px;
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 800;
+  -webkit-text-stroke:#4b4c4d 1px;
 }
 
 .burrito-button{
   font-size: 25px;
   padding: 17px 20px;
   border-radius: 14px;
+  font-weight: 400;
 }
 
 .burrito-button:hover {
-  color: #9b82e1;
+  color: #DA4167;
   text-decoration: none;
   transition-duration: 0.1s;
 }
@@ -46,13 +46,25 @@ h1 {
     margin-top: 10px;
 }
 
+h3 {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+img-centered {
+  display: block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title {
   font-size: 30px;
   font-weight: 500;
   position: absolute;
   left: 30px;
   top: 9px;
-  color: #4D07DB;
+  color: #6E2594;
 } 
 
 img {
@@ -124,7 +136,7 @@ button {
   
   .loginButton:hover {
     text-decoration:none;
-    color: #9b82e1;
+    color: #DA4167;
     background-color: #f3f4f600;
   }
 
@@ -147,7 +159,7 @@ button {
   .signupButton:hover {
     background-color: #9b82e100;
     text-decoration: none;
-    color: #9b82e1;
+    color: #DA4167;
     transition-duration: 0.1s;
   }
 
@@ -165,7 +177,7 @@ button {
   
   .navButton:hover {
     background-color: #f3f4f600;
-    color: #9b82e1;
+    color: #DA4167;
     text-decoration: none;
     transition-duration: 0.1s;
   }
@@ -178,7 +190,7 @@ button {
 
   .profileButton:hover {
     background-color: #f3f4f600;
-    color: #9b82e1;
+    color: #DA4167;
     text-decoration: none;
     transition-duration: 0.1s;
   }
@@ -228,7 +240,7 @@ button {
   width: 27px;
   border-radius: 13px;
   background-clip: padding-box;
-  color: #4e07dbb7;
+  color: #DA4167;
   border: 10px solid transparent;
 }
 
