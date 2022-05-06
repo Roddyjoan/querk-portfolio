@@ -27,7 +27,7 @@ function Home() {
                             <Link to="/signup/owner"><button className="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
                             <Link to="/signup/customer"><button className="burrito-button">Customer</button></Link>
                         </div>
-                        <img src={graphic} />
+                        <img src={graphic} className="img-centered" />
                         <div>
                             <br />
                             <h3>Imagine you’re out at night with your friends and you just want to get some food.
