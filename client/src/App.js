@@ -9,7 +9,7 @@ import Customers from './Customer/Customers';
 import NotFound from './NotFound';
 import jwtDecode from 'jwt-decode';
 import RequestPage from './Signup/RequestPage';
-import AddUserForm from './Signup/AddUserForm';
+import AddCustomer from './Signup/AddCustomer';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
 import Restaurants from './Restaurant/Restaurants';
 import AccountSettings from './AccountSettings';
@@ -44,10 +44,8 @@ function App() {
             <Route path="/customers/:id" element={<EditCustomer />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/signup" element={<RequestPage />} />
-            <Route path="/signup/customer" element={<AddUserForm />} />
+            <Route path="/signup/customer" element={<AddCustomer />} />
             <Route path="/signup/owner" element={<AddRestaurantForm />} />
-            <Route path="/restaurantform" element={<AddRestaurantForm />} />
-            <Route path="/customerform" element={<AddUserForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/accountsettings" element={<AccountSettings />} />
             <Route path="/restaurant/queue/:id" element={<Queue />} />
@@ -55,7 +53,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-        </Routes>
+       </Routes>
       </div>
     </AuthContext.Provider>
   );
