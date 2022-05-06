@@ -1,5 +1,6 @@
 package learn.domain;
 
+import learn.App;
 import learn.data.AppUserRepository;
 import learn.models.AppUser;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,7 +45,8 @@ public class AppUserService implements UserDetailsService {
         }
 
         AppUser toCreate = create(appUser.getUsername(), appUser.getPassword());
-        result.setPayload(toCreate);
+        AppUser toMake =repository.create(toCreate);
+        result.setPayload(toMake);
         return result;
 
     }
@@ -60,8 +62,10 @@ public class AppUserService implements UserDetailsService {
             return result;
         }
 
-        appUser = repository.createRestaurantUser(appUser);
-        result.setPayload(appUser);
+
+        AppUser toCreate = create(appUser.getUsername(), appUser.getPassword());
+        AppUser toAdd = repository.createRestaurantUser(toCreate);
+        result.setPayload(toAdd);
         return result;
 
     }
@@ -111,7 +115,7 @@ public class AppUserService implements UserDetailsService {
         password = encoder.encode(password);
         AppUser appUser = new AppUser(0,username, password,false, List.of("User"));
 
-        return repository.create(appUser);
+        return appUser;
     }
 
     private void validatePassword(String password) {
