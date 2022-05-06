@@ -20,9 +20,9 @@ function Nav() {
     return (
         <>
             <div>
-                {user?.user ? (
+                {user?.user ? (                  
                     <>
-                        <Link to={"/customers"}><button className="profileButton">Account Settings</button></Link>
+                        <Link to={"/accountsettings"}><button className="profileButton">Account Settings</button></Link>
                         <button onClick={handleLogout} className="loginButton">Logout {user.user.sub}</button>
                     </>
                     ) : (

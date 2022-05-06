@@ -54,7 +54,7 @@ function App() {
             <Route path="/menu/:id" element={<Items />} />
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />    
         </Routes>
       </div>
     </AuthContext.Provider>
