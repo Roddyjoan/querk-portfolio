@@ -10,6 +10,8 @@ function AccountSettings() {
 
    const [user, setUser] = useContext(AuthContext);
    const [restaurants, setRestaurants] = useState([]);
+   const [customer, setCustomer] = useState([]);
+
 
    
     useEffect(() => {
@@ -30,6 +32,22 @@ function AccountSettings() {
 
     }, []);
    
+    useEffect(() => {
+
+        fetch("http://localhost:8090/api/customers/" + user.userId, {
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    alert("Something went wrong while fetching.");
+                }
+            })
+            .then(jsonData => setCustomer(jsonData))
+            .catch(rejection => {
+                alert("Failure: " + rejection.status + ": " + rejection.statusText)
+            });
+    }, []);
 
     function findUsersRestaurant(){
         return restaurants.filter(res => res.userId === user.userId);
@@ -37,7 +55,7 @@ function AccountSettings() {
 
     return (
         <div>
-            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <Customer />}
+            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <Customer customerObj = {customer}/>}
         </div>
     )
 }

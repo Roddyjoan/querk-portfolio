@@ -9,26 +9,16 @@ function AddCustomer() {
     
     const navigate = useNavigate();
 
-    useEffect(
-        () => {
-            const jwt = localStorage.getItem( "token" );
-            if( jwt == null ){
-                navigate("/login");
-            }
-        },
-        []
-    );
-
     function handleName(e) {
-        setFirst(e.target.value);
+        setName(e.target.value);
     }
 
     function handlePhone(e) {
-        setBirthdate(e.target.value);
+        setPhoneNum(e.target.value);
     }
 
     function handleEmail(e) {
-        setHeight(e.target.value);
+        setEmail(e.target.value);
     }
 
     function handleSubmit(e){
@@ -63,15 +53,18 @@ function AddCustomer() {
     return(
         <>
             <div>
-            <h2>Customer Profile</h2>
+            <h2>Customer Sign Up</h2><br />
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
-                <input onChange={handleName} id="name"></input><br />
+                <label htmlFor="name">Name:</label><br />
+                <input onChange={handleName} id="name"></input><br /><br />
 
-                <label htmlFor="phone#">Phone#:</label>
-                <input onChange={handlePhone} id="phone#"></input><br />
+                <label htmlFor="phone#">Phone Number:</label><br />
+                <input onChange={handlePhone} id="phone#"></input><br /><br />
 
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email:</label><br />
+                <input onChange={handleEmail} id="email"></input><br /><br />
+
+                <label htmlFor="email">Password:</label><br />
                 <input onChange={handleEmail} id="email"></input><br /><br />
 
                 <button type="submit">Submit</button>

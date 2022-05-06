@@ -1,6 +1,4 @@
 import graphic from './graphic.png';
-import burrito from './burrito.jpg';
-import ramen from './ramen.jpg';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
@@ -13,21 +11,21 @@ function Home() {
         <>
                 {user?.user ? (
                     <div>
-                        <img src={ramen} />
+                        <img src={'./ramen.jpg'} className="img-fluid" />
                         <div className="burrito-text">Welcome Back</div>
                         <br /><br /><br />
                     </div>
                 ) : (
                     <>
-                        <img src={burrito} />
+                        <img src={'./burrito.jpg'} className="img-fluid" />
                         <div className="burrito-text">Get started today!
                             <br /><br />
                             Create your iQueue profile
                             <br />
                             as a Restaurant Owner or Customer
                             <br /><br />
-                            <Link to="/restaurantform"><button className="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
-                            <Link to="/customerform"><button className="burrito-button">Customer</button></Link>
+                            <Link to="/signup/owner"><button className="burrito-button">Restaurant</button></Link>&nbsp;&nbsp;&nbsp;
+                            <Link to="/signup/customer"><button className="burrito-button">Customer</button></Link>
                         </div>
                         <img src={graphic} />
                         <div>

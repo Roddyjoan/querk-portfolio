@@ -81,11 +81,11 @@ function EditCustomer(){
     return customer ?
         <form onSubmit={handleEdit}>
             <label htmlFor="name">Name: </label><br />
-            <input onChange={handleNameChange} value={customer?.name} id="name"></input><br />
-            <label htmlFor="phoneNum">Phone#:</label><br />
-            <input onChange={handlePhoneNumChange} value={customer?.phoneNum} id="phoneNum"></input><br />
+            <input onChange={handleNameChange} value={customer?.name} id="name"></input><br /><br />
+            <label htmlFor="phoneNum">Phone Number:</label><br />
+            <input onChange={handlePhoneNumChange} value={customer?.phoneNum} id="phoneNum"></input><br /><br />
             <label htmlFor="email">Email:</label><br />
-            <input onChange={handleEmailChange} value={customer?.email} id="email"></input><br />
+            <input onChange={handleEmailChange} value={customer?.email} id="email"></input><br /><br />
 
             <button>Submit</button>
         </form>
