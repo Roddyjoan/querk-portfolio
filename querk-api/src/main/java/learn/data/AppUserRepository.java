@@ -14,5 +14,8 @@ public interface AppUserRepository {
     boolean deleteByUsername(String username);
 
     @Transactional
-    void update(AppUser user);
+    boolean update(AppUser user);
+
+    AppUser createRestaurantUser(AppUser appUser);
+
 }

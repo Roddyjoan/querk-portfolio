@@ -58,9 +58,15 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository{
 
         user.setAppUserId(keyHolder.getKey().intValue());
 
-        updateRoles(user);
+        setCustomerRole(user);
 
         return user;
+    }
+
+    private void setCustomerRole(AppUser user) {
+        String sql = "insert into app_user_role (app_user_id, app_role_id) "
+                + "values (?, 3)";
+        jdbcTemplate.update(sql, user.getAppUserId());
     }
 
     //TODO: Yea IDK WHAT to write for deleting a username
@@ -71,17 +77,47 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository{
 
     @Override
     @Transactional
-    public void update(AppUser user) {
+    public boolean update(AppUser user) {
 
         final String sql = "update app_user set "
                 + "username = ?, "
                 + "disabled = ? "
                 + "where app_user_id = ?";
 
-        jdbcTemplate.update(sql,
-                user.getUsername(), !user.isEnabled(), user.getAppUserId());
+        return jdbcTemplate.update(sql,
+                user.getUsername(), !user.isEnabled(), user.getAppUserId()) > 0;
 
-        updateRoles(user);
+
+    }
+
+    @Override
+    public AppUser createRestaurantUser(AppUser user) {
+
+        final String sql = "insert into app_user (username, password_hash) values (?, ?);";
+
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        user.setAppUserId(keyHolder.getKey().intValue());
+
+        setRestaurantRole(user);
+
+        return user;
+    }
+
+    private void setRestaurantRole(AppUser user) {
+        String sql = "insert into app_user_role (app_user_id, app_role_id) "
+                + "values (?, 2)";
+        jdbcTemplate.update(sql, user.getAppUserId());
     }
 
     private void updateRoles(AppUser user) {

@@ -32,13 +32,84 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
+    public Result<AppUser> addCustomer(AppUser appUser){
+        Result<AppUser> result=validate(appUser);
+        if (!result.isSuccess()){
+            return result;
+        }
+
+        if (appUser.getAppUserId() != 0) {
+            result.addMessage("id cannot be set for add", ResultType.INVALID);
+            return result;
+        }
+
+        AppUser toCreate = create(appUser.getUsername(), appUser.getPassword());
+        result.setPayload(toCreate);
+        return result;
+
+    }
+
+    public Result<AppUser> addRestaurant(AppUser appUser){
+        Result<AppUser> result=validate(appUser);
+        if (!result.isSuccess()){
+            return result;
+        }
+
+        if (appUser.getAppUserId() != 0) {
+            result.addMessage("id cannot be set for add", ResultType.INVALID);
+            return result;
+        }
+
+        appUser = repository.createRestaurantUser(appUser);
+        result.setPayload(appUser);
+        return result;
+
+    }
+
+    public Result<AppUser> update(AppUser appUser){
+        Result<AppUser> result = validate(appUser);
+        if (!result.isSuccess()){
+            return result;
+        }
+
+        if (appUser.getAppUserId() <= 0){
+            result.addMessage("id must be set for update", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(appUser)) {
+            String msg = String.format("AppUser: %s, not found", appUser.getAppUserId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
+    }
+
+    private Result<AppUser> validate(AppUser appUser) {
+        Result<AppUser> result = new Result<>();
+        if (appUser == null){
+            result.addMessage("appUser cannot be null", ResultType.INVALID);
+            return result;
+        }
+
+        if (appUser.getUsername().isBlank() || appUser.getUsername().isEmpty()){
+            result.addMessage("username must be filled out", ResultType.INVALID);
+            return result;
+        }
+
+        if (appUser.getPassword().isEmpty() || appUser.getPassword().isBlank()){
+            result.addMessage("password must be filled out", ResultType.INVALID);
+            return result;
+        }
+        return result;
+    }
+
     public AppUser create(String username,String password){
-        validate(username);
+        validateUsername(username);
         validatePassword(password);
 
         password = encoder.encode(password);
-
-        AppUser appUser = new AppUser(0, username, password,false, List.of("User"));
+        AppUser appUser = new AppUser(0,username, password,false, List.of("User"));
 
         return repository.create(appUser);
     }
@@ -63,7 +134,7 @@ public class AppUserService implements UserDetailsService {
         }
     }
 
-    private void validate(String username) {
+    private void validateUsername(String username) {
         if (username == null || username.isBlank()) {
             throw new ValidationException("username is required");
         }

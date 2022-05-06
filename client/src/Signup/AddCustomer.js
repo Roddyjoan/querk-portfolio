@@ -65,7 +65,7 @@ function AddCustomer() {
                 <input onChange={handleEmail} id="email"></input><br /><br />
 
                 <label htmlFor="email">Password:</label><br />
-                <input onChange={handleEmail} id="email"></input><br /><br />
+                <input onChange={handleEmail} id="email" type="password"></input><br /><br />
 
                 <button type="submit">Submit</button>
                 <Link to={'/Home'}><button>Cancel</button></Link>
