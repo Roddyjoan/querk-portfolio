@@ -3,6 +3,7 @@ import Restaurant from "./Restaurant/Restaurant"
 import EditCustomers from "./Customer/EditCustomer"
 import EditRestaurant from "./Restaurant/EditRestaurant"
 import Customers from "./Customer/Customers"
+import { useEffect, useState } from 'react';
 import { useContext } from "react"
 import AuthContext from "./AuthContext"
 
