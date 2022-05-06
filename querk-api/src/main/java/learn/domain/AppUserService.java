@@ -63,7 +63,7 @@ public class AppUserService implements UserDetailsService {
         }
 
 
-        AppUser toCreate = create(appUser.getUsername(), appUser.getPassword());
+        AppUser toCreate = createRestaurant(appUser.getUsername(), appUser.getPassword());
         AppUser toAdd = repository.createRestaurantUser(toCreate);
         result.setPayload(toAdd);
         return result;
@@ -113,7 +113,17 @@ public class AppUserService implements UserDetailsService {
         validatePassword(password);
 
         password = encoder.encode(password);
-        AppUser appUser = new AppUser(0,username, password,false, List.of("User"));
+        AppUser appUser = new AppUser(0,username, password,false, List.of("CUSTOMER"));
+
+        return appUser;
+    }
+
+    public AppUser createRestaurant(String username,String password){
+        validateUsername(username);
+        validatePassword(password);
+
+        password = encoder.encode(password);
+        AppUser appUser = new AppUser(0,username, password,false, List.of("OWNER"));
 
         return appUser;
     }
