@@ -32,7 +32,7 @@ root {
 }
 
 .burrito-button:hover {
-  color: #9b82e1;
+  color: #DA4167;
   text-decoration: none;
   transition-duration: 0.1s;
 }
@@ -52,7 +52,7 @@ h1 {
   position: absolute;
   left: 30px;
   top: 9px;
-  color: #4D07DB;
+  color: #6E2594;
 } 
 
 img {
@@ -124,7 +124,7 @@ button {
   
   .loginButton:hover {
     text-decoration:none;
-    color: #9b82e1;
+    color: #DA4167;
     background-color: #f3f4f600;
   }
 
@@ -147,7 +147,7 @@ button {
   .signupButton:hover {
     background-color: #9b82e100;
     text-decoration: none;
-    color: #9b82e1;
+    color: #DA4167;
     transition-duration: 0.1s;
   }
 
@@ -165,7 +165,7 @@ button {
   
   .navButton:hover {
     background-color: #f3f4f600;
-    color: #9b82e1;
+    color: #DA4167;
     text-decoration: none;
     transition-duration: 0.1s;
   }
@@ -178,7 +178,7 @@ button {
 
   .profileButton:hover {
     background-color: #f3f4f600;
-    color: #9b82e1;
+    color: #DA4167;
     text-decoration: none;
     transition-duration: 0.1s;
   }
@@ -228,7 +228,7 @@ button {
   width: 27px;
   border-radius: 13px;
   background-clip: padding-box;
-  color: #4e07dbb7;
+  color: #DA4167;
   border: 10px solid transparent;
 }
 

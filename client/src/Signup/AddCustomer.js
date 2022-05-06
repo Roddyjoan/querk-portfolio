@@ -67,7 +67,7 @@ function AddCustomer() {
                 <label htmlFor="email">Password:</label><br />
                 <input onChange={handleEmail} id="email"></input><br /><br />
 
-                <button type="submit">Submit</button>
+                <button type="submit">Sign Up</button>
                 <Link to={'/Home'}><button>Cancel</button></Link>
             </form>
             </div>

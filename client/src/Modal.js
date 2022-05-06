@@ -1,6 +1,5 @@
 function Modal(){
 
-
     return(
         <div class="modal" tabindex="-1">
         <div class="modal-dialog">
