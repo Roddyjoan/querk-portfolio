@@ -1,0 +1,26 @@
+@url = http://localhost:8090/api/user
+
+POST  {{url}}/customer HTTP/1.1
+Content-Type: application/json 
+
+{
+
+    "username": "john@sh.com",
+    "password": "P@ssw0rd!",
+    "roles": ["CUSTOMER"]
+
+}
+
+@second = http://localhost:8090/api/customers
+###
+
+POST {{second}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "name",
+    "userId": 4,
+    "phoneNum": 5106973834,
+    "email": "john@sh.com"
+}
+
