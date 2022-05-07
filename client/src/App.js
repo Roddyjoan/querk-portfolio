@@ -23,7 +23,10 @@ import EditCustomer from './Customer/EditCustomer';
 function App() {
 
   const [user, setUser] = useState(null);
- 
+  
+  function stop(){
+    localStorage.removeItem("token");
+  }
   useEffect( () => {
     const jwt_token = localStorage.getItem("token");
     if( jwt_token ){
@@ -32,10 +35,13 @@ function App() {
   }, []);
   
    return (
+     
     <AuthContext.Provider value={[user, setUser]}>
+     
       <div className="App">
         <div className="title">iQueue</div>    
       <Nav />
+    
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
