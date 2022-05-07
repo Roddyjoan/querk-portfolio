@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Queue from "./Restaurant/Queue";
+import { useNavigate, useParams } from "react-router-dom";
+import Queue from "./Queue";
 
 
 function CurrentQueue() {
     const [queues, setQueues] = useState([]);
+    const { restaurantId } = useParams();
 
     const nav = useNavigate();
 
@@ -12,20 +13,20 @@ function CurrentQueue() {
         console.log(rejectionMessage);
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem( "token" );
-        if(token){
-            fetchQueues();
-        } else {
-            nav("/login");
-        }
-    },[]);
+    // useEffect(() => {
+    //     const token = localStorage.getItem( "token" );
+    //     if(token){
+    //         fetchQueues();
+    //     } else {
+    //         nav("/login");
+    //     }
+    // },[]);
 
     function fetchQueues() {
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8090/api/queues/", {
+        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurantId, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt
@@ -37,6 +38,8 @@ function CurrentQueue() {
     }
 
     function queueFactory() {
+        fetchQueues();
+
         return queues.map(queueObj => (
             <Queue 
                 key={queueObj.queueId} 

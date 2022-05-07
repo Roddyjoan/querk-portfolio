@@ -13,7 +13,7 @@ import AddCustomer from './Signup/AddCustomer';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
 import Restaurants from './Restaurant/Restaurants';
 import AccountSettings from './AccountSettings';
-import Queue from './Restaurant/Queue';
+import CurrentQueue from './Restaurant/CurrentQueue';
 import Items from './Item/Items';
 import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
@@ -54,7 +54,7 @@ function App() {
             <Route path="/signup/owner" element={<AddRestaurantForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/accountsettings" element={<AccountSettings />} />
-            <Route path="/restaurant/queue/:id" element={<Queue />} />
+            <Route path="/restaurant/queue/current/:id" element={<CurrentQueue />} />
             <Route path="/menu/:id" element={<Items />} />
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
