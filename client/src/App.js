@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useParams, Routes, Route } from 'react-router-dom';
 import AuthContext from "./AuthContext";
+import { useAuth0 } from '@auth0/auth0-react';
 import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
@@ -27,6 +28,7 @@ function App() {
   function stop(){
     localStorage.removeItem("token");
   }
+
   useEffect( () => {
     const jwt_token = localStorage.getItem("token");
     if( jwt_token ){
@@ -53,8 +55,9 @@ function App() {
             <Route path="/signup/customer" element={<AddCustomer />} />
             <Route path="/signup/owner" element={<AddRestaurantForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="/accountsettings" element={<AccountSettings />} />
+            <Route path="/accountsettings/:id" element={<AccountSettings />} />
             <Route path="/restaurant/queue/current/:id" element={<CurrentQueue />} />
+            <Route path="/restaurant/queue/:id" element={<CurrentQueue />} />
             <Route path="/menu/:id" element={<Items />} />
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />

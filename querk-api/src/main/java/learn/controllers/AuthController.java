@@ -37,7 +37,7 @@ public class AuthController {
         try{
             Authentication authResult = authenticationManager.authenticate( token );
             if( authResult.isAuthenticated() ){
-                String jwt = jwtConverter.getTokenFromUser( (User) authResult.getPrincipal());
+                String jwt = jwtConverter.getTokenFromUser( (AppUser) authResult.getPrincipal());
                 Map<String, String> tokenWrapper = new HashMap<>();
                 tokenWrapper.put("jwt_token",jwt);
                 return ResponseEntity.ok( tokenWrapper );

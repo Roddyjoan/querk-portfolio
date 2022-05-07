@@ -76,8 +76,8 @@ function AddCustomer() {
             body: JSON.stringify({ newCustomer })
         }).then(response => {
             console.log(newCustomer);
-            if (response.status == 400 ) {
-                alert("Successfully added you as a user!Please check your email for a confirmation, then log in.");
+            if (response.status === 400 ) {
+                alert("Successfully added you as a user! Please check your email for a confirmation, then log in.");
                 navigate("/login");
                 return response.json();
             } else {

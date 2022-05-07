@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Queue from "./Queue";
 
 
 function CurrentQueue() {
     const [queues, setQueues] = useState([]);
-    const { restaurantId } = useParams();
+    const { id } = useParams();
 
     const nav = useNavigate();
 
@@ -24,15 +24,15 @@ function CurrentQueue() {
 
     function fetchQueues() {
 
-        const jwt = localStorage.getItem("token");
-
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurantId, {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + jwt
+        fetch("http://localhost:8090/api/restaurant/queue/current/" + id, {
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching.");
             }
         })
-        .then(response => response.json())
         .then(jsonData => setQueues(jsonData))
         .catch(rejection => () => errorHandler(rejection));
     }

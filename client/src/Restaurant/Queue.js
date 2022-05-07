@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Customer from '../Customer/Customer';
 
 function Queue(props) {
     const {queueId, customerId, phoneNum, email} = props.queueObj;

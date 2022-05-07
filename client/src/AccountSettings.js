@@ -16,8 +16,6 @@ function AccountSettings() {
    const [restaurants, setRestaurants] = useState([]);
    const [customer, setCustomer] = useState([]);
    const { id } = useParams();
-
-
    
     useEffect(() => {
 
