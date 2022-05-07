@@ -90,6 +90,8 @@ function AddCustomer() {
         );
     }
 
+    
+
     function handleSubmit(e) {
         e.preventDefault();
         postUser();
