@@ -75,12 +75,6 @@ public class CustomerService {
             return result;
         }
 
-        //TODO: Can't have one userId for multiple customers
-        if( repository.findAll().stream().anyMatch(customer1 -> customer.getUserId() == customer1.getUserId()) ){
-            result.addMessage("Customer must have a unique userId", ResultType.INVALID);
-            return result;
-        }
-
         return result;
     }
 

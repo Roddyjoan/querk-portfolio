@@ -33,12 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // TODO add antMatchers here to configure access to specific API endpoints
                 // require authentication for any request...
+                .antMatchers( HttpMethod.GET, "/api/restaurant/queue/current/*").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/restaurants").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/login").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/user/customer").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/user/restaurant").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/customer").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/restaurants").authenticated()
+                .antMatchers( HttpMethod.POST, "/api/restaurants").permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/customer/*").authenticated()
                 .antMatchers( HttpMethod.PUT, "/api/restaurants/*").authenticated()
                 .antMatchers( HttpMethod.GET, "/api/restaurants/*").permitAll()

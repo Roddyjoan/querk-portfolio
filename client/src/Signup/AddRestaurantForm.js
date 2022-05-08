@@ -4,73 +4,125 @@ import { Link, useNavigate } from "react-router-dom";
 function AddRestaurant() {
 
     const [name, setName] = useState("");
-    const [phoneNum, setPhoneNum] = useState("");
-    const [email, setEmail] = useState("");
-    
+    const [timeEstimate, setTimeEstimate] = useState("");
+    const [address, setAddress] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
 
     function handleName(e) {
         setName(e.target.value);
     }
 
-    function handlePhone(e) {
-        setPhoneNum(e.target.value);
+    function handleTimeEstimate(e) {
+        setTimeEstimate(e.target.value);
     }
 
-    function handleEmail(e) {
-        setEmail(e.target.value);
+    function handleAddress(e) {
+        setAddress(e.target.value);
     }
 
-    function handleSubmit(e){
-        e.preventDefault();
+    function handlePassword(e) {
+        setPassword(e.target.value);
+    }
 
-        const newRestaurant= {
-            name: name,
-            phone: phoneNum,
-            email: email
+    function handleUsername(e){
+        setUsername(e.target.value);
+    }
+
+    let appUserIdForAdd;
+
+    function postUser() {
+        const newUser = {
+            username: username,
+            password: password,
+            roles: ["OWNER"]
         };
 
-        fetch("http://localhost:8090/api/restaurant", {
+        fetch("http://localhost:8090/api/user/restaurant", {
+
+
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify(newUser)
+        }).then(response => {
+            if (response.ok) {
+                alert("Successfully added user");
+                return response.json();
+            } else {
+                alert("Could not add user. Make sure that the password has at least one special letter and one number.");
+                console.log(response);
+            }
+        }).then(data => {
+            console.log(data.appUserId);
+            appUserIdForAdd = data.appUserId;
+            postRestaurant();
+        })
+            .catch(
+                rejection => console.log("Failure! ", rejection)
+            );
+    }
+
+    function postRestaurant() {
+        const newRestaurant = {
+            name: name,
+            userId: appUserIdForAdd,
+            timeEstimate: timeEstimate,
+            address: address
+        };
+
+        fetch("http://localhost:8090/api/restaurants", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(newRestaurant)
         }).then(response => {
             if (response.ok) {
-                alert("Successfully added restaurant.");
-                navigate("/home");
+                alert("Successfully added you as a user! Please Login with your new credentials!");
+                navigate("/login");
             } else {
-                alert("Could not add restaurant.");
+                alert("Could not add your account. Something went wrong.");
                 console.log(response);
-            } 
+            }
         }).catch(
             rejection => console.log("Failure! ", rejection)
         );
     }
+    
 
-    return(
+    function handleSubmit(e) {
+        e.preventDefault();
+        postUser();
+
+    }
+
+    return (
         <>
             <div>
-            <h2>Restaurant Sign Up</h2><br />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label><br />
-                <input onChange={handleName} id="name"></input><br /><br />
+                <h2>Restaurant Sign Up</h2><br />
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name of Restaurant:</label><br />
+                    <input onChange={handleName} id="name"></input><br /><br />
 
-                <label htmlFor="phone#">Address (Street number and name, City, State, Zip Code):</label><br />
-                <input onChange={handlePhone} id="phone#"></input><br /><br />
+                    <label htmlFor="address">Address (Street number and name, City, State, Zip Code):</label><br />
+                    <input onChange={handleAddress} id="address"></input><br /><br />
 
-                <label htmlFor="email">Wait Time (Estimated time for a customer to advance in the queue):</label><br />
-                <p></p>
-                <input onChange={handleEmail} id="email"></input><br /><br />
+                    <label htmlFor="timeestimate">Wait Time (Estimated time for a customer to advance in the queue):</label><br />
+                    <input onChange={handleTimeEstimate} id="timeestimate"></input><br /><br />
 
-                <label htmlFor="email">Password:</label><br />
-                <input onChange={handleEmail} id="email"></input><br /><br />
+                    <label htmlFor="username">Email (will also be your username):</label><br />
+                    <input onChange={handleUsername} id="username"></input><br /><br />
 
-                <button type="submit">Sign Up</button>
-                <Link to={'/Home'}><button>Cancel</button></Link>
-            </form>
+                    <label htmlFor="password">Password:</label><br />
+                    <input onChange={handlePassword} id="password" type="password"></input><br /><br />
+
+                    <button type="submit">Sign Up</button>
+                    <Link to={'/Home'}><button>Cancel</button></Link>
+                </form>
             </div>
         </>
     )

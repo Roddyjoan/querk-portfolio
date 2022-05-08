@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
+import Customer from '../Customer/Customer';
 
 function Queue(props) {
-    const {customerId, name, phoneNum, email} = props.customerObj;
+    const {queueId, customerId, phoneNum, email} = props.queueObj;
 
     return (
-        <div className="customer-card">
-            <p><b>Name:</b> {name}</p>
+        <div className="queue-card">
+            <p><b>Customer Id:</b> {customerId}</p>
+            <p><b>Name:</b> {customerId}</p>
             <p><b>Phone #:</b> {phoneNum}</p>
             <p><b>Email:</b> {email}</p>
-            <Link to={'/deleteQueue/' + customerId}><button>Delete Customer</button></Link>
-            <Link to={'/editQueue/' + customerId}><button>Edit Customer Information</button></Link>
+            <p><b>Create Time:</b> {email}</p>
+            <Link to={'/deleteQueue/' + queueId}><button>Delete Queue</button></Link>
+            <Link to={'/editQueue/' + queueId}><button>Edit Queue Information</button></Link>
         </div>
     )
 

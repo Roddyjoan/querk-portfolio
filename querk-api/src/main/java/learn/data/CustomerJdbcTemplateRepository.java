@@ -38,10 +38,9 @@ public class CustomerJdbcTemplateRepository implements CustomerRepository{
         return customer;
     }
 
-
+    @Transactional
     @Override
     public Customer add(Customer customer) {
-
         final String sql = " insert into customers (`name`, user_id, phone_num, email) " +
                 " values (?,?,?,?) ";
 
