@@ -69,7 +69,7 @@ function EditRestaurant(){
                 Authorization: "Bearer " + localStorage.getItem("token"),
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(customer)
+            body: JSON.stringify(restaurant)
         }).then(
             response => response.ok ? navigate("/restaurants") : alert("Something went wrong! " + response)
         ).catch(
@@ -78,7 +78,7 @@ function EditRestaurant(){
     }
 
     return restaurant ?
-    <form onSubmit={handleEdit}>
+    <form onSubmit={handleEdit} className="with-margins">
         <label htmlFor="name">Name: </label><br />
         <input onChange={handleNameChange} value={restaurant?.name} id="name"></input><br /><br />
         <label htmlFor="adresss">Address:</label><br />

@@ -6,7 +6,7 @@ function DeleteItem(props) {
     const Navigate = useNavigate();
 
     function handleDelete() {
-        var confirm = window.confirm(" You sure you want to delete?")
+        var confirm = window.confirm("Are you sure you want to delete?")
         if (confirm) {
             fetch("http://localhost:8080/api/menu/" + props.itemId, {
                 method: "DELETE",
@@ -29,7 +29,7 @@ function DeleteItem(props) {
                     }
                 })
         } else {
-            alert("Item not deleted");
+            alert("Unable to delete");
         }
     }
 

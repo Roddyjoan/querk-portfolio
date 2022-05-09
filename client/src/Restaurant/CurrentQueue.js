@@ -51,9 +51,9 @@ function CurrentQueue() {
     }
 
     return (
-        <>
+        <div className="with-margins">
             {queueFactory()}
-        </>
+        </div>
     )
 }
 

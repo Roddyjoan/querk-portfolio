@@ -115,7 +115,7 @@ function AddCustomer() {
                     <input onChange={handlePassword} id="password" type="password"></input><br /><br />
 
                     <button type="submit">Submit</button>
-                    <Link to={'/Home'}><button>Cancel</button></Link>
+                    <Link to={'/'}><button>Cancel</button></Link>
                 </form>
             </div>
         </>
