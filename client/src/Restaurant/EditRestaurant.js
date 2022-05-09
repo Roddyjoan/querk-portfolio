@@ -69,7 +69,7 @@ function EditRestaurant(){
                 Authorization: "Bearer " + localStorage.getItem("token"),
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(customer)
+            body: JSON.stringify(restaurant)
         }).then(
             response => response.ok ? navigate("/restaurants") : alert("Something went wrong! " + response)
         ).catch(
