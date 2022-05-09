@@ -39,7 +39,7 @@ function Login() {
     }
 
     return (
-        <div className="login-page">
+        <div className="with-margins">
             <form onSubmit={submitHandler}>
             <label>Email:</label><br />
             <input onChange={event => setUsername(event.target.value)}></input><br /><br />

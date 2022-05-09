@@ -102,7 +102,7 @@ function AddRestaurant() {
 
     return (
         <>
-            <div>
+            <div className="with-margins">
                 <h2>Restaurant Sign Up</h2><br />
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Name of Restaurant:</label><br />
@@ -121,7 +121,7 @@ function AddRestaurant() {
                     <input onChange={handlePassword} id="password" type="password"></input><br /><br />
 
                     <button type="submit">Sign Up</button>
-                    <Link to={'/Home'}><button>Cancel</button></Link>
+                    <Link to={'/'}><button>Cancel</button></Link>
                 </form>
             </div>
         </>

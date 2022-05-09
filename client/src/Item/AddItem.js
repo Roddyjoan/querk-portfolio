@@ -74,7 +74,7 @@ function AddItem() {
     return(
         <>
             <div>
-            <h2>Add a new Item to your menu!</h2>
+            <h2>Add an item to your menu</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name:</label>
                 <input onChange={handleFirst} id="firstName"></input><br />

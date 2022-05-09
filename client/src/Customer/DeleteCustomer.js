@@ -68,15 +68,15 @@ function DeleteCustomer(){
     }
     
     function handleCancel() {
-        navigate("/home");
+        navigate("/");
     }
 
     return(
-        <>
+        <div className="with-margins">
             <span>Are you sure you want to delete {customer?.name}</span><br />
             <button onClick={handleDelete}>Delete</button>
             <button onClick={handleCancel}>Cancel</button>
-        </>
+        </div>
         );
 
 }
