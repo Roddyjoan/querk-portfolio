@@ -34,7 +34,7 @@ public class RestaurantQueueService {
             return result;
         }
 
-        if (restaurantQueue.getEntryId() != 0){
+        if (restaurantQueue.getEntryId() != null){
             result.addMessage("entryID cannot be set for an add operation", ResultType.INVALID);
             return result;
         }
@@ -81,10 +81,6 @@ public class RestaurantQueueService {
             return result;
         }
 
-        if (restaurantQueue.getCreateTime() == null){
-            result.addMessage("restaurant Queue must have a created Time", ResultType.INVALID);
-            return result;
-        }
 
         return result;
 

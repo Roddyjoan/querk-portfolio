@@ -8,8 +8,12 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Repository
@@ -38,15 +42,14 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     @Override
     public RestaurantQueue add(RestaurantQueue restaurantQueue) {
         final String sql = "insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) "
-                + "values (?,?,?,?,?);";
+                + "values (?,?,now(),?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,restaurantQueue.getCustomerId());
             ps.setInt(2,restaurantQueue.getRestaurantId());
-            ps.setTime(3,restaurantQueue.getCreateTime());
-            ps.setBoolean(4,restaurantQueue.isOrderedAhead());
-            ps.setBoolean(5,restaurantQueue.isExpired());
+            ps.setBoolean(3,restaurantQueue.isOrderedAhead());
+            ps.setBoolean(4,restaurantQueue.isExpired());
             return ps;
         }, keyHolder);
 
@@ -55,6 +58,7 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
         }
 
         restaurantQueue.setEntryId(keyHolder.getKey().intValue());
+        restaurantQueue.setCreateTime(Time.valueOf(LocalTime.now()));
         return restaurantQueue;
 
     }
