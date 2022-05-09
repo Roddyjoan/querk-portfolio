@@ -1,23 +1,27 @@
 import graphic from './graphic.png';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import AuthContext from './AuthContext';
+import Modal from './Modal';
 
 function Home() {
 
     const [user, setUser] = useContext(AuthContext);
+    const [show, setShow] = useState(false);
 
     return (
         <>
                 {user?.user ? (
-                    <div>
+                    <div className='homepage'>
                         <img src={'./ramen.jpg'} className="img-fluid" />
                         <div className="burrito-text">Welcome Back</div>
+                        <Modal />
+      
                         <br /><br /><br />
                     </div>
                 ) : (
                     <>
-                        <img src={'./burrito.jpg'} className="img-fluid" />
+                        <img src={'./burrito.jpg'} className="homepage" />
                         <div className="burrito-text">Get started today!
                             <br /><br />
                             Create your iQueue profile

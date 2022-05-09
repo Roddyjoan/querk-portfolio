@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 function DeleteCustomer(){
 
     const jwt = localStorage.getItem("token");
@@ -75,7 +74,7 @@ function DeleteCustomer(){
     return(
         <>
             <span>Are you sure you want to delete {customer?.name}</span><br />
-            <button onClick={handleDelete}>*DELETE CUSTOMER*</button>
+            <button onClick={handleDelete}>Delete</button>
             <button onClick={handleCancel}>Cancel</button>
         </>
         );

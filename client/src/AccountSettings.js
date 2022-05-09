@@ -1,5 +1,5 @@
 import Restaurant from "./Restaurant/Restaurant"
-import Customer from "./Customer/Customer"
+import CurrentCustomer from "./Customer/CurrentCustomer"
 import Restaurants from "./Restaurant/Restaurant"
 import EditCustomers from "./Customer/EditCustomer"
 import EditRestaurant from "./Restaurant/EditRestaurant"
@@ -59,7 +59,7 @@ function AccountSettings() {
 
     return (
         <div>
-            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <Customer customerObj = {customer}/>}
+            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <CurrentCustomer customerObj = {customer}/>}
         </div>
     )
 }

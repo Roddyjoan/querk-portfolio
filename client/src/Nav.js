@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
 import { useNavigate } from "react-router-dom";
+import Modal from './Modal';
 
 function Nav() {
 
@@ -24,6 +25,7 @@ function Nav() {
                     <>
                         <Link to={"/accountsettings/" + user.user.jti}><button className="profileButton">Account Settings</button></Link>
                         <button onClick={handleLogout} className="loginButton">Logout {user.user.sub}</button>
+                        <Modal />
                     </>
                     ) : (
                     <>

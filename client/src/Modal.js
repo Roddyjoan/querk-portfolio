@@ -1,24 +1,32 @@
-function Modal(){
+import { useState } from 'react';
 
-    return(
-        <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-        </div>
-      </div> 
-    )
+function Modal() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" onClick={handleClose}>
+            Close
+          </button>
+          <button variant="primary" onClick={handleClose}>
+            Save Changes
+          </button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default Modal;

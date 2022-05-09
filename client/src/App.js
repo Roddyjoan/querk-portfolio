@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Routes, Route } from 'react-router-dom';
 import AuthContext from "./AuthContext";
-import { useAuth0 } from '@auth0/auth0-react';
 import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
@@ -20,6 +19,7 @@ import Terms from './Terms';
 import PrivacyPolicy from './PrivacyPolicy';
 import About from './About';
 import EditCustomer from './Customer/EditCustomer';
+import DeleteCustomer from './Customer/DeleteCustomer';
 
 function App() {
 
@@ -49,7 +49,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
             {/* <Route path="/customer" element={<Customer customerObj={customer} />} /> */}
-            <Route path="/customers/:id" element={<EditCustomer />} />
+            <Route path="/editCustomer/:id" element={<EditCustomer />} />
+            <Route path="/deleteCustomer/:id" element={<DeleteCustomer />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/signup" element={<RequestPage />} />
             <Route path="/signup/customer" element={<AddCustomer />} />
@@ -63,7 +64,6 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />    
         </Routes>
-
       </div>
     </AuthContext.Provider>
   );
