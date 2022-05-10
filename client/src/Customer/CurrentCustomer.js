@@ -11,8 +11,8 @@ function Customer(props) {
             <p><b>Name:</b> {name}</p>
             <p><b>Phone #:</b> {phoneNum}</p>
             <p><b>Email:</b> {email}</p>
-            <Link to={'/deleteCustomer/' + user.user.jti}><button>Delete Customer</button></Link>
             <Link to={'/editCustomer/' + user.user.jti}><button>Edit Customer Information</button></Link>
+            <Link to={'/deleteCustomer/' + user.user.jti}><button>Delete Customer</button></Link>
         </div>
     )
 

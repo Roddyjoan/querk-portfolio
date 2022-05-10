@@ -6,7 +6,6 @@ import EditRestaurant from "./Restaurant/EditRestaurant"
 import Customers from "./Customer/Customers"
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-
 import { useContext } from "react"
 import AuthContext from "./AuthContext"
 
@@ -59,7 +58,7 @@ function AccountSettings() {
 
     return (
         <div className="with-margins">
-            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <CurrentCustomer customerObj = {customer}/>}
+            {user.user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <CurrentCustomer customerObj = {customer}/>}
         </div>
     )
 }

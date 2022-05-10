@@ -88,20 +88,21 @@ insert into app_user (username, password_hash, disabled)
 	
 insert into app_user_role
     values
-    (1, 2),
-    (2, 1),
-    (3,3);
+    (1,2),
+    (2,1),
+    (3,3),
+    (4,3);
     
 insert into customers (`name`, user_id, phone_num, email) values 
-		("roddy", 1, "1231231234", "roddy@gamil.com" ),
+		("roddy", 4, "1231231234", "roddy@gamil.com" ),
         ("kayleen", 2, "9876543210", "kayleen@gmail.com" ),
         ("erwyn", 3, "9173886944", "erwyn@gmail.com");
         
 -- select * from app_user au inner join customers c on c.user_id = au.app_user_id;
 
 	insert into restaurants (`name`, user_id, address, est) values
-		("Burrito Restaurant", 4, "300 Burrito Lane", "20"),
-        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "60"),
+		("Burrito Restaurant", 1, "300 Burrito Lane", "10"),
+        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "30"),
         ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
     
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
