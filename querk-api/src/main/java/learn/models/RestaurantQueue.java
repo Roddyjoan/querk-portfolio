@@ -3,7 +3,7 @@ package learn.models;
 import java.sql.Time;
 
 public class RestaurantQueue {
-    private Integer customerId;
+    private Integer userId;
     private Integer restaurantId;
     private Integer entryId;
     private Time createTime;
@@ -14,7 +14,7 @@ public class RestaurantQueue {
     }
 
     public RestaurantQueue(Integer customerId, Integer restaurantId, Integer entryId, Time createTime, boolean orderedAhead, boolean expired) {
-        this.customerId = customerId;
+        this.userId = customerId;
         this.restaurantId = restaurantId;
         this.entryId = entryId;
         this.createTime = createTime;
@@ -22,12 +22,12 @@ public class RestaurantQueue {
         this.expired = expired;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getRestaurantId() {

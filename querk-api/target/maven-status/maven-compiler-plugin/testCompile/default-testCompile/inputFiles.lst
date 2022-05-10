@@ -1,0 +1,9 @@
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/data/KnownGoodState.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/domain/RestaurantServiceTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/domain/CustomerServiceTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/domain/RestaurantQueueServiceTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/data/CustomerJdbcTemplateRepositoryTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/data/ItemJdbcTemplateRepositoryTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/data/RestaurantQueueJdbcTemplateRepositoryTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/data/RestaurantJdbcTemplateRepositoryTest.java
+/Users/e.perez/Dev10/querk-capstone-project/querk-api/src/test/java/learn/domain/ItemServiceTest.java

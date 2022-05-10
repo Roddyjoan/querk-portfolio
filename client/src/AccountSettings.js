@@ -1,9 +1,5 @@
 import Restaurant from "./Restaurant/Restaurant"
 import CurrentCustomer from "./Customer/CurrentCustomer"
-import Restaurants from "./Restaurant/Restaurant"
-import EditCustomers from "./Customer/EditCustomer"
-import EditRestaurant from "./Restaurant/EditRestaurant"
-import Customers from "./Customer/Customers"
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react"

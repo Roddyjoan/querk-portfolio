@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: learn.data.RestaurantQueueJdbcTemplateRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 3, Errors: 3, Skipped: 0, Time elapsed: 0.115 s <<< FAILURE! - in learn.data.RestaurantQueueJdbcTemplateRepositoryTest
+shouldUpdate  Time elapsed: 0.039 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [update restaurants_customers set customer_id = ?, restaurant_id = ?, create_time = ?, ordered_ahead = ?, expired = ? where restaurant_id=?;]; Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.shouldUpdate(RestaurantQueueJdbcTemplateRepositoryTest.java:77)
+Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.shouldUpdate(RestaurantQueueJdbcTemplateRepositoryTest.java:77)
+
+findById  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.findById(RestaurantQueueJdbcTemplateRepositoryTest.java:39)
+
+makeExpired  Time elapsed: 0.007 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <0>
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.makeExpired(RestaurantQueueJdbcTemplateRepositoryTest.java:67)
+
+add  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.add(RestaurantQueueJdbcTemplateRepositoryTest.java:53)
+Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '14:21:24' for column 'create_time' at row 1
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.add(RestaurantQueueJdbcTemplateRepositoryTest.java:53)
+
+findAllByRestaurantId  Time elapsed: 0.006 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.findAllByRestaurantId(RestaurantQueueJdbcTemplateRepositoryTest.java:33)
+
+findAllNonExpiredByRestaurantId  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <0>
+	at learn.data.RestaurantQueueJdbcTemplateRepositoryTest.findAllNonExpiredByRestaurantId(RestaurantQueueJdbcTemplateRepositoryTest.java:61)
+

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: learn.domain.ItemServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.046 s <<< FAILURE! - in learn.domain.ItemServiceTest
+update  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <SUCCESS> but was: <NOT_FOUND>
+	at learn.domain.ItemServiceTest.update(ItemServiceTest.java:88)
+
+shouldNotAddNullCategory  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.domain.ItemServiceTest.shouldNotAddNullCategory(ItemServiceTest.java:63)
+
+shouldNotUpdateNonexistent  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <NOT_FOUND> but was: <INVALID>
+	at learn.domain.ItemServiceTest.shouldNotUpdateNonexistent(ItemServiceTest.java:102)
+
+shouldNotAddNullName  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.domain.ItemServiceTest.shouldNotAddNullName(ItemServiceTest.java:47)
+

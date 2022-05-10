@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: learn.domain.RestaurantQueueServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.506 s <<< FAILURE! - in learn.domain.RestaurantQueueServiceTest
+add  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalArgumentException
+	at learn.domain.RestaurantQueueServiceTest.makeQueue(RestaurantQueueServiceTest.java:50)
+	at learn.domain.RestaurantQueueServiceTest.add(RestaurantQueueServiceTest.java:41)
+
+findAllByRestaurantId  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at learn.domain.RestaurantQueueServiceTest.findAllByRestaurantId(RestaurantQueueServiceTest.java:29)
+
+findAllNonExpiredByRestaurantId  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at learn.domain.RestaurantQueueServiceTest.findAllNonExpiredByRestaurantId(RestaurantQueueServiceTest.java:35)
+
