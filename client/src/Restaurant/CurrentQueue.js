@@ -5,6 +5,7 @@ import Queue from "./Queue";
 
 function CurrentQueue() {
     const [queues, setQueues] = useState([]);
+    
     const { id } = useParams();
 
     const nav = useNavigate();
@@ -21,6 +22,7 @@ function CurrentQueue() {
     //         nav("/login");
     //     }
     // },[]);
+
 
     function fetchQueues() {
 
@@ -39,21 +41,22 @@ function CurrentQueue() {
 
     function queueFactory() {
         fetchQueues();
-
+    
         return queues.map(queueObj => (
             <Queue 
-                key={queueObj.queueId} 
+                key={queueObj.entryId} 
                 queueObj={queueObj} 
                 queues={queues}
                 setQueues={setQueues}
+                id= {id}
             />
         ))
     }
 
     return (
-        <>
+        <div className="with-margins">
             {queueFactory()}
-        </>
+        </div>
     )
 }
 

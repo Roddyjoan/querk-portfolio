@@ -54,7 +54,7 @@ function AccountSettings() {
     }
 
     return (
-        <div>
+        <div className="with-margins">
             {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <CurrentCustomer customerObj = {customer}/>}
         </div>
     )
