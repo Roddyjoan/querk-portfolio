@@ -97,7 +97,7 @@ class RestaurantQueueJdbcTemplateRepositoryTest {
     private RestaurantQueue makeEntry(){
         RestaurantQueue entry = new RestaurantQueue();
         entry.setRestaurantId(3);
-        entry.setCustomerId(1);
+        entry.setUserId(1);
         entry.setCreateTime(Time.valueOf(LocalTime.now()));
         entry.setExpired(false);
         entry.setOrderedAhead(true);

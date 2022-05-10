@@ -1,18 +1,15 @@
 package learn.data;
 
 import learn.data.mappers.RestaurantQueueMapper;
-import learn.models.Restaurant;
 import learn.models.RestaurantQueue;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Time;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -46,7 +43,7 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,restaurantQueue.getCustomerId());
+            ps.setInt(1,restaurantQueue.getUserId());
             ps.setInt(2,restaurantQueue.getRestaurantId());
             ps.setBoolean(3,restaurantQueue.isOrderedAhead());
             ps.setBoolean(4,restaurantQueue.isExpired());
@@ -86,7 +83,7 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
                 + "ordered_ahead = ?, "
                 + "expired = ? "
                 + "where restaurant_id=?;";
-        return template.update(sql,restaurantQueue.getCustomerId(),restaurantQueue.getRestaurantId(),restaurantQueue.getCreateTime(),restaurantQueue.isOrderedAhead(), restaurantQueue.isExpired(), restaurantQueue.getEntryId()) > 0;
+        return template.update(sql,restaurantQueue.getUserId(),restaurantQueue.getRestaurantId(),restaurantQueue.getCreateTime(),restaurantQueue.isOrderedAhead(), restaurantQueue.isExpired(), restaurantQueue.getEntryId()) > 0;
     }
 
 

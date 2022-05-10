@@ -65,6 +65,18 @@ public class RestaurantQueueService {
 
     private Result<RestaurantQueue> validate(RestaurantQueue restaurantQueue) {
         Result<RestaurantQueue> result = new Result<>();
+        List<RestaurantQueue> all = repository.findAllNonExpiredByRestaurantId(restaurantQueue.getRestaurantId());
+
+        for (RestaurantQueue rq: all){
+            if (restaurantQueue.getRestaurantId() == rq.getRestaurantId()
+            && !rq.isExpired()
+            && (rq.getUserId() == restaurantQueue.getUserId())
+            && (restaurantQueue.getCreateTime().after(rq.getCreateTime()))){
+                result.addMessage("cannot add duplicate entry", ResultType.INVALID);
+                return result;
+            }
+        }
+
 
         if (restaurantQueue == null){
             result.addMessage("restaurant Queue cannot be null", ResultType.INVALID);
@@ -76,7 +88,7 @@ public class RestaurantQueueService {
             return result;
         }
 
-        if (restaurantQueue.getCustomerId() == null){
+        if (restaurantQueue.getUserId() == null){
             result.addMessage("restaurant Queue must contain a customer ID", ResultType.INVALID);
             return result;
         }

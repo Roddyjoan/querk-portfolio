@@ -1,7 +1,6 @@
 package learn.data.mappers;
 
 
-import learn.models.Restaurant;
 import learn.models.RestaurantQueue;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -14,7 +13,7 @@ public class RestaurantQueueMapper implements RowMapper<RestaurantQueue> {
         RestaurantQueue restaurantQueue = new RestaurantQueue();
         restaurantQueue.setEntryId(rs.getInt("entry_id"));
         restaurantQueue.setRestaurantId(rs.getInt("restaurant_id"));
-        restaurantQueue.setCustomerId(rs.getInt("customer_id"));
+        restaurantQueue.setUserId(rs.getInt("user_id"));
         restaurantQueue.setCreateTime(rs.getTime("create_time"));
         restaurantQueue.setOrderedAhead(rs.getBoolean("ordered_ahead"));
         restaurantQueue.setExpired(rs.getBoolean("expired"));
