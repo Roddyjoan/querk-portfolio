@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: learn.data.RestaurantJdbcTemplateRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 3.74 s <<< FAILURE! - in learn.data.RestaurantJdbcTemplateRepositoryTest
+shouldUpdate  Time elapsed: 1.05 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: StatementCallback; SQL [call set_known_good_state(); ]; Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`restaurants_customers`, CONSTRAINT `fk_customers_restaurants` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`restaurants_customers`, CONSTRAINT `fk_customers_restaurants` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`))
+	at learn.data.RestaurantJdbcTemplateRepositoryTest.setup(RestaurantJdbcTemplateRepositoryTest.java:27)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`restaurants_customers`, CONSTRAINT `fk_customers_restaurants` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`))
+	at learn.data.RestaurantJdbcTemplateRepositoryTest.setup(RestaurantJdbcTemplateRepositoryTest.java:27)
+
+add  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.data.RestaurantJdbcTemplateRepositoryTest.add(RestaurantJdbcTemplateRepositoryTest.java:54)
+
+shouldDeleteById  Time elapsed: 0.009 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [delete from restaurants where restaurant_id=?;]; Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`items`, CONSTRAINT `fk_item_list_restaurant` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`)); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`items`, CONSTRAINT `fk_item_list_restaurant` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`))
+	at learn.data.RestaurantJdbcTemplateRepositoryTest.shouldDeleteById(RestaurantJdbcTemplateRepositoryTest.java:76)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`queues_project_test`.`items`, CONSTRAINT `fk_item_list_restaurant` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`))
+	at learn.data.RestaurantJdbcTemplateRepositoryTest.shouldDeleteById(RestaurantJdbcTemplateRepositoryTest.java:76)
+

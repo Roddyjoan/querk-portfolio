@@ -88,25 +88,20 @@ insert into app_user (username, password_hash, disabled)
 	
 insert into app_user_role (app_user_id, app_role_id)
     values
-    (1, 2),
-    (2, 1),
+    (1,2),
+    (2,1),
     (3,3);
     
 insert into customers (`name`, user_id, phone_num, email) values 
-		("roddy r", 1, "1231231234", "roddy@gamil.com" ),
+		("roddy r", 4, "1231231234", "roddy@gamil.com" ),
         ("kayleen c", 2, "9876543210", "kayleen@gmail.com" ),
         ("erwyn p", 3, "9173886944", "erwyn@gmail.com");
         
-
-    
-
-
-
-	insert into restaurants (`name`, address, est) values
-		("Burrito Restaurant", "300 Burrito Lane", "20"),
-        ("Ichiran", "132 W 31st St, New York, NY 10001", "60"),
-        ("Hyun","10 E 33rd St, New York, NY 10016", "45");
-    
+	insert into restaurants (`name`, user_id, address, est) values
+		("Burrito Restaurant", 1, "300 Burrito Lane", "10"),
+        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "30"),
+        ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
+ 
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
 		(1, 1, "2012-02-02 02:12:00.0000000", true, false),
         (1, 2, "2012-02-02 02:12:00.0000000", false, true),

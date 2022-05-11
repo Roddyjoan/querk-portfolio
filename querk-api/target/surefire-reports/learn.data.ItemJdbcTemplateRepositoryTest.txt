@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: learn.data.ItemJdbcTemplateRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 3, Errors: 2, Skipped: 0, Time elapsed: 0.124 s <<< FAILURE! - in learn.data.ItemJdbcTemplateRepositoryTest
+findById  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.data.ItemJdbcTemplateRepositoryTest.findById(ItemJdbcTemplateRepositoryTest.java:54)
+
+findByRestaurantId  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.data.ItemJdbcTemplateRepositoryTest.findByRestaurantId(ItemJdbcTemplateRepositoryTest.java:41)
+
+add  Time elapsed: 0.021 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <8> but was: <10>
+	at learn.data.ItemJdbcTemplateRepositoryTest.add(ItemJdbcTemplateRepositoryTest.java:77)
+
+findByCategory  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <6> but was: <7>
+	at learn.data.ItemJdbcTemplateRepositoryTest.findByCategory(ItemJdbcTemplateRepositoryTest.java:62)
+
+deleteById  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at learn.data.ItemJdbcTemplateRepositoryTest.deleteById(ItemJdbcTemplateRepositoryTest.java:96)
+

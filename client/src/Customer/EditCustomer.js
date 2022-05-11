@@ -79,7 +79,7 @@ function EditCustomer(){
 
 
     return customer ?
-        <form onSubmit={handleEdit}>
+        <form onSubmit={handleEdit} className="with-margins">
             <label htmlFor="name">Name: </label><br />
             <input onChange={handleNameChange} value={customer?.name} id="name"></input><br /><br />
             <label htmlFor="phoneNum">Phone Number:</label><br />

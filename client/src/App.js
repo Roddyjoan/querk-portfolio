@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AuthContext from "./AuthContext";
 import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
-import Customer from "./Customer/Customer"
 import Customers from './Customer/Customers';
 import NotFound from './NotFound';
 import jwtDecode from 'jwt-decode';

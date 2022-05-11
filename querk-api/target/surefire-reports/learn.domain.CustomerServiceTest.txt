@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: learn.domain.CustomerServiceTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.501 s <<< FAILURE! - in learn.domain.CustomerServiceTest
+shouldNotAddDupeUserId  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.domain.CustomerServiceTest.shouldNotAddDupeUserId(CustomerServiceTest.java:57)
+
+update  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <SUCCESS> but was: <NOT_FOUND>
+	at learn.domain.CustomerServiceTest.update(CustomerServiceTest.java:76)
+

@@ -1,65 +1,61 @@
-import Restaurant from "./Restaurant/Restaurant"
-import CurrentCustomer from "./Customer/CurrentCustomer"
-import Restaurants from "./Restaurant/Restaurant"
-import EditCustomers from "./Customer/EditCustomer"
-import EditRestaurant from "./Restaurant/EditRestaurant"
-import Customers from "./Customer/Customers"
+import CurrentRestaurant from "./Restaurant/CurrentRestaurant";
+import CurrentCustomer from "./Customer/CurrentCustomer";
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-
-import { useContext } from "react"
-import AuthContext from "./AuthContext"
+import { useContext } from "react";
+import AuthContext from "./AuthContext";
 
 function AccountSettings() {
 
    const [user, setUser] = useContext(AuthContext);
-   const [restaurants, setRestaurants] = useState([]);
+   const [restaurant, setRestaurant] = useState([]);
    const [customer, setCustomer] = useState([]);
-   const { id } = useParams();
    
-    useEffect(() => {
+   function fetchRestaurant(){
+    fetch("http://localhost:8090/api/restaurants/" + user.user.jti, {
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Could not fetch restaurant.");
+            }
+        })
+        .then(jsonData => setRestaurant(jsonData))
+        .catch(rejection => {
+            alert("Failure: " + rejection.status + ": " + rejection.statusText)
+        });
 
-        fetch("http://localhost:8090/api/restaurants/", {
+        return <CurrentRestaurant restaurantObj = {restaurant}/>
+    }
+
+    function fetchCustomer(){
+        console.log(user.user.authorities);
+        console.log(user.user.jti);
+        fetch("http://localhost:8090/api/customers/" + user.user.jti, {
         })
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    alert("Something went wrong while fetching.");
-                }
-            })
-            .then(jsonData => setRestaurants(jsonData))
-            .catch(rejection => {
-                alert("Failure: " + rejection.status + ": " + rejection.statusText)
-            });
-
-    }, []);
-   
-    useEffect(() => {
-
-        fetch("http://localhost:8090/api/customers/" + id, {
-
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    alert("Something went wrong while fetching.");
+                    alert("Could not fetch customer.");
                 }
             })
             .then(jsonData => setCustomer(jsonData))
             .catch(rejection => {
                 alert("Failure: " + rejection.status + ": " + rejection.statusText)
             });
-    }, []);
 
-    function findUsersRestaurant(){
-        return restaurants.filter(res => res.userId === user.userId);
+            return <CurrentCustomer customerObj = {customer}/>
     }
+
+    // function findUsersRestaurant(){
+    //     return restaurants.filter(res => res.userId === user.userId);
+    // }
 
     return (
         <div className="with-margins">
-            {user.authorities === "ROLE_OWNER" ? <Restaurant restaurantObj = {findUsersRestaurant()[0]}/> : <CurrentCustomer customerObj = {customer}/>}
+            {user.user.authorities === "ROLE_OWNER" ? fetchRestaurant() : fetchCustomer()}
         </div>
     )
 }

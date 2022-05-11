@@ -103,7 +103,7 @@ function AddCustomer() {
 
     return (
         <>
-            <div>
+            <div className="with-margins">
                 <h2>Customer Sign Up</h2><br />
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Name:</label><br />

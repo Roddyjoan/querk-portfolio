@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: learn.data.CustomerJdbcTemplateRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.074 s <<< FAILURE! - in learn.data.CustomerJdbcTemplateRepositoryTest
+shouldUpdate  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at learn.data.CustomerJdbcTemplateRepositoryTest.shouldUpdate(CustomerJdbcTemplateRepositoryTest.java:62)
+
+add  Time elapsed: 0.009 s  <<< ERROR!
+java.lang.NullPointerException
+	at learn.data.CustomerJdbcTemplateRepositoryTest.add(CustomerJdbcTemplateRepositoryTest.java:53)
+
+deleteById  Time elapsed: 0.012 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at learn.data.CustomerJdbcTemplateRepositoryTest.deleteById(CustomerJdbcTemplateRepositoryTest.java:74)
+

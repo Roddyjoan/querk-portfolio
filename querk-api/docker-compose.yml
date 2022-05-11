@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  querk-api:
+    image: erwyn98/querk-api:latest
+    environment:
+      - DB_URL=jdbc:mysql://iqueue-db.ckukznuzdye9.us-east-1.rds.amazonaws.com:3306/queues_project
+      - DB_USERNAME=admin
+      - DB_PASSWORD=querkker
+    ports:
+      - 8090:8090

@@ -42,11 +42,11 @@ function Items(props) {
     }
 
     return (
-        <>
+        <div className="with-margins">
             <h2>Menu</h2>
             <br />
             {itemFactory()}
-        </>
+        </div>
     )
 }
 
