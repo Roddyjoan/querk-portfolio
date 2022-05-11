@@ -99,6 +99,17 @@ public class RestaurantQueueService {
             }
         }
 
+        List<RestaurantQueue> allNon = repository.findAllNonExpired();
+
+        for (RestaurantQueue queue: allNon){
+            if (restaurantQueue.getRestaurantId() == queue.getRestaurantId()
+                    && !queue.isExpired()
+                    && (queue.getUserId() == restaurantQueue.getUserId())){
+                result.addMessage("cannot add duplicate entry", ResultType.INVALID);
+                return result;
+            }
+        }
+
 
         if (restaurantQueue == null){
             result.addMessage("restaurant Queue cannot be null", ResultType.INVALID);

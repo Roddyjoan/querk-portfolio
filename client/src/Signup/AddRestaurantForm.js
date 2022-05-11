@@ -32,7 +32,6 @@ function AddRestaurant() {
         setUsername(e.target.value);
     }
 
-    let appUserIdForAdd;
 
     function postUser() {
         const newUser = {
@@ -59,8 +58,7 @@ function AddRestaurant() {
             }
         }).then(data => {
             console.log(data.appUserId);
-            appUserIdForAdd = data.appUserId;
-            postRestaurant();
+            setUserId(data.appUserId);
         })
             .catch(
                 rejection => console.log("Failure! ", rejection)
@@ -72,7 +70,7 @@ function AddRestaurant() {
     function postRestaurant() {
         const newRestaurant = {
             name: name,
-            userId: appUserIdForAdd,
+            userId: userId,
             timeEstimate: timeEstimate,
             address: address
         };
@@ -96,6 +94,12 @@ function AddRestaurant() {
         );
     }
     
+
+    useEffect(() => {
+        if (userId !== "") {
+            postRestaurant();
+        }
+    }, [userId]);
 
     function handleSubmit(e) {
         e.preventDefault();

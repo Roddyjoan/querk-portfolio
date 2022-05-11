@@ -53,7 +53,8 @@ function ViewQueue(props) {
         fetch("http://localhost:8090/api/restaurant/queue/update/" + userId, {
             method:"PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + jwt
             },
             body: JSON.stringify(toUpdate)
         })

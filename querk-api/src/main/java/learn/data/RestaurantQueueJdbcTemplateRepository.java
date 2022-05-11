@@ -70,6 +70,13 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     }
 
     @Override
+    public List<RestaurantQueue> findAllNonExpired() {
+        final String sql="select * from customers c " +
+                "inner join restaurants_customers rc on c.customer_id=rc.customer_id where rc.expired = false;";
+        return template.query(sql,new RestaurantQueueMapper());
+    }
+
+    @Override
     public boolean makeExpired(RestaurantQueue restaurantQueue) {
         final String sql = "update restaurants_customers set expired = true where customer_id = ?;";
         return template.update(sql, restaurantQueue.getUserId()) >0 ;
