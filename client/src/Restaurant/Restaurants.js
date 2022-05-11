@@ -58,11 +58,11 @@ function Restaurants() {
     }
 
     return (
-        <>
+        <div className="with-margins">
             <h2>Restaurants</h2>
             <br />
             {restaurantFactory()}
-        </>
+        </div>
     )
 }
 

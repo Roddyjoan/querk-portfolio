@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../AuthContext';
 
-function Customer(props) {
+function CurrentCustomer(props) {
     const {customerId, name, phoneNum, email} = props.customerObj;
     const [user, setUser] = useContext(AuthContext);
     
@@ -18,4 +18,4 @@ function Customer(props) {
 
 }
 
-export default Customer;
+export default CurrentCustomer;

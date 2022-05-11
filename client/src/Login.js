@@ -10,7 +10,7 @@ function Login() {
     const navigate = useNavigate();
 
     function submitHandler(event) {
-        event.preventDefault()
+        event.preventDefault();
         fetch("http://localhost:8090/api/authenticate/login", {
             method: "POST",
             headers: {
