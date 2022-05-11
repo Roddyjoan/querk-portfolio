@@ -53,9 +53,18 @@ function CurrentQueue() {
         ))
     }
 
+    function customerStatus(){
+        
+    }
+
     return (
         <div className="with-margins">
-            {queueFactory()}
+            user.user.authorities === "ROLE_OWNER" ?
+                (
+                    {queueFactory()}
+                ):(
+                    
+                )
         </div>
     )
 }

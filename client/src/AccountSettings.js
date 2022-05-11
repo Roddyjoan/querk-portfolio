@@ -30,8 +30,6 @@ function AccountSettings() {
     }
 
     function fetchCustomer(){
-        console.log(user.user.authorities);
-        console.log(user.user.jti);
         fetch("http://localhost:8090/api/customers/" + user.user.jti, {
         })
             .then(response => {
