@@ -1,3 +1,4 @@
+import { userSetter } from 'core-js/fn/symbol';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Customer from '../Customer/Customer';
@@ -85,8 +86,6 @@ function ViewQueue(props) {
 
     
     return (
-        <>
-            
             <div className="queue-card">
                 <p><b>Customer's User Id:</b> {userId}</p>
                 <p><b>Name:</b> {name}</p>
@@ -96,7 +95,6 @@ function ViewQueue(props) {
                 <button onClick={signalFoodReady}>Food is Ready!</button>
                 <button onClick={makeExpired}>Take Customer Off Queue</button>
             </div>
-        </>
     )
 
 }
