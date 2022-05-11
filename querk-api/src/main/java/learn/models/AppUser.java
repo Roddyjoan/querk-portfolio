@@ -24,7 +24,9 @@ public class AppUser extends User {
         this.appUserId = appUserId;
     }
 
-
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     private List<String> roles = new ArrayList<>();
 
