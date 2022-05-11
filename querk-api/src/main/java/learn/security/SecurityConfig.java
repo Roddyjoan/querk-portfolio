@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.PUT, "/api/restaurants/*").authenticated()
                 .antMatchers( HttpMethod.GET, "/api/restaurants/*").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/restaurant/queue/update/*").hasAnyRole("OWNER")
+                .antMatchers( HttpMethod.GET, "/").permitAll()
                 .anyRequest().denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(), converter))

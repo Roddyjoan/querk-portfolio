@@ -72,6 +72,8 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
     public boolean deleteById(int restaurantId) {
         return template.update("delete from restaurants where restaurant_id=?;", restaurantId) > 0;
     }
+
+
 }
 
 
