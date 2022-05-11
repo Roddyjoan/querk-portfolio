@@ -1,4 +1,3 @@
-import { userSetter } from 'core-js/fn/symbol';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Customer from '../Customer/Customer';
@@ -9,12 +8,9 @@ function ViewQueue(props) {
     const [email, setEmail] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
    
-    
-
-
     useEffect(() => {
         const jwt = localStorage.getItem("token");
-        fetch("http://localhost:8090/api/customers/" + userId, {
+        fetch("http://localhost:8090/api/customers/" + customerId, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt
@@ -46,7 +42,7 @@ function ViewQueue(props) {
        
         const jwt = localStorage.getItem("token");
         let toUpdate = {
-            entryId:1,
+            entryId: 1,
             userId: userId,
             restaurantId: props.id
         };
@@ -72,7 +68,6 @@ function ViewQueue(props) {
             .catch(rejection => {
                 alert("Failure: " + rejection.status + ": " + rejection.statusText)
             });
-
         
     }
 
@@ -81,8 +76,6 @@ function ViewQueue(props) {
         console.log("food is ready")
 
     }
-    
-
     
     return (
             <div className="queue-card">
