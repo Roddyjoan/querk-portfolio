@@ -8,6 +8,7 @@ function AddRestaurant() {
     const [address, setAddress] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [userId, setUserId] = useState("")
 
     const navigate = useNavigate();
 
@@ -65,6 +66,8 @@ function AddRestaurant() {
                 rejection => console.log("Failure! ", rejection)
             );
     }
+
+
 
     function postRestaurant() {
         const newRestaurant = {

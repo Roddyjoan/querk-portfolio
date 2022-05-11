@@ -13,6 +13,7 @@ function Restaurant(props) {
 
     const navigate = useNavigate();
 
+
     useEffect(() => {
 
         fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurantId, {
@@ -26,11 +27,11 @@ function Restaurant(props) {
             })
             .then(jsonData => SetInQueue(jsonData))
             .catch(rejection => () => errorHandler(rejection));
-    }, []);
+    }, [inQueue]);
 
     function joinQueue() {
         const jwt = localStorage.getItem("token");
-        
+
         if (jwt) {
             const toAddToQueue = {
                 userId: user.user.jti,
@@ -39,7 +40,7 @@ function Restaurant(props) {
                 expired: false
             }
             console.log(user.user.jti);
-            
+
             fetch("http://localhost:8090/api/restaurant/queue", {
 
 
@@ -50,14 +51,15 @@ function Restaurant(props) {
                 },
                 body: JSON.stringify(toAddToQueue)
             }).then(response => {
-                if (response.ok) {
+                if (response.status === 201) {
                     alert("Successfully added you to queue!");
-                    navigate("/")
+                    console.log(response);
+                    return response.json();
                 } else {
                     alert("Could not add you to the Queue");
                     console.log(response);
                 }
-            })
+            }).then(data => SetInQueue(data))
                 .catch(
                     rejection => console.log("Failure! ", rejection)
                 );

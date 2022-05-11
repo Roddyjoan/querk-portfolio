@@ -8,7 +8,7 @@ function AddCustomer() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [userId, setUserId] = useState("");
-    
+
     const navigate = useNavigate();
 
     function handleName(e) {
@@ -52,53 +52,54 @@ function AddCustomer() {
         }).then(data => {
             console.log(data)
             setUserId(data.appUserId)
+        }).catch(
+            rejection => console.log("Failure! ", rejection)
+        );
+    } 
+
+    function postCustomer() {
+
+        let newCustomer = {
+            name: name,
+            userId: userId,
+            phoneNum: phoneNum,
+            email: email
+        };
+
+        fetch("http://localhost:8090/api/customers", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify( newCustomer )
+        }).then(response => {
+            if (response.status === 201) {
+                return response.json();
+            } else {
+                alert("Could not add customer.");
+                console.log(userId);
+                console.log(response);
+            }
+        }).then(data => {
+            console.log("data:", data);
+            alert("Successfully added you as a user! Please check your email for a confirmation, then log in.");
+            navigate("/login");
         })
             .catch(
                 rejection => console.log("Failure! ", rejection)
             );
     }
 
-function postCustomer () {
-    
-    let newCustomer = {
-        name: name,
-        userId: userId,
-        phoneNum: phoneNum,
-        email: email
-    };
-
-    fetch("http://localhost:8090/api/customers", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ newCustomer })
-    }).then(response => {
-        console.log(newCustomer);
-        if (response.status === 201) {
-            return response.json();
-        } else {
-            alert("Could not add customer.");
-            console.log(userId);
-            console.log(response);
-        }
-    }).then(data => {
-        console.log(data);
-        alert("Successfully added you as a user! Please check your email for a confirmation, then log in.");
-        navigate("/login");
-    })
-        .catch(
-            rejection => console.log("Failure! ", rejection)
-        );
-}
-
-
-
     function handleSubmit(e) {
         e.preventDefault();
-        postUser()
-        .then(postCustomer());
+        postUser();
     }
+
+    useEffect(() => {
+        if (userId !== "") {
+            postCustomer();
+        }
+    }, [userId]);
 
     return (
         <>

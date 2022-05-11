@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/authenticate
+@url = http://querkapi-env-2.eba-apwmxuzm.us-east-1.elasticbeanstalk.com/api/authenticate
 
 POST  {{url}}/login HTTP/1.1
 Content-Type: application/json 
