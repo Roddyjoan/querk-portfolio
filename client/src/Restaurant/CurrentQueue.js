@@ -14,14 +14,6 @@ function CurrentQueue() {
         console.log(rejectionMessage);
     }
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem( "token" );
-    //     if(token){
-    //         fetchQueues();
-    //     } else {
-    //         nav("/login");
-    //     }
-    // },[]);
 
 
     function fetchQueues() {
@@ -45,10 +37,11 @@ function CurrentQueue() {
         return queues.map(queueObj => (
             <Queue 
                 key={queueObj.entryId} 
-                queueObj={queueObj} 
+                queueObj={queueObj}
+                userId= {queues.userId} 
                 queues={queues}
                 setQueues={setQueues}
-                id= {id}
+                id = {id}
             />
         ))
     }

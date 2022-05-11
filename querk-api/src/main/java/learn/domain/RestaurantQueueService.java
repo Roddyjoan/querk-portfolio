@@ -45,7 +45,7 @@ public class RestaurantQueueService {
     }
 
     public Result<RestaurantQueue> makeExpired(RestaurantQueue restaurantQueue){
-        Result<RestaurantQueue> result = validate(restaurantQueue);
+        Result<RestaurantQueue> result = validateUpdate(restaurantQueue);
         if (!result.isSuccess()){
             return result;
         }
@@ -56,10 +56,33 @@ public class RestaurantQueueService {
         }
 
         if (!repository.makeExpired(restaurantQueue)){
-            String msg = String.format("Entry ID : %s not found ", restaurantQueue.getEntryId());
+            String msg = String.format("Customer ID : %s not found ", restaurantQueue.getUserId());
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
         return result;
+    }
+
+    private Result<RestaurantQueue> validateUpdate(RestaurantQueue restaurantQueue) {
+        Result<RestaurantQueue> result = new Result<>();
+
+        if (restaurantQueue == null){
+            result.addMessage("restaurant Queue cannot be null", ResultType.INVALID);
+            return result;
+        }
+
+        if (restaurantQueue.getRestaurantId() == null) {
+            result.addMessage("restaurant Queue must contain a restaurant ID", ResultType.INVALID);
+            return result;
+        }
+
+        if (restaurantQueue.getUserId() == null){
+            result.addMessage("restaurant Queue must contain a customer ID", ResultType.INVALID);
+            return result;
+        }
+
+
+        return result;
+
     }
 
 
@@ -70,8 +93,7 @@ public class RestaurantQueueService {
         for (RestaurantQueue rq: all){
             if (restaurantQueue.getRestaurantId() == rq.getRestaurantId()
             && !rq.isExpired()
-            && (rq.getUserId() == restaurantQueue.getUserId())
-            && (restaurantQueue.getCreateTime().after(rq.getCreateTime()))){
+            && (rq.getUserId() == restaurantQueue.getUserId())){
                 result.addMessage("cannot add duplicate entry", ResultType.INVALID);
                 return result;
             }

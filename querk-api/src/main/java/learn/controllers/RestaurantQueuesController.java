@@ -32,9 +32,9 @@ public class RestaurantQueuesController {
         return list;
     }
 
-    @PutMapping("/{entryId}")
-    public ResponseEntity<Object> changeToExpired(@PathVariable Integer entryId, @RequestBody RestaurantQueue restaurantQueue){
-        if (entryId != restaurantQueue.getEntryId()) {
+    @PutMapping("/update/{userId}")
+    public ResponseEntity<Object> changeToExpired(@PathVariable Integer userId, @RequestBody RestaurantQueue restaurantQueue){
+        if (userId != restaurantQueue.getUserId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 

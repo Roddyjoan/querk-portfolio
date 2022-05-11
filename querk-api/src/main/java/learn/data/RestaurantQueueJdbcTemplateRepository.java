@@ -38,7 +38,9 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
 
     @Override
     public RestaurantQueue add(RestaurantQueue restaurantQueue) {
-        final String sql = "insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) "
+
+        final String sql =
+                "insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) "
                 + "values (?,?,now(),?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
@@ -70,7 +72,7 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     @Override
     public boolean makeExpired(RestaurantQueue restaurantQueue) {
         final String sql = "update restaurants_customers set expired = true where customer_id = ?;";
-        return template.update(sql, restaurantQueue.getRestaurantId()) >0 ;
+        return template.update(sql, restaurantQueue.getUserId()) >0 ;
     }
 
     // insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired)
