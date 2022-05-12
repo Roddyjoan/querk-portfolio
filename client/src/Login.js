@@ -10,8 +10,10 @@ function Login() {
     const navigate = useNavigate();
 
     function submitHandler(event) {
+        let api_url = process.env.REACT_APP_API_URL;
+
         event.preventDefault();
-        fetch("http://localhost:8090/api/authenticate/login", {
+        fetch( api_url + "api/authenticate/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

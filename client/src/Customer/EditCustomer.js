@@ -12,7 +12,9 @@ function EditCustomer(){
         const token = localStorage.getItem("token");
 
         if (token) {
-            fetch("http://localhost:8090/api/customers/" + id, {
+            let api_url = process.env.REACT_APP_API_URL;
+
+            fetch( api_url + "api/customers/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
@@ -63,7 +65,9 @@ function EditCustomer(){
     function handleEdit(e) {
         e.preventDefault();
 
-        fetch("http://localhost:8090/api/customers/" + customer.customerId, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch( api_url + "api/customers/" + customer.customerId, {
             method: "PUT",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),

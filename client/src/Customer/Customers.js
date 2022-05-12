@@ -25,7 +25,9 @@ function Customers() {
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8090/api/customers/", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/customers/", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt

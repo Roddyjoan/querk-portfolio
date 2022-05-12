@@ -100,6 +100,7 @@ function ShowingQueues() {
 
     return (
 
+
         user.user.authorities === "ROLE_CUSTOMER" ? 
         ( queue.length ? 
             (<> <br /> <h3> Hello! Please Get Ready! Your food will be ready soon! 
@@ -108,6 +109,7 @@ function ShowingQueues() {
             
             <p> Food is not yet ready! </p></>) : ""
     ) : ""
+
     )
 }
 

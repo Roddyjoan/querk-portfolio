@@ -16,7 +16,9 @@ function Restaurant(props) {
 
     useEffect(() => {
 
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurantId, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurant/queue/current/" + restaurantId, {
         })
             .then(response => {
                 if (response.ok) {
@@ -42,7 +44,9 @@ function Restaurant(props) {
             }
             console.log(user.user.jti);
 
-            fetch("http://localhost:8090/api/restaurant/queue", {
+            let api_url = process.env.REACT_APP_API_URL;
+
+            fetch(api_url + "api/restaurant/queue", {
 
 
                 method: "POST",
