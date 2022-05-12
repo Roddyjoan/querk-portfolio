@@ -12,6 +12,7 @@ function ShowingQueues() {
     const [index, setIndex] = useState(0)
     let custId;
     const nav = useNavigate();
+    let foodready = false;
 
     function errorHandler(rejectionMessage) {
         console.log(rejectionMessage);
@@ -35,8 +36,7 @@ function ShowingQueues() {
                     custId = jsonData[0].userId;
                     getQueue();
                     if (jsonData[0].ready) {
-
-                        nav("/foodready")
+                        foodready = true;
                     }
                 }
                 )
@@ -77,40 +77,43 @@ function ShowingQueues() {
                     alert("Something went wrong while fetching.");
                 }
             })
-            .then(jsonData => 
-                {
-                    setQueue(jsonData);
-                    let num = queue.findIndex(Object =>{
-                        return Object.userId == user.user.jti;
-                    });
-                    setIndex(num);
-                    console.log(num);
-                    
-                })
+            .then(jsonData => {
+                setQueue(jsonData);
+                let num = queue.findIndex(Object => {
+                    return Object.userId == user.user.jti;
+                });
+                setIndex(num);
+                console.log(num);
+
+            })
             .catch(rejection => () => errorHandler(rejection));
     }
 
 
-    function getPlaceInLine(){
+    function getPlaceInLine() {
         console.log(queue);
         console.log("hekp")
     }
-    
+
 
 
     return (
 
 
-        user.user.authorities === "ROLE_CUSTOMER" ? 
-        ( queue.length ? 
-            (<> <br /> <h3> Hello! Please Get Ready! Your food will be ready soon! 
-                    <br />Your place in line: {index + 1}
-            </h3> <br />
-            
-            <p> Food is not yet ready! </p></>) : ""
-    ) : ""
+        user.user.authorities === "ROLE_CUSTOMER" ?
+            (queue.length ?
 
-    )
+                (foodready ? (
+                    <><img src={'./ramen.jpg'} className="img-fluid" /><div className="burrito-text">
+                        <h1> Your food is ready!You can go pick it up now: D </h1>
+                    </div></>
+                ) : (
+                    <> <br /> <h3> Hello! Please Get Ready! Your food will be ready soon!
+                        <br />Your place in line: {index + 1}
+                    </h3> <br />
+
+                        <p> Food is not yet ready! </p></>
+                )) : "" ) : "")
 }
 
 export default ShowingQueues;
