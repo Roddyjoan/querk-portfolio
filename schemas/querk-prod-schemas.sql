@@ -77,7 +77,7 @@ create table app_user_role (
 insert into app_role (`name`) values
     ('ADMIN'),
     ('OWNER'),
-	('CUSTOMER')
+	('CUSTOMER');
 ;
 
 -- passwords are set to "P@ssw0rd!"
@@ -85,21 +85,27 @@ insert into app_user (username, password_hash, disabled)
     values
     ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
-    ('roddy@gamilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+    ('roddy@gamilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@gailcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@gmilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@amilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
 	
 insert into app_user_role (app_user_id, app_role_id)
     values
     (1,2),
-    (2,1),
-    (3,3);
+    (2,2),
+    (3,2),
+    (4,3),
+    (5,3),
+    (6,3);
     
 insert into customers (`name`, user_id, phone_num, email) values 
-		("roddy r", 4, "1231231234", "roddy@gamil.com" ),
+		("roddy r", 1, "1231231234", "roddy@gamil.com" ),
         ("kayleen c", 2, "9876543210", "kayleen@gmail.com" ),
         ("erwyn p", 3, "9173886944", "erwyn@gmail.com");
         
 	insert into restaurants (`name`, user_id, address, est) values
-		("Burrito Restaurant", 1, "300 Burrito Lane", "10"),
+		("Burrito Restaurant", 4, "300 Burrito Lane", "10"),
         ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "30"),
         ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
  
