@@ -82,9 +82,9 @@ function ShowingQueues() {
 
 
     return (
-        <><h3> Hello! Please Get Ready! Your food at  will be ready soon! </h3> <br />
-
-            <p> kindly hold, your food is not yet ready</p></>
+        <>
+        <br /><br /><h2> Please get ready! Your food will be prepared soon! </h2> 
+        </>
     )
 }
 

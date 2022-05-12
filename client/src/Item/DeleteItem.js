@@ -8,7 +8,7 @@ function DeleteItem(props) {
     function handleDelete() {
         var confirm = window.confirm("Are you sure you want to delete?")
         if (confirm) {
-            fetch("http://localhost:8080/api/menu/" + props.itemId, {
+            fetch("http://localhost:8090/api/menu/" + props.itemId, {
                 method: "DELETE",
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")

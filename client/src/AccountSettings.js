@@ -58,8 +58,9 @@ function AccountSettings() {
             
             {user.user.authorities === "ROLE_OWNER" ? 
                 <>
-                <Link to={"/add/item/" + restaurant.restaurantId} ><button >Add an item to your menu!</button></Link>
-                <button>Delete an item from your menu!</button></>
+                <Link to={"/add/item/" + restaurant.restaurantId} ><button >Add Menu Item</button></Link>
+                <Link to={"/delete/item/" + restaurant.restaurantId} ><button>Delete Menu Item</button></Link>
+                </>
             
             : ""}
         </div>

@@ -39,8 +39,17 @@ function Nav() {
             <div className="nav">
                 {user?.user ? (
                     <>
+                        {user.user.authorities === "ROLE_OWNER" ? (
+                        <>
+                        <Link to="/"><button className="navButton">Home</button></Link>                      
+                        <Link to={'/menu/' + user.user.jti}><button className="navButton">Menu</button></Link>
+                        </>
+                    ) : (
+                        <>
                         <Link to="/"><button className="navButton">Home</button></Link>                      
                         <Link to="/restaurants"><button className="navButton">Restaurants</button></Link>
+                        </>
+                        )}
                     </>
                 ) : (
                     <>

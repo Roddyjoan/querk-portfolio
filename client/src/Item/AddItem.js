@@ -106,7 +106,7 @@ function AddItem() {
                     <br />
 
                     <button type="submit" >Submit</button>
-                    <Link to={'/home'}><button>Cancel</button></Link>
+                    <Link to={'/accountsettings/' + id}><button>Cancel</button></Link>
                 </form>
             </div>
         </>
