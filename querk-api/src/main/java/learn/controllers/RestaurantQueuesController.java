@@ -32,6 +32,13 @@ public class RestaurantQueuesController {
         return list;
     }
 
+    @GetMapping("/user/{userId}")
+    public List<RestaurantQueue> findAllNonExpiredByCustomerId(@PathVariable Integer userId) {
+        List<RestaurantQueue> list = service.findByUserId(userId);
+        return list;
+    }
+
+
     @PutMapping("/update/{userId}")
     public ResponseEntity<Object> changeToExpired(@PathVariable Integer userId, @RequestBody RestaurantQueue restaurantQueue){
         if (userId != restaurantQueue.getUserId()) {
@@ -39,6 +46,20 @@ public class RestaurantQueuesController {
         }
 
         Result<RestaurantQueue> result = service.makeExpired(restaurantQueue);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/ready/{userId}")
+    public ResponseEntity<Object> changeToReady(@PathVariable Integer userId, @RequestBody RestaurantQueue restaurantQueue){
+        if (userId != restaurantQueue.getUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<RestaurantQueue> result = service.makeReady(restaurantQueue);
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

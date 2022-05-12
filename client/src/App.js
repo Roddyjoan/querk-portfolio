@@ -22,6 +22,8 @@ import About from './About';
 import EditCustomer from './Customer/EditCustomer';
 import DeleteCustomer from './Customer/DeleteCustomer';
 import JoinQueue from './Restaurant/JoinQueue';
+import AddItem from './Item/AddItem';
+import FoodReady from './FoodReady';
 
 function App() {
 
@@ -67,7 +69,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
-            <Route path="/restaurant/queue/current/join/:id" element={<JoinQueue />} />   
+            <Route path="/restaurant/queue/current/join/:id" element={<JoinQueue />} />  
+            <Route path="/add/item/:id" element={<AddItem />} />
+            <Route path="/foodready" element={<FoodReady />} />
         </Routes>
       </div>
     </AuthContext.Provider>

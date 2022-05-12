@@ -10,7 +10,7 @@ function ViewQueue(props) {
    
     useEffect(() => {
         const jwt = localStorage.getItem("token");
-        fetch("http://localhost:8090/api/customers/" + customerId, {
+        fetch("http://localhost:8090/api/customers/" + userId, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt
@@ -75,7 +75,37 @@ function ViewQueue(props) {
     function signalFoodReady(e){
         e.preventDefault();
         console.log("food is ready")
+        
+        const jwt = localStorage.getItem("token");
+        let toUpdate = {
+            entryId: entryId,
+            userId: userId,
+            restaurantId: props.id,
+            ready: true
+        };
+        e.preventDefault();
+        fetch("http://localhost:8090/api/restaurant/queue/ready/" + userId, {
+            method:"PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + jwt
+            },
+            body: JSON.stringify(toUpdate)
+        })
+            .then(response => {
+                if (response.status === 204) {
+                    console.log(response)
+                    console.log("this means it went through")
+                    return response.json();
 
+                } else {
+                    console.log(props.id)
+                    alert("Something went wrong while fetching.");
+                }
+            })
+            .catch(rejection => {
+                alert("Failure: " + rejection.status + ": " + rejection.statusText)
+            });
     }
     
     return (

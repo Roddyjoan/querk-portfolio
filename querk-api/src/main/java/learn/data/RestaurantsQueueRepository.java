@@ -13,12 +13,13 @@ public interface RestaurantsQueueRepository {
 
     RestaurantQueue add(RestaurantQueue restaurantQueue);
 
+    List<RestaurantQueue> findAllNonExpiredByUserId(Integer userId);
     List<RestaurantQueue> findAllNonExpiredByRestaurantId(Integer restaurantId);
 
     List<RestaurantQueue> findAllNonExpired();
 
     boolean makeExpired(RestaurantQueue restaurantQueue);
-
+    boolean makeReady(RestaurantQueue restaurantQueue);
     boolean update(RestaurantQueue restaurantQueue);
 
     boolean delete(Integer entryId);
