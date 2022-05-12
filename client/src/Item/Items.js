@@ -13,7 +13,9 @@ function Items(props) {
 
     useEffect(() => {
         console.log(id);
-        fetch("http://localhost:8090/api/menu/restaurant/" + id)
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/menu/restaurant/" + id)
         .then(response => {
             if (response.status === 200) {
                 return response.json();

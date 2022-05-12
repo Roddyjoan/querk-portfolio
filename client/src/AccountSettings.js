@@ -12,7 +12,10 @@ function AccountSettings() {
    const [customer, setCustomer] = useState([]);
    
    function fetchRestaurant(){
-    fetch("http://localhost:8090/api/restaurants/" + user.user.jti, {
+
+    let api_url = process.env.REACT_APP_API_URL;
+
+    fetch(api_url + "api/restaurants/" + user.user.jti, {
     })
         .then(response => {
             if (response.ok) {
@@ -32,7 +35,10 @@ function AccountSettings() {
     function fetchCustomer(){
         console.log(user.user.authorities);
         console.log(user.user.jti);
-        fetch("http://localhost:8090/api/customers/" + user.user.jti, {
+        
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/customers/" + user.user.jti, {
         })
             .then(response => {
                 if (response.ok) {

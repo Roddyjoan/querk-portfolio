@@ -13,7 +13,10 @@ function ViewQueue(props) {
 
     useEffect(() => {
         const jwt = localStorage.getItem("token");
-        fetch("http://localhost:8090/api/customers/" + userId, {
+
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch( api_url + "api/customers/" + userId, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + jwt
@@ -50,7 +53,10 @@ function ViewQueue(props) {
             restaurantId: props.id
         };
         e.preventDefault();
-        fetch("http://localhost:8090/api/restaurant/queue/update/" + userId, {
+
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurant/queue/update/" + userId, {
             method:"PUT",
             headers: {
                 "Content-Type": "application/json"

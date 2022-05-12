@@ -33,7 +33,9 @@ function AddCustomer() {
             roles: ["CUSTOMER"]
         };
 
-        fetch("http://localhost:8090/api/user/customer", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/user/customer", {
 
 
             method: "POST",
@@ -66,7 +68,9 @@ function AddCustomer() {
             email: email
         };
 
-        fetch("http://localhost:8090/api/customers", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/customers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

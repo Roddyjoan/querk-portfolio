@@ -14,8 +14,9 @@ function DeleteCustomer(){
         console.log(jwt);
 
         if(jwt){
-
-        fetch("http://localhost:8090/api/customer/" + id, {
+        
+        let api_url = process.env.REACT_APP_API_URL;
+        fetch(api_url + "api/customer/" + id, {
             headers: {
                 Authorization: "Bearer " + jwt,
             }
@@ -46,7 +47,9 @@ function DeleteCustomer(){
     function handleDelete(e){
         e.preventDefault();
 
-        fetch("http://localhost:8090/api/customer/" + id, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch( api_url + "api/customer/" + id, {
             
             method: "DELETE",
             headers: {
