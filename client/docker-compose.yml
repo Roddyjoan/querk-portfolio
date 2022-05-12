@@ -2,8 +2,8 @@ version: "3.9"
 
 services:
   querk-api:
-    image: erwyn98/querk-ui:2.0
+    image: erwyn98/querk-ui
     environment:
-      - REACT_APP_API_URL=http://Querkapi-env-2.eba-apwmxuzm.us-east-1.elasticbeanstalk.com/queues_project
+      - REACT_APP_API_URL=http://Querkapi-env.eba-apwmxuzm.us-east-1.elasticbeanstalk.com/queues_project
     ports:
       - 80:80

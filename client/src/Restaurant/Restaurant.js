@@ -24,7 +24,8 @@ function Restaurant(props) {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    alert("Something went wrong while fetching.");
+                    console.log(response);
+                   // alert("Something went wrong while fetching.");
                 }
             })
             .then(jsonData => setInQueue(jsonData))

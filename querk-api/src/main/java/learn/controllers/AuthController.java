@@ -15,7 +15,8 @@ import learn.security.JwtConverter;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+//@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin (origins = {"*"})
 @RestController
 @RequestMapping("/api/authenticate")
 public class AuthController {
