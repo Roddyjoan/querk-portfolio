@@ -17,7 +17,9 @@ function CurrentQueue() {
 
     function fetchQueues() {
 
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + id, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurant/queue/current/" + id, {
         })
         .then(response => {
             if (response.status === 200) {

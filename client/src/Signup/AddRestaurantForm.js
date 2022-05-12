@@ -40,7 +40,9 @@ function AddRestaurant() {
             roles: ["OWNER"]
         };
 
-        fetch("http://localhost:8090/api/user/restaurant", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/user/restaurant", {
 
 
             method: "POST",
@@ -75,7 +77,9 @@ function AddRestaurant() {
             address: address
         };
 
-        fetch("http://localhost:8090/api/restaurants", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurants", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

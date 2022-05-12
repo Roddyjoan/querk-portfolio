@@ -16,9 +16,9 @@ customer_id		int primary key auto_increment,
 user_id			int null,
 `name`			varchar(50) not null,
 phone_num		char(10) not null,
-email			varchar(50) null,
+email			varchar(80) null,
 
-constraint fk_customers_app_user foreign key (user_id) references app_user(app_user_id)
+constraint fk_customers_app_user foreign key (customer_id) references app_user(app_user_id)
 );
 
 create table restaurants (
@@ -28,7 +28,7 @@ user_id			int null,
 address			varchar(100) not null,
 est				int null,
 
-constraint fk_restaurants_app_user foreign key (user_id) references app_user(app_user_id)
+constraint fk_restaurants_app_user foreign key (restaurant_id) references app_user(app_user_id)
 );
 
 create table items (
@@ -53,7 +53,7 @@ expired				boolean not null,
 ready				boolean null,
 
 constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
-constraint fk_customers_restaurants foreign key (customer_id) references customers(user_id)
+constraint fk_customers_restaurants foreign key (customer_id) references customers(customer_id)
 ); 
 
 create table app_role (
@@ -89,8 +89,10 @@ insert into app_user (username, password_hash, disabled)
     ('roddy@gailcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('roddy@gmilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('roddy@amilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+    ('jane@doe.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+
 	
-insert into app_user_role (app_user_id, app_role_id)
+insert into app_user_role
     values
     (1,3),
     (2,2),
@@ -99,20 +101,25 @@ insert into app_user_role (app_user_id, app_role_id)
     (5,3),
     (6,3);
     
+    
 insert into customers (`name`, user_id, phone_num, email) values 
-		("roddy r", 4, "1231231234", "roddy@gamil.com" ),
-        ("kayleen c", 2, "9876543210", "kayleen@gmail.com" ),
-        ("erwyn p", 3, "9173886944", "erwyn@gmail.com");
+		("roddy", 1, "1231231234", "roddy@gamil.com" ),
+        ("kayleen", 2, "9876543210", "kayleen@gmail.com" ),
+        ("erwyn", 3, "9173886944", "erwyn@gmail.com");
         
+-- select * from app_user au inner join customers c on c.user_id = au.app_user_id;
+
 	insert into restaurants (`name`, user_id, address, est) values
-		("Burrito Restaurant", 1, "300 Burrito Lane", "10"),
-        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "30"),
+		("Burrito Restaurant", 4, "300 Burrito Lane", "20"),
+        ("Ichiran", 5, "132 W 31st St, New York, NY 10001", "60"),
         ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
- 
+    
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
+
 		(4, 1, "2012-02-02 02:12:00.0000000", true, false),
         (4, 2, "2012-02-02 02:12:00.0000000", false, true),
         (4, 3, "2013-03-03 03:13:00.0000000", false, true),
+
         (2, 1, "2014-04-04 04:14:00.0000000", true, false),
         (2, 2, "2015-05-05 05:15:00.0000000", false, true),
         (2, 3, "2016-06-06 06:16:00.0000000", false, true),
@@ -129,30 +136,5 @@ insert into customers (`name`, user_id, phone_num, email) values
         (3, "Wagyu", "entree", 7.43, "Expensive beef but Hey its good beef"),
         (3, "Taiyaki", "dessert", 7.00, "A fried delicacy with Ice Cream");
 
- 
-        
-select * from customers c inner join app_user a on c.user_id = a.app_user_id;
-select * from app_user;
-select * from customers;
-select * from app_user_role;
-select * from app_user;
-select * from restaurants_customers;
-
-insert into app_user (username, password_hash, disabled)
-    values
-    ('test', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
 
 
-        
-insert into app_user_role (app_user_id, app_role_id) values ( 4 , 3 );
-insert into customers (`name`, user_id, phone_num, email) values 
-		("tester", 4, "1231231234", "roddy@gamil.com" );
-insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
-		(4, 1, "2012-02-02 02:13:00.0000000", true, false);
-select * from app_user where app_user_id = 4;
-select * from customers c inner join app_user a on c.user_id=a.app_user_id;
-select * from customers where user_id=4;
-select * from app_user_role where app_user_id=4;
-select * from restaurants_customers where customer_id=4;
-select * from customers;
-select * from restaurants;

@@ -56,7 +56,9 @@ function AddItem() {
             category: category
         };
 
-        fetch("http://localhost:8090/api/menu", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/menu", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -106,7 +108,7 @@ function AddItem() {
                     <br />
 
                     <button type="submit" >Submit</button>
-                    <Link to={'/home'}><button>Cancel</button></Link>
+                    <Link to={'/accountsettings/' + id}><button>Cancel</button></Link>
                 </form>
             </div>
         </>

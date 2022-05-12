@@ -23,6 +23,7 @@ import EditCustomer from './Customer/EditCustomer';
 import DeleteCustomer from './Customer/DeleteCustomer';
 import JoinQueue from './Restaurant/JoinQueue';
 import AddItem from './Item/AddItem';
+import DeleteItem from './Item/DeleteItem';
 import FoodReady from './FoodReady';
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
             <Route path="/restaurant/queue/current/join/:id" element={<JoinQueue />} />  
             <Route path="/add/item/:id" element={<AddItem />} />
+            <Route path="/delete/item/:id" element={<DeleteItem />} />
             <Route path="/foodready" element={<FoodReady />} />
         </Routes>
       </div>

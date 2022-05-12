@@ -12,7 +12,10 @@ function AccountSettings() {
    const [customer, setCustomer] = useState([]);
    
    function fetchRestaurant(){
-    fetch("http://localhost:8090/api/restaurants/" + user.user.jti, {
+
+    let api_url = process.env.REACT_APP_API_URL;
+
+    fetch(api_url + "api/restaurants/" + user.user.jti, {
     })
         .then(response => {
             if (response.ok) {
@@ -30,7 +33,14 @@ function AccountSettings() {
     }
 
     function fetchCustomer(){
-        fetch("http://localhost:8090/api/customers/" + user.user.jti, {
+
+        console.log(user.user.authorities);
+        console.log(user.user.jti);
+        
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/customers/" + user.user.jti, {
+
         })
             .then(response => {
                 if (response.ok) {
@@ -58,8 +68,9 @@ function AccountSettings() {
             
             {user.user.authorities === "ROLE_OWNER" ? 
                 <>
-                <Link to={"/add/item/" + restaurant.restaurantId} ><button >Add an item to your menu!</button></Link>
-                <button>Delete an item from your menu!</button></>
+                <Link to={"/add/item/" + restaurant.restaurantId} ><button >Add Menu Item</button></Link>
+                <Link to={"/delete/item/" + restaurant.restaurantId} ><button>Delete Menu Item</button></Link>
+                </>
             
             : ""}
         </div>
