@@ -4,6 +4,6 @@ services:
   querk-api:
     image: erwyn98/querk-ui:2.0
     environment:
-      - REACT_APP_API_URL=http://iqueue-db.ckukznuzdye9.us-east-1.rds.amazonaws.com:3306/queues_project
+      - REACT_APP_API_URL=http://Querkapi-env-2.eba-apwmxuzm.us-east-1.elasticbeanstalk.com/queues_project
     ports:
       - 80:80
