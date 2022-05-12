@@ -79,7 +79,16 @@ function Restaurant(props) {
             <p><b>Estimated Wait Time:</b> {inQueue.length ? timeEstimate * inQueue.length : timeEstimate} minutes </p>
             <Link to={'/menu/' + restaurantId}><button>Menu</button></Link>
             <button onClick={joinQueue}>Join Queue</button>
-            <Link to={'/restaurant/queue/current/' + restaurantId}><button> View Queue</button></Link>
+            
+            
+            
+            {user?.user ? (user.user.authorities === "ROLE_OWNER" ?
+                (
+                    <Link to={'/restaurant/queue/current/' + restaurantId}><button> View Queue</button></Link>
+                ):(
+                    <></>
+            )) : ""}
+            
 
         </div>
 
