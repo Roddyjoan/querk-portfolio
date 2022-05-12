@@ -40,8 +40,8 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     public RestaurantQueue add(RestaurantQueue restaurantQueue) {
 
         final String sql =
-                "insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) "
-                + "values (?,?,now(),?,?);";
+                "insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired, ready) "
+                + "values (?,?,now(),?,?,false);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -65,8 +65,22 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     @Override
     public List<RestaurantQueue> findAllNonExpiredByRestaurantId(Integer restaurantId) {
         final String sql="select * from customers c " +
-                "inner join restaurants_customers rc on c.customer_id=rc.customer_id where rc.expired = false and rc.restaurant_id=?;";
+                "inner join restaurants_customers rc on c.user_id=rc.customer_id where rc.expired = false and rc.restaurant_id=? order by rc.create_time asc ;";
         return template.query(sql,new RestaurantQueueMapper(), restaurantId);
+    }
+    @Override
+    public List<RestaurantQueue> findAllNonExpiredByUserId(Integer userId) {
+        final String sql="select * from customers c " +
+                "inner join restaurants_customers rc on c.user_id=rc.customer_id where rc.expired = false and rc.customer_id=? order by rc.create_time asc ;";
+        return template.query(sql,new RestaurantQueueMapper(), userId);
+    }
+
+
+    @Override
+    public List<RestaurantQueue> findAllNonExpired() {
+        final String sql="select * from customers c " +
+                "inner join restaurants_customers rc on c.user_id=rc.customer_id where rc.expired = false;";
+        return template.query(sql,new RestaurantQueueMapper());
     }
 
     @Override
@@ -74,6 +88,13 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
         final String sql = "update restaurants_customers set expired = true where customer_id = ?;";
         return template.update(sql, restaurantQueue.getUserId()) >0 ;
     }
+
+    @Override
+    public boolean makeReady(RestaurantQueue restaurantQueue) {
+        final String sql = "update restaurants_customers set ready = true where customer_id = ?;";
+        return template.update(sql, restaurantQueue.getUserId()) >0 ;
+    }
+
 
     // insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired)
     @Override

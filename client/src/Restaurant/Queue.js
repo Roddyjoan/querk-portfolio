@@ -8,9 +8,6 @@ function ViewQueue(props) {
     const [email, setEmail] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
    
-    
-
-
     useEffect(() => {
         const jwt = localStorage.getItem("token");
 
@@ -48,7 +45,7 @@ function ViewQueue(props) {
        
         const jwt = localStorage.getItem("token");
         let toUpdate = {
-            entryId:1,
+            entryId: 1,
             userId: userId,
             restaurantId: props.id
         };
@@ -59,7 +56,8 @@ function ViewQueue(props) {
         fetch(api_url + "api/restaurant/queue/update/" + userId, {
             method:"PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + jwt
             },
             body: JSON.stringify(toUpdate)
         })
@@ -77,21 +75,46 @@ function ViewQueue(props) {
             .catch(rejection => {
                 alert("Failure: " + rejection.status + ": " + rejection.statusText)
             });
-
         
     }
 
     function signalFoodReady(e){
         e.preventDefault();
         console.log("food is ready")
+        
+        const jwt = localStorage.getItem("token");
+        let toUpdate = {
+            entryId: entryId,
+            userId: userId,
+            restaurantId: props.id,
+            ready: true
+        };
+        e.preventDefault();
+        fetch("http://localhost:8090/api/restaurant/queue/ready/" + userId, {
+            method:"PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + jwt
+            },
+            body: JSON.stringify(toUpdate)
+        })
+            .then(response => {
+                if (response.status === 204) {
+                    console.log(response)
+                    console.log("this means it went through")
+                    return response.json();
 
+                } else {
+                    console.log(props.id)
+                    alert("Something went wrong while fetching.");
+                }
+            })
+            .catch(rejection => {
+                alert("Failure: " + rejection.status + ": " + rejection.statusText)
+            });
     }
     
-
-    
     return (
-        <>
-            
             <div className="queue-card">
                 <p><b>Customer's User Id:</b> {userId}</p>
                 <p><b>Name:</b> {name}</p>
@@ -101,7 +124,6 @@ function ViewQueue(props) {
                 <button onClick={signalFoodReady}>Food is Ready!</button>
                 <button onClick={makeExpired}>Take Customer Off Queue</button>
             </div>
-        </>
     )
 
 }

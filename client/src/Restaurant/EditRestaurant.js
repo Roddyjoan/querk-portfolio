@@ -8,7 +8,6 @@ function EditRestaurant(){
     const { id } = useParams();
 
     useEffect(() => {
-        console.log(id);
         const token = localStorage.getItem("token");
 
         if (token) {
@@ -59,7 +58,7 @@ function EditRestaurant(){
 
     function handleEstChange(event) {
         const restaurantCopy = { ...restaurant };
-        restaurantCopy.est = event.target.value;
+        restaurantCopy.timeEstimate = event.target.value;
         setRestaurant(restaurantCopy);
     }
 
@@ -82,16 +81,21 @@ function EditRestaurant(){
         );
     }
 
+    function handleCancel() {
+        navigate("/");
+    }
+
     return restaurant ?
     <form onSubmit={handleEdit} className="with-margins">
         <label htmlFor="name">Name: </label><br />
         <input onChange={handleNameChange} value={restaurant?.name} id="name"></input><br /><br />
         <label htmlFor="adresss">Address:</label><br />
-        <input onChange={handleAddressChange} value={restaurant?.Address} id="address"></input><br /><br />
-        <label htmlFor="email">Est:</label><br />
-        <input onChange={handleEstChange} value={restaurant?.est} id="est"></input><br /><br />
+        <input onChange={handleAddressChange} value={restaurant?.address} id="address"></input><br /><br />
+        <label htmlFor="est">Estimated time for customer to advance in queue:</label><br />
+        <input onChange={handleEstChange} value={restaurant?.timeEstimate} id="est"></input><br /><br />
 
         <button>Submit</button>
+        <button onClick={handleCancel}>Cancel</button>
     </form>
     : <></>
     ;

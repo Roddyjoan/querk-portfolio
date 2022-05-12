@@ -9,17 +9,27 @@ public class RestaurantQueue {
     private Time createTime;
     private boolean orderedAhead;
     private boolean expired;
+    private boolean ready;
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
 
     public RestaurantQueue() {
     }
 
-    public RestaurantQueue(Integer customerId, Integer restaurantId, Integer entryId, Time createTime, boolean orderedAhead, boolean expired) {
+    public RestaurantQueue(Integer customerId, Integer restaurantId, Integer entryId, Time createTime, boolean orderedAhead, boolean expired, boolean ready) {
         this.userId = customerId;
         this.restaurantId = restaurantId;
         this.entryId = entryId;
         this.createTime = createTime;
         this.orderedAhead = orderedAhead;
         this.expired = expired;
+        this.ready = ready;
     }
 
     public Integer getUserId() {

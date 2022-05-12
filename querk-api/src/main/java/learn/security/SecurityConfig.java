@@ -33,23 +33,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // TODO add antMatchers here to configure access to specific API endpoints
                 // require authentication for any request...
-                .antMatchers( HttpMethod.GET, "/api/restaurant/queue/current/*").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/restaurant/queue").hasAnyRole("CUSTOMER")
-                .antMatchers( HttpMethod.GET, "/api/restaurants").permitAll()
+
+                //LOGIN/SIGNUP
                 .antMatchers( HttpMethod.POST, "/api/authenticate/login").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/user/customer").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/user/restaurant").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/customer").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/customers").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/restaurants").permitAll()
-                .antMatchers( HttpMethod.PUT, "/api/customer/*").authenticated()
+
+
+                //MENU
+
+                .antMatchers( HttpMethod.GET, "/api/menu").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/menu/restaurant/*").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/menu").hasAnyRole("OWNER")
+                .antMatchers( HttpMethod.PUT, "/api/menu/*").hasAnyRole("OWNER")
+                .antMatchers( HttpMethod.DELETE, "/api/menu/*").hasAnyRole("OWNER")
+
+
+                //RESTAURANT QUEUE
+                .antMatchers( HttpMethod.GET, "/api/restaurant/queue/current/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/restaurant/queue/user/*").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/restaurant/queue").hasAnyRole("CUSTOMER")
+                .antMatchers(HttpMethod.PUT, "/api/restaurant/queue/update/*").hasAnyRole("OWNER")
+                .antMatchers(HttpMethod.PUT, "/api/restaurant/queue/ready/*").hasAnyRole("OWNER")
+
+                //RESTAURANTS
+                .antMatchers( HttpMethod.GET, "/api/restaurants").permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/restaurants/*").authenticated()
                 .antMatchers( HttpMethod.GET, "/api/restaurants/*").permitAll()
 
-                .antMatchers( HttpMethod.GET,"/api/customer").authenticated()
-                .antMatchers( HttpMethod.GET,"/api/customers").authenticated()
-                .antMatchers( HttpMethod.GET,"/api/restaurants").authenticated()
-                .antMatchers( HttpMethod.DELETE, "/api/customer/*").authenticated()
-                .antMatchers( HttpMethod.DELETE, "/api/restaurants/*").authenticated()
+                //CUSTOMERS
+                .antMatchers( HttpMethod.PUT, "/api/customers/*").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/customers/*").hasAnyRole("OWNER")
+
+
                 .antMatchers( HttpMethod.GET, "/").permitAll()
                 .anyRequest().denyAll()
                 .and()

@@ -1,11 +1,12 @@
-import { React, useEffect, useState } from "react";
+import { React, useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Queue from "./Queue";
-
+import AuthContext from "../AuthContext";
 
 function CurrentQueue() {
     const [queues, setQueues] = useState([]);
-    
+    const [user, setUser] = useContext(AuthContext);
+
     const { id } = useParams();
 
     const nav = useNavigate();
@@ -13,8 +14,6 @@ function CurrentQueue() {
     function errorHandler(rejectionMessage) {
         console.log(rejectionMessage);
     }
-
-
 
     function fetchQueues() {
 
@@ -48,9 +47,18 @@ function CurrentQueue() {
         ))
     }
 
+    function customerStatus(){
+
+    }
+
     return (
         <div className="with-margins">
-            {queueFactory()}
+            {user.user.authorities === "ROLE_OWNER" ?
+                (
+                    queueFactory()
+                ):(
+                    <></>
+            )}
         </div>
     )
 }

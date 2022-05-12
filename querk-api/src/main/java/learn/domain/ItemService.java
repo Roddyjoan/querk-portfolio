@@ -86,8 +86,8 @@ public class ItemService {
             return result;
         }
 
-        if (item.getCategory().isEmpty() || item.getCategory().isBlank()){
-            result.addMessage("item must have a name", ResultType.INVALID);
+        if (item.getCategory().isEmpty()){
+            result.addMessage("item must have a category", ResultType.INVALID);
             return result;
         }
 

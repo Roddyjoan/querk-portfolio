@@ -30,7 +30,7 @@ public class CustomerJdbcTemplateRepository implements CustomerRepository{
     public Customer findById(int customerId){
     final String sql = "select * " +
             " from customers " +
-            " where customer_id = ?";
+            " where user_id = ?";
 
         Customer customer = template.query(sql, new CustomerMapper(), customerId).stream()
                 .findFirst().orElse(null);

@@ -81,6 +81,9 @@ function EditCustomer(){
         );
     }
 
+    function handleCancel() {
+        navigate("/");
+    }
 
     return customer ?
         <form onSubmit={handleEdit} className="with-margins">
@@ -92,6 +95,7 @@ function EditCustomer(){
             <input onChange={handleEmailChange} value={customer?.email} id="email"></input><br /><br />
 
             <button>Submit</button>
+            <button onClick={handleCancel}>Cancel</button>
         </form>
         : <></>
     ;

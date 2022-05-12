@@ -27,6 +27,8 @@ public class RestaurantQueueService {
         return repository.findById(restaurantId);
     }
 
+    public List<RestaurantQueue> findByUserId (Integer userId) { return repository.findAllNonExpiredByUserId(userId);}
+
     public Result<RestaurantQueue> add(RestaurantQueue restaurantQueue){
         Result<RestaurantQueue> result = validate(restaurantQueue);
 
@@ -56,6 +58,24 @@ public class RestaurantQueueService {
         }
 
         if (!repository.makeExpired(restaurantQueue)){
+            String msg = String.format("Customer ID : %s not found ", restaurantQueue.getUserId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+        return result;
+    }
+
+    public Result<RestaurantQueue> makeReady(RestaurantQueue restaurantQueue){
+        Result<RestaurantQueue> result = validateUpdate(restaurantQueue);
+        if (!result.isSuccess()){
+            return result;
+        }
+
+        if (restaurantQueue.getEntryId() <= 0){
+            result.addMessage("Entry Id Must be set for an update operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.makeReady(restaurantQueue)){
             String msg = String.format("Customer ID : %s not found ", restaurantQueue.getUserId());
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
@@ -94,6 +114,17 @@ public class RestaurantQueueService {
             if (restaurantQueue.getRestaurantId() == rq.getRestaurantId()
             && !rq.isExpired()
             && (rq.getUserId() == restaurantQueue.getUserId())){
+                result.addMessage("cannot add duplicate entry", ResultType.INVALID);
+                return result;
+            }
+        }
+
+        List<RestaurantQueue> allNon = repository.findAllNonExpired();
+
+        for (RestaurantQueue queue: allNon){
+            if (restaurantQueue.getRestaurantId() == queue.getRestaurantId()
+                    && !queue.isExpired()
+                    && (queue.getUserId() == restaurantQueue.getUserId())){
                 result.addMessage("cannot add duplicate entry", ResultType.INVALID);
                 return result;
             }

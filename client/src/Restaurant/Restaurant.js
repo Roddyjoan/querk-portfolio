@@ -5,7 +5,7 @@ import JoinQueue from './JoinQueue';
 
 function Restaurant(props) {
     const { restaurantId, name, address, timeEstimate } = props.restaurantObj;
-    const [inQueue, SetInQueue] = useState([]);
+    const [inQueue, setInQueue] = useState([]);
     const [user, setUser] = useContext(AuthContext);
     function errorHandler(rejectionMessage) {
         console.log(rejectionMessage);
@@ -21,15 +21,15 @@ function Restaurant(props) {
         fetch(api_url + "api/restaurant/queue/current/" + restaurantId, {
         })
             .then(response => {
-                if (response.status === 200) {
+                if (response.ok) {
                     return response.json();
                 } else {
                     alert("Something went wrong while fetching.");
                 }
             })
-            .then(jsonData => SetInQueue(jsonData))
+            .then(jsonData => setInQueue(jsonData))
             .catch(rejection => () => errorHandler(rejection));
-    }, [inQueue]);
+    }, []);
 
     function joinQueue() {
         const jwt = localStorage.getItem("token");
@@ -63,7 +63,7 @@ function Restaurant(props) {
                     alert("Could not add you to the Queue");
                     console.log(response);
                 }
-            }).then(data => SetInQueue(data))
+            }).then(data => setInQueue([...inQueue, data]))
                 .catch(
                     rejection => console.log("Failure! ", rejection)
                 );
@@ -83,7 +83,16 @@ function Restaurant(props) {
             <p><b>Estimated Wait Time:</b> {inQueue.length ? timeEstimate * inQueue.length : timeEstimate} minutes </p>
             <Link to={'/menu/' + restaurantId}><button>Menu</button></Link>
             <button onClick={joinQueue}>Join Queue</button>
-            <Link to={'/restaurant/queue/current/' + restaurantId}><button> View Queue</button></Link>
+            
+            
+            
+            {user?.user ? (user.user.authorities === "ROLE_OWNER" ?
+                (
+                    <Link to={'/restaurant/queue/current/' + restaurantId}><button> View Queue</button></Link>
+                ):(
+                    <></>
+            )) : ""}
+            
 
         </div>
 

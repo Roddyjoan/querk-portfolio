@@ -39,6 +39,7 @@ function Items(props) {
                 itemObj={itemObj} 
                 items={items}
                 setItems={setItems}
+                id={id}
             />
         ))
     }
@@ -47,7 +48,8 @@ function Items(props) {
         <div className="with-margins">
             <h2>Menu</h2>
             <br />
-            {itemFactory()}
+            {items.length ? 
+            (itemFactory()) : (<><h2> Nothing to see here, yet! Please contact this restaurant for updated information!</h2><br /> <p> If you are the restaurant owner, please click account settings to add items to this menu!</p></>  ) }
         </div>
     )
 }

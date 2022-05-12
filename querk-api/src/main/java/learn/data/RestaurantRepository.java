@@ -15,4 +15,6 @@ public interface RestaurantRepository {
     boolean update(Restaurant restaurant);
 
     boolean deleteById(int restaurantId);
+
+
 }

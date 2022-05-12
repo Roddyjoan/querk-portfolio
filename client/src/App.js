@@ -11,6 +11,8 @@ import RequestPage from './Signup/RequestPage';
 import AddCustomer from './Signup/AddCustomer';
 import AddRestaurantForm from './Signup/AddRestaurantForm';
 import Restaurants from './Restaurant/Restaurants';
+import EditRestaurant from './Restaurant/EditRestaurant';
+import DeleteRestaurant from './Restaurant/DeleteRestaurant';
 import AccountSettings from './AccountSettings';
 import CurrentQueue from './Restaurant/CurrentQueue';
 import Items from './Item/Items';
@@ -20,6 +22,8 @@ import About from './About';
 import EditCustomer from './Customer/EditCustomer';
 import DeleteCustomer from './Customer/DeleteCustomer';
 import JoinQueue from './Restaurant/JoinQueue';
+import AddItem from './Item/AddItem';
+import FoodReady from './FoodReady';
 
 function App() {
 
@@ -49,6 +53,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound/>} />
             {/* <Route path="/customer" element={<Customer customerObj={customer} />} /> */}
+            <Route path="/editRestaurant/:id" element={<EditRestaurant />} />
+            <Route path="/deleteRestaurant/:id" element={<DeleteRestaurant />} />
             <Route path="/editCustomer/:id" element={<EditCustomer />} />
             <Route path="/deleteCustomer/:id" element={<DeleteCustomer />} />
             <Route path="/customers" element={<Customers />} />
@@ -63,7 +69,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
-            <Route path="/restaurant/queue/current/join/:id" element={<JoinQueue />} />   
+            <Route path="/restaurant/queue/current/join/:id" element={<JoinQueue />} />  
+            <Route path="/add/item/:id" element={<AddItem />} />
+            <Route path="/foodready" element={<FoodReady />} />
         </Routes>
       </div>
     </AuthContext.Provider>
