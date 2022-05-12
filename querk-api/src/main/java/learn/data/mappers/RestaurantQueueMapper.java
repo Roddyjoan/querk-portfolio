@@ -17,6 +17,7 @@ public class RestaurantQueueMapper implements RowMapper<RestaurantQueue> {
         restaurantQueue.setCreateTime(rs.getTime("create_time"));
         restaurantQueue.setOrderedAhead(rs.getBoolean("ordered_ahead"));
         restaurantQueue.setExpired(rs.getBoolean("expired"));
+        restaurantQueue.setReady(rs.getBoolean("ready"));
         return restaurantQueue;
     }
 }

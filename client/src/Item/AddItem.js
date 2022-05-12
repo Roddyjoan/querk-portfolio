@@ -1,55 +1,59 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function AddItem() {
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
-    const [restaurantId, setRestaurantId] = useState("");
-    
-    
+    const { id } = useParams();
+    const [category, setCategory] = useState("");
+
+
     const navigate = useNavigate();
 
     useEffect(
         () => {
-            const jwt = localStorage.getItem( "token" );
-            if( jwt == null ){
+            const jwt = localStorage.getItem("token");
+            if (jwt == null) {
                 navigate("/login");
             }
         },
         []
     );
 
-    function handleFirst(e) {
-        setFirst(e.target.value);
+    function handleCategory(e){
+
+        setCategory(e.target.value);
+        console.log(e.target.value)
+       
     }
 
-    function handleMiddle(e) {
-        setMiddle(e.target.value);
-    }
-
-    function handleLast(e) {
-        setLast(e.target.value);
-    }
-
-    function handleDOB(e) {
-        setBirthdate(e.target.value);
-    }
-
-    function handleHeight(e) {
-        setHeight(e.target.value);
-    }
-
-    function handleSubmit(e){
+    function handleName(e) {
         e.preventDefault();
+        setName(e.target.value)
+    }
 
-        const newAgent = {
-            firstName: first,
-            middleName: middle,
-            lastName: last,
-            dob: birthdate,
-            heightInInches: height
+    function handlePrice(e) {
+        e.preventDefault();
+        setPrice(e.target.value)
+    }
+
+    function handleDescription(e) {
+        e.preventDefault();
+        setDescription(e.target.value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(id);
+
+        const newItem = {
+            restaurantId: id,
+            name: name,
+            price: price,
+            description: description,
+            category: category
         };
 
         fetch("http://localhost:8090/api/menu", {
@@ -58,42 +62,52 @@ function AddItem() {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("token")
             },
-            body: JSON.stringify(newAgent)
+            body: JSON.stringify(newItem)
         }).then(response => {
             if (response.ok) {
-                alert("Successfully added agent.");
-                navigate("/agents");
+                alert("Successfully added item.");
+                navigate("/");
             } else {
-                alert("Could not add agent.");
-            } 
+                console.log(name)
+                console.log(response.json())
+                console.log(category)
+                
+                alert("Could not add item.");
+            }
         }).catch(
             rejection => console.log("Failure! ", rejection)
         );
     }
 
-    return(
+    return (
         <>
             <div>
-            <h2>Add an item to your menu</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="firstName">First Name:</label>
-                <input onChange={handleFirst} id="firstName"></input><br />
+                <h2>Add an item to your menu</h2>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name:</label>
+                    <input onChange={handleName} id="name"></input><br />
 
-                <label htmlFor="middleName">Middle Initial:</label>
-                <input onChange={handleMiddle} id="middleName"></input><br />
+                    <label htmlFor="price"> Price:$</label>
+                    <input onChange={handlePrice} id="price" type="number"></input><br />
 
-                <label htmlFor="lastName">Last Name:</label>
-                <input onChange={handleLast} id="lastName"></input><br />
+                    <label htmlFor="description">Description:</label>
+                    <input onChange={handleDescription} id="description"></input><br />
 
-                <label htmlFor="dob">DOB:</label>
-                <input onChange={handleDOB} type="date" id="dob"></input><br />
+                    <label htmlFor="category">Choose a category:</label>
+                    <select onChange={handleCategory} >
+                        <option selected > Select an option!</option>
+                        <option value="entree" onChange={handleCategory} >Entree</option>
+                        <option value="dessert" onChange={handleCategory} >Dessert</option>
+                        <option value="beverage" onChange={handleCategory} >Beverage</option>
+                        <option value="appetizer" onChange={handleCategory} >Appetizer</option>
+                    </select>
 
-                <label htmlFor="heightInInches">Height (inches):</label>
-                <input onChange={handleHeight} id="heightInInches"></input><br /><br />
 
-                <button type="submit">Submit</button>
-                <Link to={'/agents'}><button>Cancel</button></Link>
-            </form>
+                    <br />
+
+                    <button type="submit" >Submit</button>
+                    <Link to={'/home'}><button>Cancel</button></Link>
+                </form>
             </div>
         </>
     )

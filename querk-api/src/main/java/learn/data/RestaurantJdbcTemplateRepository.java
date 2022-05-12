@@ -29,7 +29,7 @@ public class RestaurantJdbcTemplateRepository implements RestaurantRepository {
 
     @Override
     public Restaurant findById(int restaurantId) {
-        final String sql = "select * from restaurants where restaurant_id=?;";
+        final String sql = "select * from restaurants where user_id=?;";
 
         return template.query(sql, new RestaurantMapper(), restaurantId).stream()
                 .findFirst().orElse(null);

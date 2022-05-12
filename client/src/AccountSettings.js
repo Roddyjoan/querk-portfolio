@@ -1,7 +1,7 @@
 import CurrentRestaurant from "./Restaurant/CurrentRestaurant";
 import CurrentCustomer from "./Customer/CurrentCustomer";
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "./AuthContext";
 
@@ -34,6 +34,7 @@ function AccountSettings() {
         })
             .then(response => {
                 if (response.ok) {
+                    console.log(restaurant.restaurantId)
                     return response.json();
                 } else {
                     alert("Could not fetch customer.");
@@ -54,6 +55,13 @@ function AccountSettings() {
     return (
         <div className="with-margins">
             {user.user.authorities === "ROLE_OWNER" ? fetchRestaurant() : fetchCustomer()}
+            
+            {user.user.authorities === "ROLE_OWNER" ? 
+                <>
+                <Link to={"/add/item/" + restaurant.restaurantId} ><button >Add an item to your menu!</button></Link>
+                <button>Delete an item from your menu!</button></>
+            
+            : ""}
         </div>
     )
 }
