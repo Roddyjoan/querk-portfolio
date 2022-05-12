@@ -90,7 +90,10 @@ function ViewQueue(props) {
             ready: true
         };
         e.preventDefault();
-        fetch("http://localhost:8090/api/restaurant/queue/ready/" + userId, {
+
+        let api_url = process.env.REACT_APP_API_URL;
+        
+        fetch(api_url + "api/restaurant/queue/ready/" + userId, {
             method:"PUT",
             headers: {
                 "Content-Type": "application/json",

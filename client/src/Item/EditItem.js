@@ -62,7 +62,9 @@ function EditItem(props) {
             category: category
         };
 
-        fetch("http://localhost:8090/api/menu/" + props.itemId, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/menu/" + props.itemId, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

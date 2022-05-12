@@ -22,7 +22,9 @@ function ShowingQueues() {
 
         const jwt = localStorage.getItem("token");
         if (jwt) {
-            fetch("http://localhost:8090/api/restaurant/queue/user/" + user.user.jti)
+
+            let api_url = process.env.REACT_APP_API_URL;
+            fetch(api_url + "api/restaurant/queue/user/" + user.user.jti)
                 .then(response => {
                     if (response.ok) {
                         console.log(user.user.jti)
@@ -49,7 +51,9 @@ function ShowingQueues() {
 
     function getRestaurant() {
         // another fetch here for RESTAURANT
-        fetch("http://localhost:8090/api/restaurants/" + restaurantId)
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurants/" + restaurantId)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -68,7 +72,9 @@ function ShowingQueues() {
 
     function getQueue() {
 
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurant, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurant/queue/current/" + restaurant, {
         })
             .then(response => {
                 if (response.ok) {

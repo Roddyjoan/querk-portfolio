@@ -55,7 +55,7 @@ function AddRestaurant() {
                 alert("Successfully added user");
                 return response.json();
             } else {
-                alert("Could not add user. Make sure that the password has at least one special letter and one number.");
+                // alert("Could not add user. Make sure that the password has at least one special letter and one number.");
                 console.log(response);
             }
         }).then(data => {

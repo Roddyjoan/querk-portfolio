@@ -13,7 +13,7 @@ create table app_user (
 
 create table customers (
 customer_id		int primary key auto_increment,
-user_id			int null,
+user_id			int unique null,
 `name`			varchar(50) not null,
 phone_num		char(10) not null,
 email			varchar(80) null,
@@ -53,7 +53,7 @@ expired				boolean not null,
 ready				boolean null,
 
 constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
-constraint fk_customers_restaurants foreign key (customer_id) references customers(customer_id)
+constraint fk_customers_restaurants foreign key (customer_id) references customers(user_id)
 ); 
 
 create table app_role (
@@ -88,7 +88,7 @@ insert into app_user (username, password_hash, disabled)
     ('roddy@gamilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('roddy@gailcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('roddy@gmilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
-    ('roddy@amilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+    ('roddy@amilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('jane@doe.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
 
 	
@@ -116,9 +116,9 @@ insert into customers (`name`, user_id, phone_num, email) values
     
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
 
-		(4, 1, "2012-02-02 02:12:00.0000000", true, false),
-        (4, 2, "2012-02-02 02:12:00.0000000", false, true),
-        (4, 3, "2013-03-03 03:13:00.0000000", false, true),
+		(1, 1, "2012-02-02 02:12:00.0000000", true, false),
+        (1, 2, "2012-02-02 02:12:00.0000000", false, true),
+        (1, 3, "2013-03-03 03:13:00.0000000", false, true),
 
         (2, 1, "2014-04-04 04:14:00.0000000", true, false),
         (2, 2, "2015-05-05 05:15:00.0000000", false, true),

@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+//@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin (origins = {"*"})
 @RequestMapping("/api/user")
 public class AppUserController {
     private final AppUserService service;
@@ -19,7 +20,8 @@ public class AppUserController {
 
     @PostMapping("/customer")
     public ResponseEntity<Object> add(@RequestBody AppUser appUser){
-            Result<AppUser> result = service.addCustomer(appUser);
+        System.out.println("hit add customer endpoint");
+        Result<AppUser> result = service.addCustomer(appUser);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
@@ -28,6 +30,7 @@ public class AppUserController {
 
     @PostMapping("/restaurant")
     public ResponseEntity<Object> addRestaurant(@RequestBody AppUser appUser){
+        System.out.println("hit add restaurant endpoint");
         Result<AppUser> result = service.addRestaurant(appUser);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
