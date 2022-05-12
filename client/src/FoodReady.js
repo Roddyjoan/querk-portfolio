@@ -5,7 +5,7 @@ function FoodReady() {
         <>
             <img src={'./ramen.jpg'} className="img-fluid" />
             <div className="burrito-text">
-                <h1> You food is ready!You can go pick it up now: D </h1>
+                <h1> Your food is ready!You can go pick it up now :D </h1>
             </div></>
     )
 

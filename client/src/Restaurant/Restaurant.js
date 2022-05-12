@@ -31,12 +31,13 @@ function Restaurant(props) {
 
     function joinQueue() {
         const jwt = localStorage.getItem("token");
+        
 
         if (jwt) {
             const toAddToQueue = {
                 userId: user.user.jti,
                 restaurantId: restaurantId,
-                orderedAhead: true,
+                orderedAhead: false,
                 expired: false
             }
             console.log(user.user.jti);

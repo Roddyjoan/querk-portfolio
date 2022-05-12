@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
 
+
 function ShowingQueues() {
     const [user, setUser] = useContext(AuthContext);
     const [restaurantId, setRestaurantId] = useState("");
     const [queue, setQueue] = useState("");
     let restaurant;
+    let queues;
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -27,17 +29,17 @@ function ShowingQueues() {
                     }
                 })
                 .then(jsonData => {
-                    setQueue(jsonData);
-                    const ready = JSON.stringify(jsonData);
-                    console.log(ready.split(",")[6]);
-                    if (ready.split(",")[6] == '"ready":true}]') {
+                    restaurant = jsonData[0].restaurantId;
+                    getQueue();
+                    if (jsonData[0].ready) {
+
                         nav("/foodready")
                     }
                 }
                 )
                 .catch(rejection => () => errorHandler(rejection));
         }
-        console.log(restaurantId);
+        console.log(restaurant);
 
     }, [restaurantId])
 
@@ -63,7 +65,7 @@ function ShowingQueues() {
 
     function getQueue() {
 
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurant.restaurantId, {
+        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurant, {
         })
             .then(response => {
                 if (response.ok) {
@@ -72,20 +74,24 @@ function ShowingQueues() {
                     alert("Something went wrong while fetching.");
                 }
             })
-            .then(jsonData => console.log(jsonData))
+            .then(jsonData => setQueue(jsonData))
             .catch(rejection => () => errorHandler(rejection));
     }
 
 
 
-
+    
 
 
     return (
-        <><h3> Hello! Please Get Ready! Your food at  will be ready soon! </h3> <br />
 
+        user.user.authorities === "ROLE_CUSTOMER" ? 
+        (<><h3> Hello! Please Get Ready! Your food will be ready soon! Your place in line: {queue.length}
+            </h3>  <br />
+            
             <p> kindly hold, your food is not yet ready</p></>
+    ) : ""
     )
 }
 
-export default ShowingQueues
+export default ShowingQueues;

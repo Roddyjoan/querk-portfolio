@@ -50,6 +50,7 @@ customer_id			int not null,
 create_time			datetime not null,
 ordered_ahead		boolean not null,
 expired				boolean not null,
+ready				boolean null,
 
 constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
 constraint fk_customers_restaurants foreign key (customer_id) references customers(user_id)
