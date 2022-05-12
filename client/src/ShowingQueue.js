@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
 
+
 function ShowingQueues() {
     const [user, setUser] = useContext(AuthContext);
     const [restaurantId, setRestaurantId] = useState("");
-    const [queue, setQueue] = useState("");
+    const [queue, setQueue] = useState([]);
     let restaurant;
+    const [index, setIndex] = useState(0)
+    let custId;
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -21,25 +24,27 @@ function ShowingQueues() {
             fetch("http://localhost:8090/api/restaurant/queue/user/" + user.user.jti)
                 .then(response => {
                     if (response.ok) {
+                        console.log(user.user.jti)
                         return response.json();
                     } else {
                         alert("Something went wrong while fetching.");
                     }
                 })
                 .then(jsonData => {
-                    setQueue(jsonData);
-                    const ready = JSON.stringify(jsonData);
-                    console.log(ready.split(",")[6]);
-                    if (ready.split(",")[6] == '"ready":true}]') {
+                    restaurant = jsonData[0].restaurantId;
+                    custId = jsonData[0].userId;
+                    getQueue();
+                    if (jsonData[0].ready) {
+
                         nav("/foodready")
                     }
                 }
                 )
                 .catch(rejection => () => errorHandler(rejection));
         }
-        console.log(restaurantId);
+        console.log(restaurant);
 
-    }, [restaurantId])
+    }, [queue])
 
 
     function getRestaurant() {
@@ -63,7 +68,7 @@ function ShowingQueues() {
 
     function getQueue() {
 
-        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurant.restaurantId, {
+        fetch("http://localhost:8090/api/restaurant/queue/current/" + restaurant, {
         })
             .then(response => {
                 if (response.ok) {
@@ -72,20 +77,40 @@ function ShowingQueues() {
                     alert("Something went wrong while fetching.");
                 }
             })
-            .then(jsonData => console.log(jsonData))
+            .then(jsonData => 
+                {
+                    setQueue(jsonData);
+                    let num = queue.findIndex(Object =>{
+                        return Object.userId == user.user.jti;
+                    });
+                    setIndex(num);
+                    console.log(num);
+                    
+                })
             .catch(rejection => () => errorHandler(rejection));
     }
 
 
-
-
+    function getPlaceInLine(){
+        console.log(queue);
+        console.log("hekp")
+    }
+    
 
 
     return (
-        <>
-        <br /><br /><h2> Please get ready! Your food will be prepared soon! </h2> 
-        </>
+
+
+        user.user.authorities === "ROLE_CUSTOMER" ? 
+        ( queue.length ? 
+            (<> <br /> <h3> Hello! Please Get Ready! Your food will be ready soon! 
+                    <br />Your place in line: {index + 1}
+            </h3> <br />
+            
+            <p> Food is not yet ready! </p></>) : ""
+    ) : ""
+
     )
 }
 
-export default ShowingQueues
+export default ShowingQueues;

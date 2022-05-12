@@ -50,6 +50,7 @@ customer_id			int not null,
 create_time			datetime not null,
 ordered_ahead		boolean not null,
 expired				boolean not null,
+ready				boolean null,
 
 constraint fk_restaurants_customers foreign key (restaurant_id) references restaurants(restaurant_id),
 constraint fk_customers_restaurants foreign key (customer_id) references customers(customer_id)
@@ -76,7 +77,7 @@ create table app_user_role (
 insert into app_role (`name`) values
     ('ADMIN'),
     ('OWNER'),
-	('CUSTOMER')
+	('CUSTOMER');
 ;
 
 -- passwords are set to "P@ssw0rd!"
@@ -84,14 +85,22 @@ insert into app_user (username, password_hash, disabled)
     values
     ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
     ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@gamilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@gailcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@gmilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('roddy@amilcom', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
     ('jane@doe.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
-    
+
 	
 insert into app_user_role
     values
-    (1, 2),
-    (2, 1),
-    (3,3);
+    (1,3),
+    (2,2),
+    (3,2),
+    (4,2),
+    (5,3),
+    (6,3);
+    
     
 insert into customers (`name`, user_id, phone_num, email) values 
 		("roddy", 1, "1231231234", "roddy@gamil.com" ),
@@ -106,9 +115,11 @@ insert into customers (`name`, user_id, phone_num, email) values
         ("Hyun", 6, "10 E 33rd St, New York, NY 10016", "45");
     
     insert into restaurants_customers (customer_id, restaurant_id, create_time, ordered_ahead, expired) values
-		(1, 1, "2011-01-01 01:11:00.0000000", true, false),
-        (1, 2, "2012-02-02 02:12:00.0000000", false, true),
-        (1, 3, "2013-03-03 03:13:00.0000000", false, true),
+
+		(4, 1, "2012-02-02 02:12:00.0000000", true, false),
+        (4, 2, "2012-02-02 02:12:00.0000000", false, true),
+        (4, 3, "2013-03-03 03:13:00.0000000", false, true),
+
         (2, 1, "2014-04-04 04:14:00.0000000", true, false),
         (2, 2, "2015-05-05 05:15:00.0000000", false, true),
         (2, 3, "2016-06-06 06:16:00.0000000", false, true),

@@ -4,6 +4,7 @@ import AuthContext from '../AuthContext';
 import DeleteItem from './DeleteItem';
 import EditItem from './EditItem';
 
+
 function Item(props) {
     const { itemId, name, category, price, description, id } = props.itemObj;
     const [user, setUser] = useState(AuthContext);
@@ -38,6 +39,7 @@ function Item(props) {
 
 
 
+
     return (
         <div className="item-card">
             <div className='item-title'>{name}</div>
@@ -58,13 +60,13 @@ function Item(props) {
                     id={props.id} />
             ) : ""}
 
-            <button onClick={handleDelete}> Delete this Item</button>
+            {user?.user ? (user.user.authorities === "ROLE_OWNER" ? 
+            <button onClick={handleDelete}> Delete this Item</button> : "" ): ""}
 
 
 
 
-
-            <Link to={'/' + itemId}><button>Add to Order</button></Link>
+            <button>Add to Order</button>
 
         </div>
     )
