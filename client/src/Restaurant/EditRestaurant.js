@@ -11,7 +11,10 @@ function EditRestaurant(){
         const token = localStorage.getItem("token");
 
         if (token) {
-            fetch("http://localhost:8090/api/restaurants/" + id, {
+
+            let api_url = process.env.REACT_APP_API_URL;
+
+            fetch(api_url + "api/restaurants/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
@@ -62,7 +65,9 @@ function EditRestaurant(){
     function handleEdit(e) {
         e.preventDefault();
 
-        fetch("http://localhost:8090/api/restaurants/" + restaurant.restaurantId, {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/restaurants/" + restaurant.restaurantId, {
             method: "PUT",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),

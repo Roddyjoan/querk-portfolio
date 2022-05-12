@@ -12,7 +12,8 @@ function Restaurants() {
 
     useEffect(() => {
 
-        fetch("http://localhost:8090/api/restaurants/", {
+        let api_url = process.env.REACT_APP_API_URL;
+        fetch(api_url + "api/restaurants/", {
         })
             .then(response => {
                 if (response.status === 200) {

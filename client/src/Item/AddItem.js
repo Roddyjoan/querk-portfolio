@@ -56,7 +56,9 @@ function AddItem() {
             category: category
         };
 
-        fetch("http://localhost:8090/api/menu", {
+        let api_url = process.env.REACT_APP_API_URL;
+
+        fetch(api_url + "api/menu", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
