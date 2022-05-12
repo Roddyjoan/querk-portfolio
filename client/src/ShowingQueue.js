@@ -7,9 +7,10 @@ import AuthContext from "./AuthContext";
 function ShowingQueues() {
     const [user, setUser] = useContext(AuthContext);
     const [restaurantId, setRestaurantId] = useState("");
-    const [queue, setQueue] = useState("");
+    const [queue, setQueue] = useState([]);
     let restaurant;
-    let queues;
+    const [index, setIndex] = useState(0)
+    let custId;
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -23,6 +24,7 @@ function ShowingQueues() {
             fetch("http://localhost:8090/api/restaurant/queue/user/" + user.user.jti)
                 .then(response => {
                     if (response.ok) {
+                        console.log(user.user.jti)
                         return response.json();
                     } else {
                         alert("Something went wrong while fetching.");
@@ -30,6 +32,7 @@ function ShowingQueues() {
                 })
                 .then(jsonData => {
                     restaurant = jsonData[0].restaurantId;
+                    custId = jsonData[0].userId;
                     getQueue();
                     if (jsonData[0].ready) {
 
@@ -41,7 +44,7 @@ function ShowingQueues() {
         }
         console.log(restaurant);
 
-    }, [restaurantId])
+    }, [queue])
 
 
     function getRestaurant() {
@@ -74,22 +77,36 @@ function ShowingQueues() {
                     alert("Something went wrong while fetching.");
                 }
             })
-            .then(jsonData => setQueue(jsonData))
+            .then(jsonData => 
+                {
+                    setQueue(jsonData);
+                    let num = queue.findIndex(Object =>{
+                        return Object.userId == user.user.jti;
+                    });
+                    setIndex(num);
+                    console.log(num);
+                    
+                })
             .catch(rejection => () => errorHandler(rejection));
     }
 
 
-
+    function getPlaceInLine(){
+        console.log(queue);
+        console.log("hekp")
+    }
     
 
 
     return (
 
         user.user.authorities === "ROLE_CUSTOMER" ? 
-        (<><h3> Hello! Please Get Ready! Your food will be ready soon! Your place in line: {queue.length}
-            </h3>  <br />
+        ( queue.length ? 
+            (<> <br /> <h3> Hello! Please Get Ready! Your food will be ready soon! 
+                    <br />Your place in line: {index + 1}
+            </h3> <br />
             
-            <p> kindly hold, your food is not yet ready</p></>
+            <p> Food is not yet ready! </p></>) : ""
     ) : ""
     )
 }
