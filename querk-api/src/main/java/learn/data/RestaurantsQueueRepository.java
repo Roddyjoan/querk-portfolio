@@ -17,7 +17,7 @@ public interface RestaurantsQueueRepository {
     List<RestaurantQueue> findAllNonExpiredByRestaurantId(Integer restaurantId);
 
     List<RestaurantQueue> findAllNonExpired();
-
+    List<RestaurantQueue> findAllByRestaurantUserId(Integer restaurantUserId);
     boolean makeExpired(RestaurantQueue restaurantQueue);
     boolean makeReady(RestaurantQueue restaurantQueue);
     boolean update(RestaurantQueue restaurantQueue);

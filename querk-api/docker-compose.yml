@@ -4,8 +4,8 @@ services:
   querk-api:
     image: erwyn98/querk-api:latest
     environment:
-      - DB_URL=jdbc:mysql://iqueue-db.ckukznuzdye9.us-east-1.rds.amazonaws.com:3306/queues_project
-      - DB_USERNAME=admin
-      - DB_PASSWORD=querkker
+      - DB_URL=jdbc:mysql://localhost:3306/queues_project
+      - DB_USERNAME=root
+      - DB_PASSWORD=top-secret-password
     ports:
-      - 8090:8090
+      - 8080:8080

@@ -22,6 +22,9 @@ public class RestaurantQueueService {
         return repository.findAllNonExpiredByRestaurantId(restaurantId);
     }
 
+    public List<RestaurantQueue> findAllByRestaurantUserId(Integer restaurantUserId){
+        return repository.findAllByRestaurantUserId(restaurantUserId);
+    }
 
     public RestaurantQueue findById (Integer restaurantId){
         return repository.findById(restaurantId);

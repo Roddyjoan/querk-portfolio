@@ -16,5 +16,4 @@ public interface RestaurantRepository {
 
     boolean deleteById(int restaurantId);
 
-
 }

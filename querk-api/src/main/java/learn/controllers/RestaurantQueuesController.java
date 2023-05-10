@@ -33,6 +33,13 @@ public class RestaurantQueuesController {
         return list;
     }
 
+    @GetMapping("/current/user/{restaurantUserId}")
+    public List<RestaurantQueue> findByRestaurantUserId(@PathVariable Integer restaurantUserId) {
+        List<RestaurantQueue> list = service.findAllByRestaurantUserId(restaurantUserId);
+        return list;
+    }
+
+
     @GetMapping("/user/{userId}")
     public List<RestaurantQueue> findAllNonExpiredByCustomerId(@PathVariable Integer userId) {
         List<RestaurantQueue> list = service.findByUserId(userId);

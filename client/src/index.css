@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     margin-top: 80px;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -5,6 +9,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
     padding-bottom:60px;
 }
+
+.hero-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+.hero-btn:hover {
+  transform: scale(1.1);
+}
+
 
 .with-margins {
   margin-top: 80px;
@@ -71,6 +87,7 @@ input {
 }
 
 img-centered {
+  position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;

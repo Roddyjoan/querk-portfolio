@@ -53,10 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //RESTAURANT QUEUE
                 .antMatchers( HttpMethod.GET, "/api/restaurant/queue/current/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/restaurant/queue/current/user/*").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/restaurant/queue/user/*").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/restaurant/queue").hasAnyRole("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/api/restaurant/queue/update/*").hasAnyRole("OWNER")
                 .antMatchers(HttpMethod.PUT, "/api/restaurant/queue/ready/*").hasAnyRole("OWNER")
+
 
                 //RESTAURANTS
                 .antMatchers( HttpMethod.GET, "/api/restaurants").permitAll()

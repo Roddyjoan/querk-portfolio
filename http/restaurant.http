@@ -1,4 +1,4 @@
-@url = http://localhost:8090/api/user
+@url = http://localhost:8080/api/user
 
 POST  {{url}}/restaurant HTTP/1.1
 Content-Type: application/json 
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 }
 
-@second = http://localhost:8090/api/restaurants
+@second = http://localhost:8080/api/restaurants
 ###
 
 POST {{second}} HTTP/1.1

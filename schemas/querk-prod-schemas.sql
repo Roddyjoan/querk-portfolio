@@ -94,7 +94,7 @@ insert into app_user (username, password_hash, disabled)
 	
 insert into app_user_role
     values
-    (1,3),
+    (1,1),
     (2,2),
     (3,2),
     (4,2),

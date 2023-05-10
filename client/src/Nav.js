@@ -43,7 +43,7 @@ function Nav() {
                         <>
                         <Link to="/"><button className="navButton">Home</button></Link>                      
                         <Link to={'/menu/' + user.user.jti}><button className="navButton">Menu</button></Link>
-                        <Link to={"/restaurant/queue/current/4"}><button className="queue">Current Queue</button></Link>
+                        <Link to={"/restaurant/queue/current/user" + user.user.jti}><button className="queue">Current Queue of your restaurant!</button></Link>
                         </>
                     ) : (
                         <>

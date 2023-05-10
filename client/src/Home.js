@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
 import Modal from './Modal';
 import ShowingQueues from './ShowingQueue';
+import Hero from './CustomComponents/Hero';
 
 function Home() {
 
@@ -32,8 +33,18 @@ function Home() {
                 </div>
             ) : (
                 <>
+                   {/* <Hero
+                    title="Create your iQueue profile"
+                    subtitle="as a Restaurant Owner or Customer"
+                    buttonOneText="Restaurant Owner"
+                    buttonOneLink="/signup/owner"
+                    buttonTwoText="Customer"
+                    buttonTwoLink="/signup/customer"
+                    imageSrc="./burrito.jpg"
+                    /> */}
                     <img src={'./burrito.jpg'} className="homepage" />
-                    <div className="burrito-text">Get started today!
+                    <div className="burrito-text w-screen h-screen text-white">Get started today!
+
                         <br /><br />
                         Create your iQueue profile
                         <br />

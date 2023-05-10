@@ -86,7 +86,7 @@ function ShowingQueues() {
             .then(jsonData => {
                 setQueue(jsonData);
                 let num = queue.findIndex(Object => {
-                    return Object.userId == user.user.jti;
+                    return Object.userId === user.user.jti;
                 });
                 setIndex(num);
                 console.log(num);

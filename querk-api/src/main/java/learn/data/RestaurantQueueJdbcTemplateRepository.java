@@ -30,6 +30,14 @@ public class RestaurantQueueJdbcTemplateRepository implements RestaurantsQueueRe
     }
 
     @Override
+    public List<RestaurantQueue> findAllByRestaurantUserId(Integer restaurantUserId) {
+        final String sql = "select * from customers c " +
+                "inner join restaurants_customers rc on c.customer_id=rc.customer_id " +
+                "inner join restaurants r on r.restaurant_id=rc.restaurant_id where r.user_id=?;";
+        return template.query(sql,new RestaurantQueueMapper(), restaurantUserId);
+    }
+
+    @Override
     public RestaurantQueue findById(Integer entryId) {
         final String sql="select * from restaurants_customers where entry_id =?;";
 

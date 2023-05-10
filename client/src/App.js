@@ -64,7 +64,7 @@ function App() {
             <Route path="/signup/owner" element={<AddRestaurantForm />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/accountsettings/:id" element={<AccountSettings />} />
-            <Route path="/restaurant/queue/current/:id" element={<CurrentQueue />} />
+            <Route path="/restaurant/queue/current/user/:id" element={<CurrentQueue />} />
             <Route path="/restaurant/queue/:id" element={<CurrentQueue />} />
             <Route path="/menu/:id" element={<Items />} />
             <Route path="/about" element={<About />} />
