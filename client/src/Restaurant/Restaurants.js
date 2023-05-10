@@ -4,6 +4,10 @@ import Restaurant from "./Restaurant";
 
 function Restaurants() {
     const [restaurants, setRestaurants] = useState([]);
+    const [search, setSearch] = useState('');
+    const filteredRestaurants = restaurants.filter(
+      (restaurant) => restaurant.name.toLowerCase().includes(search.toLowerCase()));
+
     const nav = useNavigate();
 
     function errorHandler(rejectionMessage) {
@@ -29,12 +33,12 @@ function Restaurants() {
 
     }, []);
 
-    function restaurantFactory() {
-        return restaurants.map(restaurantObj => (
+    const restaurantFactory = () => {
+        return filteredRestaurants.map(restaurantObj => (
             <Restaurant
                 key={restaurantObj.restaurantId}
                 restaurantObj={restaurantObj}
-                restaurants={restaurants}
+                restaurants={filteredRestaurants}
                 setRestaurants={setRestaurants}
             />
         ))
@@ -42,6 +46,12 @@ function Restaurants() {
 
     return (
         <div className="with-margins">
+          <input
+            type='text'
+            placeholder='Search restaurants by name'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
             <h2>Restaurants</h2>
             <br />
             {restaurantFactory()}
